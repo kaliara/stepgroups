@@ -1,4 +1,8 @@
 Coda::Application.routes.draw do
+  resources :districts
+
+  resources :meetings
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

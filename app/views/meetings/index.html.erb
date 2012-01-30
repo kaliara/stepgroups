@@ -1,0 +1,49 @@
+<h1>Listing meetings</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>District</th>
+    <th>Address building</th>
+    <th>Address street1</th>
+    <th>Address street1</th>
+    <th>Address city</th>
+    <th>Address state</th>
+    <th>Address zip code</th>
+    <th>Address notes</th>
+    <th>Wday</th>
+    <th>Hour</th>
+    <th>Minute</th>
+    <th>Topic</th>
+    <th>Contact</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meetings.each do |meeting| %>
+  <tr>
+    <td><%= meeting.title %></td>
+    <td><%= meeting.district_id %></td>
+    <td><%= meeting.address_building %></td>
+    <td><%= meeting.address_street1 %></td>
+    <td><%= meeting.address_street2 %></td>
+    <td><%= meeting.address_city %></td>
+    <td><%= meeting.address_state %></td>
+    <td><%= meeting.address_zip_code %></td>
+    <td><%= meeting.address_notes %></td>
+    <td><%= meeting.wday %></td>
+    <td><%= meeting.hour %></td>
+    <td><%= meeting.minute %></td>
+    <td><%= meeting.topic %></td>
+    <td><%= meeting.contact %></td>
+    <td><%= link_to 'Show', meeting %></td>
+    <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+    <td><%= link_to 'Destroy', meeting, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Meeting', new_meeting_path %>

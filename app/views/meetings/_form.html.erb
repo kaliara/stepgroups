@@ -1,0 +1,85 @@
+<%= form_for(@meeting) do |f| %>
+  <% if @meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+      <% @meeting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.hidden_field :address_lat, :id => 'google_maps_address_lat' %>
+  <%= f.hidden_field :address_lng, :id => 'google_maps_address_lng' %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :district_id %><br />
+    <%= f.select :district_id, District.all.collect{|d| [d.name, d.id]}.sort %>
+  </div>
+  <fieldset class="address">
+    <div class="field">
+      <%= f.label :address_building %><br />
+      <%= f.text_field :address_building %>
+    </div>
+    <div class="field">
+      <%= f.label :address_street1 %><br />
+      <%= f.text_field :address_street1 %>
+    </div>
+    <div class="field">
+      <%= f.label :address_street2 %><br />
+      <%= f.text_field :address_street2 %>
+    </div>
+    <div class="field">
+      <%= f.label :address_city %><br />
+      <%= f.text_field :address_city %>
+    </div>
+    <div class="field">
+      <%= f.label :address_state %><br />
+      <%= f.text_field :address_state, :class => "uppercase" %>
+    </div>
+    <div class="field">
+      <%= f.label :address_zip_code %><br />
+      <%= f.text_field :address_zip_code %>
+    </div>
+    <div class="field">
+      <%= f.label :address_notes %><br />
+      <%= f.text_field :address_notes %>
+    </div>
+  </fieldset>
+  
+  <div id="google_map">
+  </div>
+  
+  <div class="field">
+    <%= f.label :wday, 'Day' %><br />
+    <%= f.select :wday, Date::DAYNAMES.zip((0..6).to_a) %>
+  </div>
+  <div class="field">
+    <%= f.label :hour, 'Time' %><br />
+    <%= select_hour 12, {:ampm => true}, {:name => 'meeting[hour]', :id => 'meeting_hour'} %> : 
+    <%= select_minute 0, {:minute_step => 5}, {:name => 'meeting[minute]', :id => 'meeting_minute'} %>
+  </div>
+  <div class="field">
+    <%= f.label :topic %><br />
+    <%= f.text_field :topic %>
+  </div>
+  <div class="field">
+    <%= f.label :contact %><br />
+    <%= f.text_field :contact %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  loadGoogleMap();
+  $('.address input').change(function(){refreshMap()});
+  // $('form input[type="submit"]').click(function(){refreshMap()});
+</script>

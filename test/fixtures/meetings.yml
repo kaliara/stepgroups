@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  district_id: 1
+  address_building: MyString
+  address_street1: MyString
+  address_street2: MyString
+  address_city: MyString
+  address_state: MyString
+  address_zip_code: MyString
+  address_notes: MyString
+  wday: 1
+  hour: 1
+  minute: 1
+  topic: MyString
+  contact: MyString
+
+two:
+  title: MyString
+  district_id: 1
+  address_building: MyString
+  address_street1: MyString
+  address_street2: MyString
+  address_city: MyString
+  address_state: MyString
+  address_zip_code: MyString
+  address_notes: MyString
+  wday: 1
+  hour: 1
+  minute: 1
+  topic: MyString
+  contact: MyString

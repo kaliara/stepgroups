@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Coda</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title>NYCODA.org :: Codependents Anonymous NYC</title>
+  <%= stylesheet_link_tag "style", :media => "all" %>
+  <%= javascript_include_tag "main" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+  <body>
+    <div id="container" class="clearfix">
+      <%= render :partial => 'layouts/navigation' %>
+      
+      <div id="content" class="clearfix">
+        <%= yield %>
+      </div>
+    </div>
+    
+  </body>
 </html>
