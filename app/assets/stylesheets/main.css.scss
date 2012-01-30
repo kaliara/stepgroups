@@ -9,12 +9,12 @@ body{
 }
 
 h2{
-  background: #f9a400;
+  background: #f09e00;
   color: #fff;
-  font-size: 200%;
+  font-size: 250%;
   line-height: 1em;
-  padding: 10px 15px;
-  margin: 0 0 70px;
+  padding: 15px 0 8px 15px;
+  margin: 70px 0 90px -20px;
   text-transform: uppercase;
 }
 
@@ -22,7 +22,7 @@ h3{
   color: #434343;
   font-size: 150%;
   font-weight: normal;
-  margin: 0 0 50px;
+  margin: 0 0 40px;
 }
 
 a:link, a:visited, a:hover, a:active{
@@ -68,7 +68,7 @@ dl{
 
 #content{
   float: left;
-  margin-left: 15px;
+  margin-left: 20px;
   width: 500px;
 }
 
@@ -81,7 +81,7 @@ dl{
   margin-bottom: 70px;
 
   ul{
-    margin: 0 0 30px;
+    margin: 0 0 30px 15px;
     padding: 0;
   }
   li{
@@ -97,20 +97,23 @@ dl{
     cursor: default;
   }
   #logo{
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     display: block;
   }
 }
 
 .signup_form{
+  margin-left: 15px;
 
   label{
-    font-size: 70%;
+    font-size: 80%;
     color: #777;
+    display: block;
   }
   .textfield{
     color: #888;
     padding: 3px;
+    width: 110px;
   }
   .submit{
     background: #f9a400;
