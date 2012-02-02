@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  document_id: 1
+  title: MyString
+  body: MyText
+  vote_yes: 1
+  vote_no: 1
+  vote_abstain: 1
+  passes: false
+
+two:
+  document_id: 1
+  title: MyString
+  body: MyText
+  vote_yes: 1
+  vote_no: 1
+  vote_abstain: 1
+  passes: false

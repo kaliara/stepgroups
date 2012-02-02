@@ -1,0 +1,27 @@
+<h1>Listing document_sections</h1>
+
+<table>
+  <tr>
+    <th>Document</th>
+    <th>Heading</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @document_sections.each do |document_section| %>
+  <tr>
+    <td><%= document_section.document_id %></td>
+    <td><%= document_section.heading %></td>
+    <td><%= document_section.body %></td>
+    <td><%= link_to 'Show', document_section %></td>
+    <td><%= link_to 'Edit', edit_document_section_path(document_section) %></td>
+    <td><%= link_to 'Destroy', document_section, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Document section', new_document_section_path %>

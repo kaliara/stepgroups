@@ -1,0 +1,2 @@
+module DocumentSectionsHelper
+end

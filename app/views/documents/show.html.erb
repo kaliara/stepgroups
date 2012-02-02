@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Intergroup session:</b>
+  <%= link_to @document.intergroup_session.name, intergroup_session_path(@document.intergroup_session) %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @document.title %>
+</p>
+
+<p>
+  <b>Document type:</b>
+  <%= @document.pretty_document_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>

@@ -1,0 +1,2 @@
+module IntergroupSessionsHelper
+end

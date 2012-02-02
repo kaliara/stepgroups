@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  session_date: 2012-02-01 23:05:29
+  attendance: 1
+  quorum: false
+
+two:
+  session_date: 2012-02-01 23:05:29
+  attendance: 1
+  quorum: false

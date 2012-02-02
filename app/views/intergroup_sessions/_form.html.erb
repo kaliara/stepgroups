@@ -1,0 +1,29 @@
+<%= form_for(@intergroup_session) do |f| %>
+  <% if @intergroup_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@intergroup_session.errors.count, "error") %> prohibited this intergroup_session from being saved:</h2>
+
+      <ul>
+      <% @intergroup_session.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :session_date %><br />
+    <%= f.datetime_select :session_date, :order => [:month, :day, :year], :start_year => Date.today.year - 3, :end_year => Date.today.year + 3 %>
+  </div>
+  <div class="field">
+    <%= f.label :attendance %><br />
+    <%= f.number_field :attendance %>
+  </div>
+  <div class="field">
+    <%= f.label :quorum %><br />
+    <%= f.check_box :quorum %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

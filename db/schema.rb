@@ -11,12 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120129195923) do
+ActiveRecord::Schema.define(:version => 20120202042843) do
 
   create_table "districts", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "document_sections", :force => true do |t|
+    t.integer  "document_id"
+    t.string   "heading"
+    t.text     "body"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "documents", :force => true do |t|
+    t.integer  "intergroup_session_id"
+    t.string   "title"
+    t.integer  "document_type",         :default => 0
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
+  create_table "intergroup_sessions", :force => true do |t|
+    t.datetime "session_date"
+    t.integer  "attendance",   :default => 0
+    t.boolean  "quorum",       :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "meetings", :force => true do |t|
@@ -38,6 +62,18 @@ ActiveRecord::Schema.define(:version => 20120129195923) do
     t.datetime "updated_at",       :null => false
     t.string   "address_lat"
     t.string   "address_lng"
+  end
+
+  create_table "motions", :force => true do |t|
+    t.integer  "document_id"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "vote_yes",     :default => 0
+    t.integer  "vote_no",      :default => 0
+    t.integer  "vote_abstain", :default => 0
+    t.boolean  "passes",       :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end

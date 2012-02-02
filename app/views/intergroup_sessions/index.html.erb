@@ -1,0 +1,27 @@
+<h1>Listing intergroup_sessions</h1>
+
+<table>
+  <tr>
+    <th>Session date</th>
+    <th>Attendance</th>
+    <th>Quorum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @intergroup_sessions.each do |intergroup_session| %>
+  <tr>
+    <td><%= intergroup_session.session_date %></td>
+    <td><%= intergroup_session.attendance %></td>
+    <td><%= intergroup_session.quorum %></td>
+    <td><%= link_to 'Show', intergroup_session %></td>
+    <td><%= link_to 'Edit', edit_intergroup_session_path(intergroup_session) %></td>
+    <td><%= link_to 'Destroy', intergroup_session, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Intergroup session', new_intergroup_session_path %>

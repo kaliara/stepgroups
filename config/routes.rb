@@ -1,4 +1,12 @@
 Coda::Application.routes.draw do
+  resources :documents
+
+  resources :motions
+
+  resources :document_sections
+
+  resources :intergroup_sessions
+
   resources :districts
 
   resources :meetings

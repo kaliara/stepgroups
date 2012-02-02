@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  intergroup_session_id: 1
+  title: MyString
+  document_type: 1
+
+two:
+  intergroup_session_id: 1
+  title: MyString
+  document_type: 1
