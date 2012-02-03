@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Document:</b>
+  <%= link_to @motion.document.title, document_path(@motion.document) %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @motion.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @motion.body %>
+</p>
+
+<p>
+  <b>Vote yes:</b>
+  <%= @motion.vote_yes %>
+</p>
+
+<p>
+  <b>Vote no:</b>
+  <%= @motion.vote_no %>
+</p>
+
+<p>
+  <b>Vote abstain:</b>
+  <%= @motion.vote_abstain %>
+</p>
+
+<p>
+  <b>Passes:</b>
+  <%= @motion.passes %>
+</p>
+
+
+<%= link_to 'Edit', edit_motion_path(@motion) %> |
+<%= link_to 'Back', motions_path %>

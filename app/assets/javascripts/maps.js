@@ -55,8 +55,6 @@ function updateMap(address) {
       $('#google_maps_address_lng').val(results[0].geometry.location.lng());
       map.setCenter(results[0].geometry.location);
       marker.setPosition(results[0].geometry.location);
-    } else {
-      alert("Google map could not load, sorry about that: " + status);
     }
   });
 }
