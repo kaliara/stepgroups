@@ -11,13 +11,13 @@
 <% @districts.each do |district| %>
   <tr>
     <td><%= district.name %></td>
-    <td><%= link_to 'Show', district %></td>
-    <td><%= link_to 'Edit', edit_district_path(district) %></td>
-    <td><%= link_to 'Destroy', district, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', admin_district_path(district) %></td>
+    <td><%= link_to 'Edit', edit_admin_district_path(district) %></td>
+    <td><%= link_to 'Destroy', admin_district_path(district), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New District', new_district_path %>
+<%= link_to 'New District', new_admin_district_path %>

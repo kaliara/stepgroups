@@ -1,16 +1,19 @@
 Coda::Application.routes.draw do
-  resources :documents
+  resources :documents, :only => [:show, :index]
+  resources :motions, :only => [:show, :index]
+  resources :intergroup_sessions, :only => [:show, :index]
+  resources :meetings, :only => [:show, :index]
 
-  resources :motions
-
-  resources :document_sections
-
-  resources :intergroup_sessions
-
-  resources :districts
-
-  resources :meetings
-
+  namespace :admin do
+    resources :documents
+    resources :motions
+    resources :document_sections
+    resources :intergroup_sessions
+    resources :districts
+    resources :meetings
+  end
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

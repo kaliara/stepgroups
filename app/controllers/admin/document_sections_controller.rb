@@ -1,4 +1,4 @@
-class DocumentSectionsController < ApplicationController
+class Admin::DocumentSectionsController < ApplicationController
   # GET /document_sections
   # GET /document_sections.json
   def index
@@ -44,7 +44,7 @@ class DocumentSectionsController < ApplicationController
 
     respond_to do |format|
       if @document_section.save
-        format.html { redirect_to @document_section, notice: 'Document section was successfully created.' }
+        format.html { redirect_to admin_document_section_path(@document_section), notice: 'Document section was successfully created.' }
         format.json { render json: @document_section, status: :created, location: @document_section }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class DocumentSectionsController < ApplicationController
 
     respond_to do |format|
       if @document_section.update_attributes(params[:document_section])
-        format.html { redirect_to @document_section, notice: 'Document section was successfully updated.' }
+        format.html { redirect_to admin_document_section_path(@document_section), notice: 'Document section was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class DocumentSectionsController < ApplicationController
     @document_section.destroy
 
     respond_to do |format|
-      format.html { redirect_to document_sections_url }
+      format.html { redirect_to admin_document_sections_path }
       format.json { head :no_content }
     end
   end

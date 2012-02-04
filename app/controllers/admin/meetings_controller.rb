@@ -1,4 +1,4 @@
-class MeetingsController < ApplicationController
+class Admin::MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
@@ -44,7 +44,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
+        format.html { redirect_to admin_meeting_path(@meeting), notice: 'Meeting was successfully created.' }
         format.json { render json: @meeting, status: :created, location: @meeting }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.update_attributes(params[:meeting])
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
+        format.html { redirect_to admin_meeting_path(@meeting), notice: 'Meeting was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class MeetingsController < ApplicationController
     @meeting.destroy
 
     respond_to do |format|
-      format.html { redirect_to meetings_url }
+      format.html { redirect_to admin_meetings_path }
       format.json { head :no_content }
     end
   end

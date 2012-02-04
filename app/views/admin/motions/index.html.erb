@@ -23,13 +23,13 @@
     <td><%= motion.vote_no %></td>
     <td><%= motion.vote_abstain %></td>
     <td><%= motion.passes %></td>
-    <td><%= link_to 'Show', motion_path(motion) %></td>
-    <td><%= link_to 'Edit', edit_motion_path(motion) %></td>
-    <td><%= link_to 'Destroy', motion_path(motion), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', admin_motion_path(motion) %></td>
+    <td><%= link_to 'Edit', edit_admin_motion_path(motion) %></td>
+    <td><%= link_to 'Destroy', admin_motion_path(motion), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Motion', new_motion_path %>
+<%= link_to 'New Motion', new_admin_motion_path %>

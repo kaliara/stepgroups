@@ -2,7 +2,7 @@
 
 <p>
   <b>Document:</b>
-  <%= link_to @motion.document.title, document_path(@motion.document) %>
+  <%= link_to @motion.document.title, admin_document_path(@motion.document) %>
 </p>
 
 <p>
@@ -36,5 +36,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_motion_path(@motion) %> |
-<%= link_to 'Back', motions_path %>
+<%= link_to 'Edit', edit_admin_motion_path(@motion) %> |
+<%= link_to 'Back', admin_motions_path %>

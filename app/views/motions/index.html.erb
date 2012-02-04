@@ -1,10 +1,9 @@
-<h1>Listing motions</h1>
+<h2>Motions List</h2>
 
 <table>
   <tr>
-    <th>Document</th>
     <th>Title</th>
-    <th>Body</th>
+    <th>Document</th>
     <th>Vote yes</th>
     <th>Vote no</th>
     <th>Vote abstain</th>
@@ -16,16 +15,12 @@
 
 <% @motions.each do |motion| %>
   <tr>
+    <td><%= link_to motion.title, motion_path(motion) %></td>
     <td><%= motion.document.title %></td>
-    <td><%= motion.title %></td>
-    <td><%= motion.body %></td>
     <td><%= motion.vote_yes %></td>
     <td><%= motion.vote_no %></td>
     <td><%= motion.vote_abstain %></td>
-    <td><%= motion.passes %></td>
-    <td><%= link_to 'Show', motion_path(motion) %></td>
-    <td><%= link_to 'Edit', edit_motion_path(motion) %></td>
-    <td><%= link_to 'Destroy', motion_path(motion), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= motion.pretty_passes %></td>
   </tr>
 <% end %>
 </table>

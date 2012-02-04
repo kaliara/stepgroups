@@ -1,4 +1,4 @@
-class DistrictsController < ApplicationController
+class Admin::DistrictsController < ApplicationController
   # GET /districts
   # GET /districts.json
   def index
@@ -44,7 +44,7 @@ class DistrictsController < ApplicationController
 
     respond_to do |format|
       if @district.save
-        format.html { redirect_to @district, notice: 'District was successfully created.' }
+        format.html { redirect_to admin_district_path(@district), notice: 'District was successfully created.' }
         format.json { render json: @district, status: :created, location: @district }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class DistrictsController < ApplicationController
 
     respond_to do |format|
       if @district.update_attributes(params[:district])
-        format.html { redirect_to @district, notice: 'District was successfully updated.' }
+        format.html { redirect_to admin_district_path(@district), notice: 'District was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class DistrictsController < ApplicationController
     @district.destroy
 
     respond_to do |format|
-      format.html { redirect_to districts_url }
+      format.html { redirect_to admin_districts_path }
       format.json { head :no_content }
     end
   end

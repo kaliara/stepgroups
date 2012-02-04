@@ -15,13 +15,13 @@
     <td><%= intergroup_session.session_date %></td>
     <td><%= intergroup_session.attendance %></td>
     <td><%= intergroup_session.quorum %></td>
-    <td><%= link_to 'Show', intergroup_session %></td>
-    <td><%= link_to 'Edit', edit_intergroup_session_path(intergroup_session) %></td>
-    <td><%= link_to 'Destroy', intergroup_session, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', admin_intergroup_session_path(intergroup_session) %></td>
+    <td><%= link_to 'Edit', edit_admin_intergroup_session_path(intergroup_session) %></td>
+    <td><%= link_to 'Destroy', admin_intergroup_session_path(intergroup_session), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Intergroup session', new_intergroup_session_path %>
+<%= link_to 'New Intergroup session', new_admin_intergroup_session_path %>

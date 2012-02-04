@@ -1,4 +1,4 @@
-<%= form_for(@district) do |f| %>
+<%= form_for([:admin, @district]) do |f| %>
   <% if @district.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@district.errors.count, "error") %> prohibited this district from being saved:</h2>

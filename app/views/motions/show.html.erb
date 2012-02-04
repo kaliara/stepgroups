@@ -1,13 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Document:</b>
-  <%= link_to @motion.document.title, document_path(@motion.document) %>
-</p>
+<h2>Motion Detail</h2>
 
 <p>
   <b>Title:</b>
   <%= @motion.title %>
+</p>
+
+<% unless @motion.document.intergroup_session.nil? %>
+<p>
+  <b>Intergroup Session:</b>
+  <%= link_to @motion.document.intergroup_session.name, intergroup_session_path(@motion.document.intergroup_session) %>
+</p>
+<% end %>
+<p>
+  <b>Document:</b>
+  <%= link_to @motion.document.title, document_path(@motion.document) %>
 </p>
 
 <p>

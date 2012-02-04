@@ -1,4 +1,4 @@
-class IntergroupSessionsController < ApplicationController
+class Admin::IntergroupSessionsController < ApplicationController
   # GET /intergroup_sessions
   # GET /intergroup_sessions.json
   def index
@@ -44,7 +44,7 @@ class IntergroupSessionsController < ApplicationController
 
     respond_to do |format|
       if @intergroup_session.save
-        format.html { redirect_to @intergroup_session, notice: 'Intergroup session was successfully created.' }
+        format.html { redirect_to admin_intergroup_session_path(@intergroup_session), notice: 'Intergroup session was successfully created.' }
         format.json { render json: @intergroup_session, status: :created, location: @intergroup_session }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class IntergroupSessionsController < ApplicationController
 
     respond_to do |format|
       if @intergroup_session.update_attributes(params[:intergroup_session])
-        format.html { redirect_to @intergroup_session, notice: 'Intergroup session was successfully updated.' }
+        format.html { redirect_to admin_intergroup_session_path(@intergroup_session), notice: 'Intergroup session was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class IntergroupSessionsController < ApplicationController
     @intergroup_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to intergroup_sessions_url }
+      format.html { redirect_to admin_intergroup_sessions_path }
       format.json { head :no_content }
     end
   end

@@ -1,14 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Intergroup session:</b>
-  <%= link_to @document.intergroup_session.name, intergroup_session_path(@document.intergroup_session) %>
-</p>
-
 <p>
   <b>Title:</b>
   <%= @document.title %>
 </p>
+
+<% unless @document.intergroup_session.nil? %>
+<p>
+  <b>Intergroup session:</b>
+  <%= link_to @document.intergroup_session.name, admin_intergroup_session_path(@document.intergroup_session) %>
+</p>
+<% end %>
 
 <p>
   <b>Document type:</b>
@@ -16,5 +16,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
+<%= link_to 'Edit', edit_admin_document_path(@document) %> |
+<%= link_to 'Back', admin_documents_path %>

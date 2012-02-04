@@ -1,5 +1,6 @@
 class Document < ActiveRecord::Base
   belongs_to :intergroup_session
+  default_scope where('id > 1')
   
   TYPES = [['Normal', 0], ['Minutes', 1], ['Treasury', 2]];
   

@@ -1,4 +1,4 @@
-<%= form_for(@motion) do |f| %>
+<%= form_for([:admin,@motion]) do |f| %>
   <% if @motion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@motion.errors.count, "error") %> prohibited this motion from being saved:</h2>

@@ -1,4 +1,4 @@
-class MotionsController < ApplicationController
+class Admin::MotionsController < ApplicationController
   # GET /motions
   # GET /motions.json
   def index
@@ -45,7 +45,7 @@ class MotionsController < ApplicationController
 
     respond_to do |format|
       if @motion.save
-        format.html { redirect_to @motion, notice: 'Motion was successfully created.' }
+        format.html { redirect_to admin_motion_path(@motion), notice: 'Motion was successfully created.' }
         format.json { render json: @motion, status: :created, location: @motion }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class MotionsController < ApplicationController
 
     respond_to do |format|
       if @motion.update_attributes(params[:motion])
-        format.html { redirect_to @motion, notice: 'Motion was successfully updated.' }
+        format.html { redirect_to admin_motion_path(@motion), notice: 'Motion was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +77,7 @@ class MotionsController < ApplicationController
     @motion.destroy
 
     respond_to do |format|
-      format.html { redirect_to motions_url }
+      format.html { redirect_to admin_motions_path }
       format.json { head :no_content }
     end
   end

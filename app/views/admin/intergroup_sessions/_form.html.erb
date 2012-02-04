@@ -1,4 +1,4 @@
-<%= form_for(@intergroup_session) do |f| %>
+<%= form_for([:admin,@intergroup_session]) do |f| %>
   <% if @intergroup_session.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@intergroup_session.errors.count, "error") %> prohibited this intergroup_session from being saved:</h2>

@@ -1,4 +1,4 @@
-<%= form_for(@document_section) do |f| %>
+<%= form_for([:admin,@document_section]) do |f| %>
   <% if @document_section.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@document_section.errors.count, "error") %> prohibited this document_section from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :document_id %><br />
-    <%= f.number_field :document_id %>
+    <%= f.select :document_id, Document.all.collect{|d| [d.title, d.id]} %>
   </div>
   <div class="field">
     <%= f.label :heading %><br />
