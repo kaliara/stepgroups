@@ -1,4 +1,8 @@
 Coda::Application.routes.draw do
+  # special routes
+  match 'documents/:type' => 'documents#index', :constraints => {:type => /\D+/}
+  
+  # resources
   resources :documents, :only => [:show, :index]
   resources :motions, :only => [:show, :index]
   resources :intergroup_sessions, :only => [:show, :index]

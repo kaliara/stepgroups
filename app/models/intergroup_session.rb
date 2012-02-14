@@ -1,5 +1,6 @@
 class IntergroupSession < ActiveRecord::Base
   has_many :documents
+  has_many :motions, :through => :documents
   
   default_scope order('session_date desc')
   

@@ -2,16 +2,25 @@
 
 <h3><%= @document.title %></h3>
 
-<p>
-  <b>Document type:</b>
-  <%= @document.pretty_document_type %>
-</p>
-
 <% unless @document.intergroup_session.nil? %>
 <p>
   <b>Intergroup session:</b>
   <%= link_to @document.intergroup_session.name, intergroup_session_path(@document.intergroup_session) %>
 </p>
 <% end %>
+
+<p>
+  <b>Document type:</b>
+  <%= @document.pretty_document_type %>
+</p>
+
+<br><br>
+
+<% @document.sections.each do |section| %>
+<h4><%= section.heading %></h4>
+<p><%= section.body %></p>
+<% end %>
+
+<br><br>
 
 <%= link_to 'Back to documents', documents_path %>

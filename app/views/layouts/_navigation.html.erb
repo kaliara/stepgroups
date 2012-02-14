@@ -4,12 +4,12 @@
     <li><a href="#">What is Coda</a></li>
     <li>About Codependency</li>
     <li>The 12 Steps</li>
-    <li><a href="#">Meeting List</a></li>
+    <li><%= link_to "Meeting List", meetings_path %></li>
   </ul>
   <ul>
     <li>Sponsorship</li>
     <li>Intergroup</li>
-    <li>Meeting Minutes</li>
+    <li><%= link_to "Meeting Minutes", documents_path(:type => 'minutes') %></li>
     <li>Service Opportunities</li>
   </ul>
   <div class="signup_form">

@@ -2,5 +2,14 @@
 
 <%= render 'form' %>
 
+<br><br>
+
+<%= render :partial => 'section_form', :collection => @document.sections, :as => :section %>
+
+<br><br><br>
+
+<%= render :partial => 'motion_form',  :collection => @document.motions,  :as => :motion %>
+
+<br><br><br>
 <%= link_to 'Show', admin_document_path(@document) %> |
 <%= link_to 'Back', admin_documents_path %>

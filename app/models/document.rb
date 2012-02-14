@@ -1,9 +1,9 @@
 class Document < ActiveRecord::Base
   belongs_to :intergroup_session
   has_many :sections
-  default_scope where('id > 1')
+  has_many :motions
   
-  TYPES = [['Normal', 0], ['Minutes', 1], ['Treasury', 2]];
+  TYPES = [['normal', 0], ['minutes', 1], ['treasury', 2]];
   
   def pretty_document_type
     TYPES[document_type][0]
