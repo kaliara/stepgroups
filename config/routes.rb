@@ -7,7 +7,7 @@ Coda::Application.routes.draw do
   namespace :admin do
     resources :documents
     resources :motions
-    resources :document_sections
+    resources :sections
     resources :intergroup_sessions
     resources :districts
     resources :meetings

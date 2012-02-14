@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Document:</b>
+  <%= @section.document_id %>
+</p>
+
+<p>
+  <b>Heading:</b>
+  <%= @section.heading %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @section.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_section_path(@section) %> |
+<%= link_to 'Back', admin_document_path(@section.document) %>

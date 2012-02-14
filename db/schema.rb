@@ -19,14 +19,6 @@ ActiveRecord::Schema.define(:version => 20120202042843) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "document_sections", :force => true do |t|
-    t.integer  "document_id"
-    t.string   "heading"
-    t.text     "body"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "documents", :force => true do |t|
     t.integer  "intergroup_session_id"
     t.string   "title"
@@ -74,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20120202042843) do
     t.boolean  "passes",       :default => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "sections", :force => true do |t|
+    t.integer  "document_id"
+    t.string   "heading"
+    t.text     "body"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
