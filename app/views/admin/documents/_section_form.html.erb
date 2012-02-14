@@ -1,4 +1,4 @@
-<%= form_for([:admin,section]) do |f| %>
+<%= form_for([:admin,section], :remote => true) do |f| %>
   <% if section.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h2>
@@ -15,12 +15,12 @@
     <%= f.hidden_field :document_id %>
   </div>
   <div class="field">
-    <%= f.label :heading %><br />
-    <%= f.text_field :heading %>
+    <%= f.label :heading, :for => "heading_#{section_counter}" %><br />
+    <%= f.text_field :heading, :id => "heading_#{section_counter}" %>
   </div>
   <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= f.label :body, :for => "body_#{section_counter}" %><br />
+    <%= f.text_area :body, :id => "body_#{section_counter}" %>
   </div>
   <div class="actions">
     <%= f.submit %>

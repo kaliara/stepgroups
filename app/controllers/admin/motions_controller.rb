@@ -47,6 +47,7 @@ class Admin::MotionsController < ApplicationController
       if @motion.save
         format.html { redirect_to admin_motion_path(@motion), notice: 'Motion was successfully created.' }
         format.json { render json: @motion, status: :created, location: @motion }
+        format.js   { head :no_content }
       else
         format.html { render action: "new" }
         format.json { render json: @motion.errors, status: :unprocessable_entity }
@@ -63,6 +64,7 @@ class Admin::MotionsController < ApplicationController
       if @motion.update_attributes(params[:motion])
         format.html { redirect_to admin_motion_path(@motion), notice: 'Motion was successfully updated.' }
         format.json { head :no_content }
+        format.js   { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @motion.errors, status: :unprocessable_entity }
