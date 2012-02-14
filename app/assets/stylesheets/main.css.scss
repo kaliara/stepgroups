@@ -1,7 +1,7 @@
 // ============ TAGS =========== //
 
 body{
-  background: #c6def0 url(asset-path("bg.jpg", image)) no-repeat 0 0;
+  background: #c6def0 image-url("bg.jpg") no-repeat 0 0;
   color: #434343;
   font: normal 1em/1em 'Myriad Pro', Myriad, Helvetica, sans-serif;
   padding: 0;
