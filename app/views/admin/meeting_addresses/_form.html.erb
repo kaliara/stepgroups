@@ -1,0 +1,63 @@
+<%= form_for([:admin,@meeting_address]) do |f| %>
+  <% if @meeting_address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meeting_address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @meeting_address.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :district_id %><br />
+    <%= f.select :district_id, District.all.collect{|d| [d.name, d.id]}.sort %>
+  </div>
+
+  <div class="field">
+    <%= f.label :building %><br />
+    <%= f.text_field :building %>
+  </div>
+  <div class="field">
+    <%= f.label :street1 %><br />
+    <%= f.text_field :street1 %>
+  </div>
+  <div class="field">
+    <%= f.label :street2 %><br />
+    <%= f.text_field :street2 %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state, :class => "uppercase" %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_code %><br />
+    <%= f.text_field :zip_code %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br />
+    <%= f.text_field :notes %>
+  </div>
+  
+  <%= hidden_field_tag :lat, '', :id => 'google_maps_address_lat' %>
+  <%= hidden_field_tag :lng, '', :id => 'google_maps_address_lng' %>
+  
+  <div id="google_map">
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  loadGoogleMap();
+  $('input').change(function(){refreshMap()});
+  // $('form input[type="submit"]').click(function(){refreshMap()});
+</script>

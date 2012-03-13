@@ -24,7 +24,10 @@ class Admin::MeetingsController < ApplicationController
   # GET /meetings/new
   # GET /meetings/new.json
   def new
+    redirect_to(new_admin_district_path, notice: 'Please create a District before adding a new Meeting') and return if District.all.empty?
+    
     @meeting = Meeting.new
+    @meeting.meeting_address = MeetingAddress.new
 
     respond_to do |format|
       format.html # new.html.erb

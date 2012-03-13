@@ -11,47 +11,56 @@
     </div>
   <% end %>
   
-  <%= f.hidden_field :address_lat, :id => 'google_maps_address_lat' %>
-  <%= f.hidden_field :address_lng, :id => 'google_maps_address_lng' %>
-
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :district_id %><br />
-    <%= f.select :district_id, District.all.collect{|d| [d.name, d.id]}.sort %>
-  </div>
-  <fieldset class="address">
-    <div class="field">
-      <%= f.label :address_building %><br />
-      <%= f.text_field :address_building %>
-    </div>
-    <div class="field">
-      <%= f.label :address_street1 %><br />
-      <%= f.text_field :address_street1 %>
-    </div>
-    <div class="field">
-      <%= f.label :address_street2 %><br />
-      <%= f.text_field :address_street2 %>
-    </div>
-    <div class="field">
-      <%= f.label :address_city %><br />
-      <%= f.text_field :address_city %>
-    </div>
-    <div class="field">
-      <%= f.label :address_state %><br />
-      <%= f.text_field :address_state, :class => "uppercase" %>
-    </div>
-    <div class="field">
-      <%= f.label :address_zip_code %><br />
-      <%= f.text_field :address_zip_code %>
-    </div>
-    <div class="field">
-      <%= f.label :address_notes %><br />
-      <%= f.text_field :address_notes %>
-    </div>
+
+  <fieldset class="existing_address">
+    <%= f.select 'meeting_address_id', option_groups_from_collection_for_select(District.all, :meeting_addresses, :name, :id, :short_address, 1) %>
+    <p id="link_new_address">or <%= link_to "create a new address", new_admin_meeting_address_path %></p>
   </fieldset>
+  
+  <fieldset class="new_address" style="display: none">
+  <%= fields_for @meeting.meeting_address do |af| %>
+    <div class="field">
+      <%= af.label :district_id %><br />
+      <%= af.select :district_id, District.all.collect{|d| [d.name, d.id]}.sort %>
+    </div>
+
+    <div class="field">
+      <%= af.label :building %><br />
+      <%= af.text_field :building %>
+    </div>
+    <div class="field">
+      <%= af.label :street1 %><br />
+      <%= af.text_field :street1 %>
+    </div>
+    <div class="field">
+      <%= af.label :street2 %><br />
+      <%= af.text_field :street2 %>
+    </div>
+    <div class="field">
+      <%= af.label :city %><br />
+      <%= af.text_field :city %>
+    </div>
+    <div class="field">
+      <%= af.label :state %><br />
+      <%= af.text_field :state, :class => "uppercase" %>
+    </div>
+    <div class="field">
+      <%= af.label :zip_code %><br />
+      <%= af.text_field :zip_code %>
+    </div>
+    <div class="field">
+      <%= af.label :notes %><br />
+      <%= af.text_field :notes %>
+    </div>
+  <% end %>
+  </fieldset>
+  
+  <%= hidden_field_tag :lat, '', :id => 'google_maps_address_lat' %>
+  <%= hidden_field_tag :lng, '', :id => 'google_maps_address_lng' %>
   
   <div id="google_map">
   </div>
@@ -80,6 +89,7 @@
 
 <script type="text/javascript" charset="utf-8">
   loadGoogleMap();
-  $('.address input').change(function(){refreshMap()});
+  $('.new_address input').change(function(){refreshMap()});
+  $('#link_new_address a').click(function(){$('.new_address').show(); $('.existing_address').hide(); return false; });
   // $('form input[type="submit"]').click(function(){refreshMap()});
 </script>

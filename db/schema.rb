@@ -35,25 +35,31 @@ ActiveRecord::Schema.define(:version => 20120202042843) do
     t.datetime "updated_at",                      :null => false
   end
 
+  create_table "meeting_addresses", :force => true do |t|
+    t.integer  "district_id"
+    t.string   "building"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "notes"
+    t.string   "lat"
+    t.string   "lng"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "meetings", :force => true do |t|
     t.string   "title"
-    t.integer  "district_id"
-    t.string   "address_building"
-    t.string   "address_street1"
-    t.string   "address_street2"
-    t.string   "address_city"
-    t.string   "address_state"
-    t.string   "address_zip_code"
-    t.string   "address_notes"
+    t.integer  "meeting_address_id"
     t.integer  "wday"
     t.integer  "hour"
     t.integer  "minute"
     t.string   "topic"
     t.string   "contact"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "address_lat"
-    t.string   "address_lng"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "motions", :force => true do |t|

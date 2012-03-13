@@ -15,6 +15,7 @@ Coda::Application.routes.draw do
     resources :intergroup_sessions
     resources :districts
     resources :meetings
+    resources :meeting_addresses
   end
   
   

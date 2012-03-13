@@ -1,5 +1,7 @@
 class Meeting < ActiveRecord::Base
-  belongs_to :district
+  belongs_to :meeting_address
+  
+  accepts_nested_attributes_for :meeting_address
   
   def day
     Date::DAYNAMES[wday] + "s"
@@ -7,9 +9,5 @@ class Meeting < ActiveRecord::Base
   
   def time
     Time.new(2000, 1, 1, hour, minute).strftime("%l:%M%p")
-  end
-  
-  def short_address
-    return [address_building, address_street1, address_street2].delete_if{|x| x.blank?}.join(", ")
   end
 end

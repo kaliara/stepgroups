@@ -1,0 +1,19 @@
+<h2>Address Detail</h2>
+
+<dl>
+  <address>
+    <%= @meeting_address.district.name %><br>
+    <%= @meeting_address.building %><br>
+    <%= @meeting_address.street1 %>
+    <%= @meeting_address.street2 %><br>
+    <%= @meeting_address.city %>, <%= @meeting_address.state %> <%= @meeting_address.zip_code %><br>
+    <%= @meeting_address.notes %>
+  </address>
+</dl>
+
+<div id="google_map"></div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  loadGoogleMap(<%= @meeting_address.lat %>, <%= @meeting_address.lng %>);
+</script>
