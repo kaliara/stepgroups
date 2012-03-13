@@ -1,0 +1,30 @@
+<%= form_for([:admin, @content]) do |f| %>
+  <% if @content.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @content.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value %>
+    <%= f.text_area :value %>
+  </div>
+  <div class="field">
+    <%= f.label :published %>
+    <%= f.check_box :published %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= render :partial => "/admin/wysiwyg", :locals => {:no_wrap_tags => true} %>

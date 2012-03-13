@@ -1,0 +1,11 @@
+<script type="text/javascript" charset="utf-8">
+  var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+</script>
+<%= javascript_include_tag "ckeditor/ckeditor.js" %>
+<%= javascript_include_tag "ckeditor/adapters/jquery.js" %>
+<script type="text/javascript" charset="utf-8">
+$( 'textarea').ckeditor( function() { /* callback code */ }, {
+  toolbar : 'Custom',
+  <%= 'enterMode: 2' if defined?(no_wrap_tags) and no_wrap_tags %>
+});
+</script>

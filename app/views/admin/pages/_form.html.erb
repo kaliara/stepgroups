@@ -1,0 +1,33 @@
+<%= form_for([:admin, @page]) do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :slug %>
+    <%= f.text_field :slug %> <span class="note">(the 'slug' is what will show up in the URL)</span>
+  </div>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content, :id => "wysiwyg" %>
+  </div>
+  <div class="field">
+    <%= f.label :published, :class => "alt_label" %>
+    <%= f.check_box :published %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= render :partial => "/admin/wysiwyg" %>

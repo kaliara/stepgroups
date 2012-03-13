@@ -1,0 +1,7 @@
+body{
+  background: #c6def0 image-url("bg.jpg") no-repeat 0 0%;
+}
+
+.signup_form .submit {
+    background: none repeat scroll 0 0 #F9A400;
+}

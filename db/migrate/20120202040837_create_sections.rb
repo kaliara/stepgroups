@@ -7,11 +7,6 @@ class CreateSections < ActiveRecord::Migration
 
       t.timestamps
     end
-    
-    # add autosave sections as first 5 entries
-    10.times do 
-      Section.new(:document_id => 1, :heading => 'Autosave Section', :body => 'Used for autosaving purposes').save
-    end
   end
   
   def self.down

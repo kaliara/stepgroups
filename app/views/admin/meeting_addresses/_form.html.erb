@@ -13,7 +13,7 @@
   
   <div class="field">
     <%= f.label :district_id %><br />
-    <%= f.select :district_id, District.all.collect{|d| [d.name, d.id]}.sort %>
+    <%= f.select :district_id, District.all.collect{|d| [d.name, d.id]}.sort %> or <%= link_to "add new District", new_admin_district_path %>
   </div>
 
   <div class="field">

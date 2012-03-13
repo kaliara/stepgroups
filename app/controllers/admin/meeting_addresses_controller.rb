@@ -2,7 +2,7 @@ class Admin::MeetingAddressesController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meeting_addresses = MeetingAddress.all
+    @meeting_addresses = District.all.collect{|d| d.meeting_addresses}.flatten
 
     respond_to do |format|
       format.html # index.html.erb

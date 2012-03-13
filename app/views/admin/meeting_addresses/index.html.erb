@@ -12,12 +12,11 @@
     <th>Notes</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @meeting_addresses.each do |meeting_address| %>
   <tr>
-    <td><%= meeting_address.district %></td>
+    <td><%= meeting_address.district.name %></td>
     <td><%= meeting_address.building %></td>
     <td><%= meeting_address.street1 %></td>
     <td><%= meeting_address.street2 %></td>
@@ -25,9 +24,8 @@
     <td><%= meeting_address.state %></td>
     <td><%= meeting_address.zip_code %></td>
     <td><%= meeting_address.notes %></td>
-    <td><%= link_to 'Show', admin_meeting_address_path(meeting) %></td>
-    <td><%= link_to 'Edit', edit_admin_meeting_address_path(meeting) %></td>
-    <td><%= link_to 'Destroy', admin_meeting_address_path(meeting), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Edit', edit_admin_meeting_address_path(meeting_address) %></td>
+    <td><%= link_to 'Destroy', admin_meeting_address_path(meeting_address), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

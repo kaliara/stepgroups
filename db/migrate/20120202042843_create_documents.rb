@@ -7,9 +7,6 @@ class CreateDocuments < ActiveRecord::Migration
 
       t.timestamps
     end
-    
-    # add autosave document as first entry
-    Document.new(:title => 'Autosave').save
   end
   
   def self.down

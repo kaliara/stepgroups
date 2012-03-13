@@ -1,6 +1,7 @@
 Coda::Application.routes.draw do
   # special routes
   match 'documents/:type' => 'documents#index', :constraints => {:type => /\D+/}
+  match 'info/:slug'      => 'pages#show',      :as => :view_page
   
   # resources
   resources :documents, :only => [:show, :index]
@@ -9,6 +10,8 @@ Coda::Application.routes.draw do
   resources :meetings, :only => [:show, :index]
 
   namespace :admin do
+    resources :contents
+    resources :pages
     resources :documents
     resources :motions
     resources :sections
