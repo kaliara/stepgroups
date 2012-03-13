@@ -6,19 +6,20 @@
   <dt>Time of Day:</dt><dd><%= @meeting.time %></dd>
   <dt>Location:</dt>
   <dd class="clearfix">
-    <address><%= @meeting.address_building %><br>
-      <%= @meeting.address_street1 %>
-      <%= @meeting.address_street2 %><br>
-      <%= @meeting.address_city %>, <%= @meeting.address_city %> <%= @meeting.address_zip_code %><br>
-      <%= @meeting.address_notes %>
+    <address>
+      <%= @meeting.meeting_address.building %><br>
+      <%= @meeting.meeting_address.street1 %>
+      <%= @meeting.meeting_address.street2 %><br>
+      <%= @meeting.meeting_address.city %>, <%= @meeting.meeting_address.state %> <%= @meeting.meeting_address.zip_code %><br>
+      <%= @meeting.meeting_address.notes %>
     </address>
   </dd>
-  <dt>Meeting Focus:</dt><dd><%= @meeting.topic %></dd>
+  <% unless @meeting.topic.blank? %><dt>Meeting Focus:</dt><dd><%= @meeting.topic %></dd><% end %>
 </dl>
 
 <div id="google_map"></div>
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  loadGoogleMap(<%= @meeting.address_lat %>, <%= @meeting.address_lng %>);
+  loadGoogleMap(<%= @meeting.meeting_address.lat %>, <%= @meeting.meeting_address.lng %>);
 </script>

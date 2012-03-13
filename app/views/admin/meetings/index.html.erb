@@ -1,49 +1,29 @@
-<h2>Listing meetings</h2>
+<h2>Meeting List</h2>
 
-<table>
+<table class="meeting_list" cellpadding="0" cellspacing="0">
+<% District.all.each do |district| %>
   <tr>
-    <th>Title</th>
-    <th>District</th>
-    <th>Address building</th>
-    <th>Address street1</th>
-    <th>Address street1</th>
-    <th>Address city</th>
-    <th>Address state</th>
-    <th>Address zip code</th>
-    <th>Address notes</th>
-    <th>Wday</th>
-    <th>Hour</th>
-    <th>Minute</th>
-    <th>Topic</th>
-    <th>Contact</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td class="district" colspan="8"><h3><%= district.name %></h3></td>
   </tr>
-
-<% @meetings.each do |meeting| %>
   <tr>
-    <td><%= meeting.title %></td>
-    <td><%= meeting.district_id %></td>
-    <td><%= meeting.address_building %></td>
-    <td><%= meeting.address_street1 %></td>
-    <td><%= meeting.address_street2 %></td>
-    <td><%= meeting.address_city %></td>
-    <td><%= meeting.address_state %></td>
-    <td><%= meeting.address_zip_code %></td>
-    <td><%= meeting.address_notes %></td>
-    <td><%= meeting.wday %></td>
-    <td><%= meeting.hour %></td>
-    <td><%= meeting.minute %></td>
-    <td><%= meeting.topic %></td>
-    <td><%= meeting.contact %></td>
-    <td><%= link_to 'Show', admin_meeting_path(meeting) %></td>
-    <td><%= link_to 'Edit', edit_admin_meeting_path(meeting) %></td>
-    <td><%= link_to 'Destroy', admin_meeting_path(meeting), confirm: 'Are you sure?', method: :delete %></td>
+    <th></th>
+    <% Date::DAYNAMES.each do |day| %>
+      <th><%= day[0..2].upcase %></th>
+    <% end %>
   </tr>
+  <% district.meeting_addresses.each do |meeting_address| %>
+    <tr>
+      <td><%= meeting_address.building %><br><%= meeting_address.street1 %> <%= meeting_address.street2 %></td>
+      <% 7.times do |wday| %>
+        <td>
+          <% meeting_address.meetings.each do |meeting| %>
+            <% if wday == meeting.wday %>
+                <%= link_to meeting.time, edit_admin_meeting_path(meeting) %><%= raw "<br/>(" + meeting.topic + ")" unless meeting.topic.blank? %>
+            <% end %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Meeting', new_admin_meeting_path %>

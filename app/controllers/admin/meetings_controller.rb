@@ -44,7 +44,12 @@ class Admin::MeetingsController < ApplicationController
   # POST /meetings.json
   def create
     @meeting = Meeting.new(params[:meeting])
-
+    
+    unless @meeting.meeting_address_id.to_i > 0
+      @meeting.meeting_address = MeetingAddress.new(params[:meeting_address])
+      @meeting.meeting_address.save
+    end
+      
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to admin_meeting_path(@meeting), notice: 'Meeting was successfully created.' }

@@ -1,5 +1,100 @@
 <h1>New meeting</h1>
 
-<%= render 'form' %>
+<%= form_for([:admin,@meeting]) do |f| %>
+  <% if @meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+      <% @meeting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <fieldset class="existing_address">
+    <%= f.select :meeting_address_id, option_groups_from_collection_for_select(District.all, :meeting_addresses, :name, :id, :short_address, 0), :include_blank => true %>
+    <p id="link_new_address">or <%= link_to "create a new address", new_admin_meeting_address_path %></p>
+  </fieldset>
+  
+  <fieldset class="new_address" style="display: none">
+  <%= fields_for @meeting.meeting_address do |af| %>
+    <%= af.hidden_field :lat, :id => 'google_maps_address_lat' %>
+    <%= af.hidden_field :lng, :id => 'google_maps_address_lng' %>
+  
+    <div class="field">
+      <%= af.label :district_id %><br />
+      <%= af.select :district_id, District.all.collect{|d| [d.name, d.id]}.sort %>
+    </div>
+
+    <div class="field">
+      <%= af.label :building %><br />
+      <%= af.text_field :building %>
+    </div>
+    <div class="field">
+      <%= af.label :street1 %><br />
+      <%= af.text_field :street1 %>
+    </div>
+    <div class="field">
+      <%= af.label :street2 %><br />
+      <%= af.text_field :street2 %>
+    </div>
+    <div class="field">
+      <%= af.label :city %><br />
+      <%= af.text_field :city %>
+    </div>
+    <div class="field">
+      <%= af.label :state %><br />
+      <%= af.text_field :state, :class => "uppercase" %>
+    </div>
+    <div class="field">
+      <%= af.label :zip_code %><br />
+      <%= af.text_field :zip_code %>
+    </div>
+    <div class="field">
+      <%= af.label :notes %><br />
+      <%= af.text_field :notes %>
+    </div>
+  <% end %>
+
+  <div id="google_map">
+  </div>
+  
+  </fieldset>
+  
+  <div class="field">
+    <%= f.label :wday, 'Day' %><br />
+    <%= f.select :wday, Date::DAYNAMES.zip((0..6).to_a) %>
+  </div>
+  <div class="field">
+    <%= f.label :hour, 'Time' %><br />
+    <%= select_hour 12, {:ampm => true}, {:name => 'meeting[hour]', :id => 'meeting_hour'} %> : 
+    <%= select_minute 0, {:minute_step => 5}, {:name => 'meeting[minute]', :id => 'meeting_minute'} %>
+  </div>
+  <div class="field">
+    <%= f.label :topic %><br />
+    <%= f.text_field :topic %>
+  </div>
+  <div class="field">
+    <%= f.label :contact %><br />
+    <%= f.text_field :contact %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  loadGoogleMap();
+  $('.new_address input').change(function(){refreshMap()});
+  $('#link_new_address a').click(function(){$('.new_address').show(); $('.existing_address').remove(); return false; });
+  // $('form input[type="submit"]').click(function(){refreshMap()});
+</script>
 
 <%= link_to 'Back', admin_meetings_path %>
