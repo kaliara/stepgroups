@@ -13,9 +13,9 @@
   </tr>
   <% district.meeting_addresses.each do |meeting_address| %>
     <tr>
-      <td><%= meeting_address.building %><br><%= meeting_address.street1 %> <%= meeting_address.street2 %></td>
+      <td class="building"><%= meeting_address.building %><br><%= meeting_address.street1 %> <%= meeting_address.street2 %></td>
       <% 7.times do |wday| %>
-        <td>
+        <td class="time">
           <% meeting_address.meetings.each do |meeting| %>
             <% if wday == meeting.wday %>
               <%= meeting.time %><%= raw "<br/>(" + meeting.topic + ")" unless meeting.topic.blank? %>

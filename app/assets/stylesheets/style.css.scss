@@ -143,10 +143,6 @@ table{
 
 
 // ============ MEETINGS =========== //
-.meeting_list{
-  
-}
-
 .meeting_list .district{
   background: #666;
   padding: 10px 10px 7px;
@@ -154,6 +150,9 @@ table{
 .meeting_list .district h3{
   margin-bottom: 0;
   color: #fff;
+}
+.meeting_list .time{
+  vertical-align: top;
 }
 
 
