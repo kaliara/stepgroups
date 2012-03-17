@@ -1,7 +1,11 @@
 Coda::Application.routes.draw do
   # special routes
-  match 'documents/:type' => 'documents#index', :constraints => {:type => /\D+/}
-  match 'info/:slug'      => 'pages#show',      :as => :view_page
+  match '/documents/:type'                => 'documents#index', :constraints => {:type => /\D+/}
+  match '/info/:slug'                     => 'pages#show',      :as => :view_page
+
+  # meetings
+  match '/meetings/address/:address_id'   => 'meetings#index'
+  match '/meetings/:district'             => 'meetings#index',  :constraints => {:district => /\D+/}
   
   # resources
   resources :documents, :only => [:show, :index]

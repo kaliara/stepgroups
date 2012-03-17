@@ -2,8 +2,17 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @districts = District.all
-    @map_meeting_addresses = MeetingAddress.all.collect{|ma| ["'#{ma.building} (meetings: #{ma.meetings.count})'", ma.lat, ma.lng]}
+    @address_id = params[:address_id].to_i
+    
+    if @address_id > 0
+      @meeting_addresses = [MeetingAddress.find(params[:address_id])]
+      @districts = [@meeting_addresses.first.district]
+    else
+      @districts = params[:district].blank? ? District.all : [District.find_by_slug(params[:district])]
+      @meeting_addresses = MeetingAddress.where("district_id in (?)", @districts.collect{|d| d.id})
+    end
+    
+    @map_addresses = @meeting_addresses.collect{|ma| ["'#{ma.building} (meetings: #{ma.meetings.count})'", ma.lat, ma.lng]}
 
     respond_to do |format|
       format.html # index.html.erb

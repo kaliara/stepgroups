@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-  <% district.meeting_addresses.each do |meeting_address| %>
+  <% district.meeting_addresses.delete_if{|d| (@address_id > 0) and (d.id != @address_id)}.each do |meeting_address| %>
     <tr>
       <td class="building"><%= meeting_address.building %><br><div class="note"><%= meeting_address.street1 %> <%= meeting_address.street2 %></div></td>
       <% 7.times do |wday| %>
@@ -34,7 +34,7 @@
 
 <div id="google_map" class="meeting_list_map" style="width: 650px; height: 500px;"></div>
 <script type="text/javascript" charset="utf-8">
-var _meeting_addresses = <%= raw @map_meeting_addresses.to_json -%>;
+var _meeting_addresses = <%= raw @map_addresses.to_json -%>;
 
 function showMeetingsMap() {
   var locations = _meeting_addresses;
