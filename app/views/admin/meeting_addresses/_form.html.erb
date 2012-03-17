@@ -45,8 +45,8 @@
     <%= f.text_field :notes %>
   </div>
   
-  <%= hidden_field_tag :lat, '', :id => 'google_maps_address_lat' %>
-  <%= hidden_field_tag :lng, '', :id => 'google_maps_address_lng' %>
+  <%= hidden_field_tag :lat, @meeting_address.lat, :id => 'google_maps_address_lat' %>
+  <%= hidden_field_tag :lng, @meeting_address.lng, :id => 'google_maps_address_lng' %>
   
   <div id="google_map">
   </div>
@@ -57,7 +57,6 @@
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
-  loadGoogleMap();
+  loadGoogleMap($('#google_maps_address_lat').val(), $("#google_maps_address_lng").val());
   $('input').change(function(){refreshMap()});
-  // $('form input[type="submit"]').click(function(){refreshMap()});
 </script>

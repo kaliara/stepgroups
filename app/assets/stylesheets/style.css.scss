@@ -10,10 +10,10 @@ body{
 h2{
   background: #f09e00;
   color: #fff;
-  font-size: 250%;
+  font-size: 200%;
   line-height: 1em;
   padding: 15px 0 8px 15px;
-  margin: 70px 0 90px -20px;
+  margin: 35px 0 75px;
   text-transform: uppercase;
 }
 
@@ -57,11 +57,18 @@ dl{
 }
 
 table{
+  width: 100%;
+  
   td, th{
     padding: 5px;
+    vertical-align: top;
   }
   th{
+    background: #666;
+    color: #ddd;
+    font-weight: normal;
     text-align: left;
+    vertical-align: middle;
   }
 }
 
@@ -75,14 +82,23 @@ table{
 
 #content{
   float: left;
-  margin-left: 20px;
-  width: 500px;
+  width: 650px;
+}
+
+
+// ======= ANNOUNCEMENT ======== //
+#announcement{
+  min-height: 45px;
+  height: auto !important;
+  height: 45px;
+  font-size: 130%;
+  line-height: 1em;
 }
 
 
 // ============ MENU =========== //
 #nav{
-  width: 260px;
+  width: 230px;
   float: left;
   margin-bottom: 70px;
 
@@ -94,7 +110,6 @@ table{
     padding: 3px 0;
     margin-bottom: 5px;
     list-style: none;
-    font-size: 120%;
     line-height: 1em;
   }
   .current_page a{
@@ -103,8 +118,13 @@ table{
     cursor: default;
   }
   #logo{
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     display: block;
+    
+    img{
+      width: 175px;
+      height: 175px;
+    }
   }
 }
 
@@ -126,7 +146,9 @@ table{
     color: #fff;
     border: none;
     cursor: pointer;
-    padding: 3px 5px;
+    font-size: 140%;
+    padding: 3px 5px 0;
+    vertical-align: middle;
     border-radius: 3px;
   }
 }
@@ -143,20 +165,41 @@ table{
 
 
 // ============ MEETINGS =========== //
-.meeting_list .district{
-  background: #666;
-  padding: 10px 10px 7px;
-}
-.meeting_list .district h3{
-  margin-bottom: 0;
-  color: #fff;
-}
-.meeting_list .time{
-  vertical-align: top;
+.meeting_list{
+  margin-bottom: 20px;
+
+  .district{
+    padding: 10px 10px 7px;
+    
+    h3{
+      margin-bottom: 0;
+      color: #fff;
+    }
+  }
+  
+  .alternate{
+    background-color: #fff;
+  }
+  
+  .building{
+    width: 23%;
+  }
+
+  .time{
+    width: 10%;
+    vertical-align: top;
+  }
 }
 
+.meeting_list_map{
+  margin-top: 50px;
+}
 
 // ============ UTILITY =========== //
+.note{
+  font-size: 85%;
+  color: #888;
+}
 .uppercase{
   text-transform: uppercase;
 }

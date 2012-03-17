@@ -2,7 +2,8 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meeting_addresses = District.all.collect{|d| d.meeting_addresses}
+    @districts = District.all
+    @map_meeting_addresses = MeetingAddress.all.collect{|ma| ["'#{ma.building} (meetings: #{ma.meetings.count})'", ma.lat, ma.lng]}
 
     respond_to do |format|
       format.html # index.html.erb

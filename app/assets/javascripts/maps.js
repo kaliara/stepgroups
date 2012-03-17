@@ -1,10 +1,10 @@
 var _lat;
 var _lng;
 
-function loadGoogleMap(lat, lng) {
+function loadGoogleMap(lat, lng, callback) {
   _lat = lat;
   _lng = lng;
-  var callback = (lat == undefined) ? 'refreshMap' : 'showMap'
+  var callback = (callback == undefined) ? 'showMap' : callback;
   var script = document.createElement("script");
   script.type = "text/javascript";
   script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCIclYn1lbzbhhnVomb4evBNAQKCfPv6Ic&sensor=false&callback=" + callback;

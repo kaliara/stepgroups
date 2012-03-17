@@ -22,8 +22,6 @@
     <%= f.select :meeting_address_id, option_groups_from_collection_for_select(District.all, :meeting_addresses, :name, :id, :short_address, @meeting.meeting_address_id) %>
   </fieldset>
   
-  <!-- <div id="google_map"></div> -->
-  
   <div class="field">
     <%= f.label :wday, 'Day' %><br />
     <%= f.select :wday, Date::DAYNAMES.zip((0..6).to_a) %>
@@ -45,10 +43,6 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-<script type="text/javascript" charset="utf-8">
-  // $('form input[type="submit"]').click(function(){refreshMap()});
-</script>
 
 <%= link_to 'Show', admin_meeting_path(@meeting) %> |
 <%= link_to 'Back', admin_meetings_path %>
