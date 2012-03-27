@@ -34,28 +34,34 @@
 
 <div id="google_map" class="meeting_list_map" style="width: 650px; height: 500px;"></div>
 <script type="text/javascript" charset="utf-8">
-var _meeting_addresses = <%= raw @map_addresses.to_json -%>;
+var _map_addresses = <%= raw @map_addresses.to_json -%>;
 
 function showMeetingsMap() {
-  var locations = _meeting_addresses;
+  var locations = _map_addresses;
   var latlng = new google.maps.LatLng(0, 0);
   var bounds = new google.maps.LatLngBounds();
   var myOptions = {
-    panControl: false,
-    streetViewControl: false,
-    mapTypeControlOptions: { style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+      panControl: false,
+      streetViewControl: false,
+      mapTypeControlOptions: { style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+      mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   var map = new google.maps.Map(document.getElementById("google_map"), myOptions);
-  
-  for (var i = 0; i < locations.length; i++) {
-    var location = locations[i];
-    var markerLatLng = new google.maps.LatLng(location[1], location[2]);
-    var marker = new google.maps.Marker({
+  var marker, markerLatLng, i;
+  for (i = 0; i < locations.length; i++) {
+    markerLatLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
+    marker = new google.maps.Marker({
       map: map,
       position: markerLatLng,
-      title: location[0].replace(/'|"/gi,"")
+      title: locations[i][0].replace(/'|"/gi,"")
     });
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        // infowindow.setContent(locations[i][0]);
+        // infowindow.open(map, marker);
+        window.location.href = locations[i][3];
+      }
+    })(marker, i));
     bounds.extend(markerLatLng);
     map.fitBounds(bounds);
   }

@@ -4,8 +4,8 @@ Coda::Application.routes.draw do
   match '/info/:slug'                     => 'pages#show',      :as => :view_page
 
   # meetings
-  match '/meetings/address/:address_id'   => 'meetings#index'
-  match '/meetings/:district'             => 'meetings#index',  :constraints => {:district => /\D+/}
+  match '/meetings/address/:address_id'   => 'meetings#index',  :as => :meetings_by_address
+  match '/meetings/:district'             => 'meetings#index',  :as => :meetings_by_district, :constraints => {:district => /\D+/}
   
   # resources
   resources :documents, :only => [:show, :index]

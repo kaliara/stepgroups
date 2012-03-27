@@ -12,7 +12,7 @@ class MeetingsController < ApplicationController
       @meeting_addresses = MeetingAddress.where("district_id in (?)", @districts.collect{|d| d.id})
     end
     
-    @map_addresses = @meeting_addresses.collect{|ma| ["'#{ma.building} (meetings: #{ma.meetings.count})'", ma.lat, ma.lng]}
+    @map_addresses = @meeting_addresses.collect{|ma| ["'#{ma.building} (meetings: #{ma.meetings.count})'", ma.lat, ma.lng, (ma.meetings.size > 1 ? meetings_by_address_url(ma.id) : meeting_url(ma.meetings.first.id))]}
 
     respond_to do |format|
       format.html # index.html.erb
