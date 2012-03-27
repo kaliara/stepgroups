@@ -24,12 +24,12 @@ class Admin::MotionsController < ApplicationController
   # GET /motions/new
   # GET /motions/new.json
   def new
-    @intergroup_sessions = IntergroupSession.all.select{|i| i.documents.size > 0}
     @motion = Motion.new
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @motion }
+      format.js   { render action: "new" }
     end
   end
 
@@ -47,7 +47,7 @@ class Admin::MotionsController < ApplicationController
       if @motion.save
         format.html { redirect_to admin_motion_path(@motion), notice: 'Motion was successfully created.' }
         format.json { render json: @motion, status: :created, location: @motion }
-        format.js   { head :no_content }
+        format.js   { render action: "create" }
       else
         format.html { render action: "new" }
         format.json { render json: @motion.errors, status: :unprocessable_entity }
@@ -81,6 +81,7 @@ class Admin::MotionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admin_motions_path }
       format.json { head :no_content }
+      format.js   { render action: "destroy" }
     end
   end
 end

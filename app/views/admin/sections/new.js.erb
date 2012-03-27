@@ -1,0 +1,2 @@
+$("#document").append("<%= escape_javascript(render :partial => 'form', :locals => {:section => Section.new(:document_id => params[:document_id]), :section_counter => 'new'})%>");
+$("#new_section_button").hide();

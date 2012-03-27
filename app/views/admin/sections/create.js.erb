@@ -1,0 +1,2 @@
+$("#section_new").replaceWith("<%= escape_javascript(render :partial => 'form', :locals => {:section => @section, :section_counter => @section.id})%>");
+$("#new_section_button").show();

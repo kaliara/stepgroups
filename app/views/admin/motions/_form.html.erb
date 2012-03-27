@@ -1,45 +1,57 @@
-<%= form_for([:admin,@motion]) do |f| %>
-  <% if @motion.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@motion.errors.count, "error") %> prohibited this motion from being saved:</h2>
+<div id="motion_<%= motion.id || "new" %>">
+  <%= form_for([:admin,motion], :remote => true) do |f| %>
+    <% if motion.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(motion.errors.count, "error") %> prohibited this motion from being saved:</h2>
 
-      <ul>
-      <% @motion.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% motion.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.hidden_field :document_id %><br />
+    </div>
+    <div class="field">
+      <%= f.label :title, :for => "title_#{motion_counter}" %><br />
+      <%= f.text_field :title, :id => "title_#{motion_counter}" %>
+    </div>
+    <div class="field">
+      <%= f.label :body, :for => "body_#{motion_counter}" %><br />
+      <%= f.text_area :body, :id => "body_#{motion_counter}" %>
+    </div>
+    <div class="field">
+      <%= f.label :vote_yes, :for => "vote_yes_#{motion_counter}" %><br />
+      <%= f.number_field :vote_yes, :id => "vote_yes_#{motion_counter}" %>
+    </div>
+    <div class="field">
+      <%= f.label :vote_no, :for => "vote_no_#{motion_counter}" %><br />
+      <%= f.number_field :vote_no, :id => "vote_no_#{motion_counter}" %>
+    </div>
+    <div class="field">
+      <%= f.label :vote_abstain, :for => "vote_abstain_#{motion_counter}" %><br />
+      <%= f.number_field :vote_abstain, :id => "vote_abstain_#{motion_counter}" %>
+    </div>
+    <div class="field">
+      <%= f.label :passes, :for => "passes_#{motion_counter}" %><br />
+      <%= f.check_box :passes, :id => "passes_#{motion_counter}" %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :document_id %><br />
-    <%= select_tag 'motion_document_id', option_groups_from_collection_for_select(@intergroup_sessions, :documents, :name, :id, :title, 1), :name => 'motion[document_id]' %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :vote_yes %><br />
-    <%= f.number_field :vote_yes %>
-  </div>
-  <div class="field">
-    <%= f.label :vote_no %><br />
-    <%= f.number_field :vote_no %>
-  </div>
-  <div class="field">
-    <%= f.label :vote_abstain %><br />
-    <%= f.number_field :vote_abstain %>
-  </div>
-  <div class="field">
-    <%= f.label :passes %><br />
-    <%= f.check_box :passes %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <% if motion.new_record? %>
+    <%= button_to "Cancel", edit_admin_document_path(motion.document), :method => :get, :id => "remove_new_motion_button" %>
+  <% else %>
+    <%= button_to "Remove", admin_motion_path(motion), :method => :delete, :remote => true, :confirm => "Permanently remove this motion?" %>
+  <% end %>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  $("#remove_new_motion_button").click(function(){$("#motion_new").remove(); $("#new_motion_button").show(); return false;});
+</script>

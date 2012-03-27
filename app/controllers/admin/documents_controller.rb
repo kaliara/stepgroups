@@ -46,6 +46,7 @@ class Admin::DocumentsController < ApplicationController
       if @document.save
         format.html { redirect_to admin_document_path(@document), notice: 'Document was successfully created.' }
         format.json { render json: @document, status: :created, location: @document }
+        format.js   { head :no_content }
       else
         format.html { render action: "new" }
         format.json { render json: @document.errors, status: :unprocessable_entity }
@@ -61,7 +62,7 @@ class Admin::DocumentsController < ApplicationController
     respond_to do |format|
       if @document.update_attributes(params[:document])
         format.html { redirect_to admin_document_path(@document), notice: 'Document was successfully updated.' }
-        format.json { head :no_content }
+        format.js   { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @document.errors, status: :unprocessable_entity }
@@ -78,6 +79,7 @@ class Admin::DocumentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admin_documents_path }
       format.json { head :no_content }
+      format.js   { head :no_content }
     end
   end
 end

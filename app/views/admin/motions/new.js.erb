@@ -1,0 +1,2 @@
+$("#document").append("<%= escape_javascript(render :partial => 'form', :locals => {:motion => Motion.new(:document_id => params[:document_id]), :motion_counter => 'new'})%>");
+$("#new_motion_button").hide();

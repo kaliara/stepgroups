@@ -1,15 +1,19 @@
 <h1>Editing document</h1>
 
-<%= render 'form' %>
+<div id="document">
+  <%= render 'form' %>
 
-<br><br>
+  <br><br>
 
-<%= render :partial => 'section_form', :collection => @document.sections, :as => :section %>
+  <%= render :partial => '/admin/sections/form', :collection => @document.sections, :as => :section %>
+  <%= render :partial => '/admin/motions/form',  :collection => @document.motions,  :as => :motion %>
+</div>
 
 <br><br><br>
-
-<%= render :partial => 'motion_form',  :collection => @document.motions,  :as => :motion %>
+<%= button_to "Add Section", new_admin_section_path(:document_id => @document.id), :remote => true, :method => :get, :id => "new_section_button" %>
+<%= button_to "Add Motion",  new_admin_motion_path(:document_id => @document.id),  :remote => true, :method => :get, :id => "new_motion_button" %>
 
 <br><br><br>
 <%= link_to 'Show', admin_document_path(@document) %> |
 <%= link_to 'Back', admin_documents_path %>
+

@@ -29,6 +29,7 @@ class Admin::SectionsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @section }
+      format.js   { render action: "new" }
     end
   end
 
@@ -46,7 +47,7 @@ class Admin::SectionsController < ApplicationController
       if @section.save
         format.html { redirect_to admin_section_path(@section), notice: 'Document section was successfully created.' }
         format.json { render json: @section, status: :created, location: @section }
-        format.js   { head :no_content }
+        format.js   { render action: "create" }
       else
         format.html { render action: "new" }
         format.json { render json: @section.errors, status: :unprocessable_entity }
@@ -62,7 +63,6 @@ class Admin::SectionsController < ApplicationController
     respond_to do |format|
       if @section.update_attributes(params[:section])
         format.html { redirect_to admin_section_path(@section), notice: 'Document section was successfully updated.' }
-        format.json { head :no_content }
         format.js   { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,6 +80,7 @@ class Admin::SectionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admin_sections_path }
       format.json { head :no_content }
+      format.js   { render action: "destroy" }
     end
   end
 end
