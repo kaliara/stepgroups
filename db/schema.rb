@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120317080619) do
+ActiveRecord::Schema.define(:version => 20120404024131) do
 
   create_table "contents", :force => true do |t|
     t.string   "name"
@@ -98,6 +98,17 @@ ActiveRecord::Schema.define(:version => 20120317080619) do
     t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "document_id"
+    t.decimal  "amount",      :precision => 10, :scale => 2, :default => 0.0
+    t.integer  "method",                                     :default => 0
+    t.boolean  "expense",                                    :default => false
+    t.datetime "timestamp"
+    t.string   "description"
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
   end
 
 end

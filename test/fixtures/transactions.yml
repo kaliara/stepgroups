@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  document_id: 1
+  amount: 9.99
+  method: 1
+  timestamp: 2012-04-03 22:41:31
+  description: MyString
+
+two:
+  document_id: 1
+  amount: 9.99
+  method: 1
+  timestamp: 2012-04-03 22:41:31
+  description: MyString

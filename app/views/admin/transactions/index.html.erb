@@ -1,0 +1,31 @@
+<h1>Listing transactions</h1>
+
+<table>
+  <tr>
+    <th>Document</th>
+    <th>Amount</th>
+    <th>Method</th>
+    <th>Timestamp</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @transactions.each do |transaction| %>
+  <tr>
+    <td><%= link_to transaction.document.title, admin_document_path(transaction.document) unless transaction.document.nil? %></td>
+    <td class="<%= 'expense' if transaction.expense? %>"><%= number_to_currency transaction.pretty_amount %></td>
+    <td><%= transaction.pretty_method %></td>
+    <td><%= transaction.pretty_timestamp %></td>
+    <td><%= transaction.description %></td>
+    <td><%= link_to 'Show', admin_transaction_path(transaction) %></td>
+    <td><%= link_to 'Edit', edit_admin_transaction_path(transaction) %></td>
+    <td><%= link_to 'Destroy', admin_transaction_path(transaction), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Transaction', new_admin_transaction_path %>

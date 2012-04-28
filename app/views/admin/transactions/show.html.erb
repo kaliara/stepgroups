@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<% unless @transaction.document.nil? %>
+<p>
+  <b>Document:</b>
+  <%= @transaction.document.title %>
+</p>
+<% end %>
+
+<p>
+  <b>Amount:</b>
+  <%= number_to_currency(@transaction.pretty_amount)%>
+</p>
+
+<p>
+  <b>Method:</b>
+  <%= @transaction.pretty_method %>
+</p>
+
+<p>
+  <b>Timestamp:</b>
+  <%= @transaction.pretty_timestamp %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @transaction.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_transaction_path(@transaction) %> |
+<%= link_to 'Back', admin_transactions_path %>

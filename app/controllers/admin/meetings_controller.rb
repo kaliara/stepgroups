@@ -1,4 +1,6 @@
 class Admin::MeetingsController < ApplicationController
+  http_basic_authenticate_with :name => AUTH_CONFIG['username'], :password => AUTH_CONFIG['password'] if AUTH_CONFIG['perform_authentication']
+
   # GET /meetings
   # GET /meetings.json
   def index

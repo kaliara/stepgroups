@@ -1,0 +1,41 @@
+<%= form_for([:admin,@transaction]) do |f| %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% @transaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :document_id %><br />
+    <%= f.select :document_id, option_groups_from_collection_for_select(IntergroupSession.all, :documents, :name, :id, :title, @transaction.document_id) + grouped_options_for_select(@other_documents, @transaction.document_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :method %><br />
+    <%= f.select :method, Transaction::METHODS %>
+  </div>
+  <div class="field">
+    <%= f.label :expense, "Type" %><br />
+    <%= f.select :expense, [["Income",0], ["Expense", 1]] %>
+  </div>
+  <div class="field">
+    <%= f.label :timestamp %><br />
+    <%= f.date_select :timestamp, :order => [:month, :day, :year] %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

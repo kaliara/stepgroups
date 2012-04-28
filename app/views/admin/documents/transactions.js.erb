@@ -1,0 +1,2 @@
+$("#document").append("<%= escape_javascript(render :partial => 'transactions', :locals => {:document_id => params[:document_id]})%>");
+$('#add_transaction_button').hide();

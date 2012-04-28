@@ -1,20 +1,49 @@
-<p>
-  <b>Title:</b>
-  <%= @document.title %>
-</p>
+<h2><%= @document.title %></h2>
 
-<% unless @document.intergroup_session.nil? %>
-<p>
-  <b>Intergroup session:</b>
-  <%= link_to @document.intergroup_session.name, admin_intergroup_session_path(@document.intergroup_session) %>
-</p>
+<dl>
+  <% unless @document.intergroup_session.nil? %>
+    <dt>Intergroup Session:</dt>
+    <dd><%= link_to @document.intergroup_session.name, admin_intergroup_session_path(@document.intergroup_session) %></dd>
+  <% end %>
+  <dt>Document type:</dt>
+  <dd><%= @document.pretty_document_type %></dd>
+</dl>
+
+
+<% unless @document.sections.empty? %>
+  <h3>Sections</h3>
+  <% @document.sections.each do |section| %>
+    <h4><%= section.heading %></h4>
+    <p><%= raw section.body %></p>
+  <% end %>
 <% end %>
 
-<p>
-  <b>Document type:</b>
-  <%= @document.pretty_document_type %>
-</p>
+<% unless @document.motions.empty? %>
+  <h3>Motions</h3>
+  <% @document.motions.each do |motion| %>
+    <h4><%= motion.title %></h4>
+    <p><%= raw motion.body %></p>
+    <dl>
+      <dt>Vote Yes:</dt>
+      <dd><%= motion.vote_yes %></dd>
+      <dt>Vote No:</dt>
+      <dd><%= motion.vote_no %></dd>
+      <dt>Vote Abstain:</dt>
+      <dd><%= motion.vote_abstain %></dd>
+      <dt><strong>Passes:</strong></dt>
+      <dd><%= motion.pretty_passes %></dd>
+    </dl>
+  <% end %>
+<% end %>
 
+<% unless @document.transactions.empty? %>
+  <h3>Transactions</h3>
+  <ul>
+    <% @document.transactions.each do |transaction| %>
+      <li>(<%= transaction.pretty_timestamp %>) <%= number_to_currency transaction.amount %> - <%= transaction.description %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= link_to 'Edit', edit_admin_document_path(@document) %> |
 <%= link_to 'Back', admin_documents_path %>

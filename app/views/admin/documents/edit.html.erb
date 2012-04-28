@@ -7,11 +7,18 @@
 
   <%= render :partial => '/admin/sections/form', :collection => @document.sections, :as => :section %>
   <%= render :partial => '/admin/motions/form',  :collection => @document.motions,  :as => :motion %>
+  
+  <h3>Transactions</h3>
+  <ul id="transactions">
+    <%= render :partial => '/admin/documents/transaction', :collection => @transactions, :as => :transaction %>
+    <% if @transactions.empty? %><li><p class="note">(add a transaction using the drop down below)</p></li><% end %>
+  </ul>
 </div>
 
 <br><br><br>
 <%= button_to "Add Section", new_admin_section_path(:document_id => @document.id), :remote => true, :method => :get, :id => "new_section_button" %>
-<%= button_to "Add Motion",  new_admin_motion_path(:document_id => @document.id),  :remote => true, :method => :get, :id => "new_motion_button" %>
+<%= button_to "Add Motion", new_admin_motion_path(:document_id => @document.id),  :remote => true, :method => :get, :id => "new_motion_button" %>
+<%= button_to "Add Transaction", add_admin_document_transaction_path(:document_id => @document.id), :remote => true, :method => :get, :id => "add_transaction_button" unless @untied_transactions.empty? %>
 
 <br><br><br>
 <%= link_to 'Show', admin_document_path(@document) %> |

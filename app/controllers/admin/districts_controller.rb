@@ -1,4 +1,6 @@
 class Admin::DistrictsController < ApplicationController
+  http_basic_authenticate_with :name => AUTH_CONFIG['username'], :password => AUTH_CONFIG['password'] if AUTH_CONFIG['perform_authentication']
+
   # GET /districts
   # GET /districts.json
   def index

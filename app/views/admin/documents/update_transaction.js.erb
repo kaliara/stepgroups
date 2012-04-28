@@ -1,0 +1,4 @@
+$("#untied_transactions #transaction_<%= @transaction.id %>").remove();
+if($('#untied_transactions ul').children().length == 0) { $('#untied_transactions').remove(); }
+$("#transactions").append("<%= escape_javascript(render :partial => 'transaction', :collection => [@transaction])%>");
+$("#transactions .note").remove();

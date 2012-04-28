@@ -1,4 +1,6 @@
 class Admin::DocumentsController < ApplicationController
+  http_basic_authenticate_with :name => AUTH_CONFIG['username'], :password => AUTH_CONFIG['password'] if AUTH_CONFIG['perform_authentication']
+
   # GET /documents
   # GET /documents.json
   def index
@@ -35,6 +37,8 @@ class Admin::DocumentsController < ApplicationController
   # GET /documents/1/edit
   def edit
     @document = Document.find(params[:id])
+    @transactions = @document.transactions
+    @untied_transactions = Transaction.where('document_id is null').order('timestamp asc')
   end
 
   # POST /documents
@@ -80,6 +84,25 @@ class Admin::DocumentsController < ApplicationController
       format.html { redirect_to admin_documents_path }
       format.json { head :no_content }
       format.js   { head :no_content }
+    end
+  end
+  
+  def add_transaction
+    @transactions = Transaction.where('document_id is null').order('timestamp asc')
+    
+    respond_to do |format|
+      format.html { redirect_to admin_transactions_path }
+      format.js   { render :action => 'transactions' }
+    end
+  end
+
+  def update_transaction
+    @transaction = Transaction.find(params[:id])
+    @transaction.update_attribute(:document_id, params[:document_id])
+        
+    respond_to do |format|
+      format.html { redirect_to admin_transactions_path }
+      format.js   { render :action => 'update_transaction' }
     end
   end
 end

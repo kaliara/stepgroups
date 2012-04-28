@@ -1,4 +1,6 @@
 class Admin::PagesController < ApplicationController
+  http_basic_authenticate_with :name => AUTH_CONFIG['username'], :password => AUTH_CONFIG['password'] if AUTH_CONFIG['perform_authentication']
+
   # layout 'admin'
   # before_filter :admin_required
   # cache_sweeper :pages_sweeper

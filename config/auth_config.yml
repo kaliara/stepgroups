@@ -1,0 +1,9 @@
+development:
+  perform_authentication: false
+  username: admin
+  password: wb-n3bw-n3
+
+production:
+  perform_authentication: true
+  username: admin
+  password: wb-n3wb-n3
