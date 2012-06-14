@@ -1,0 +1,29 @@
+<%= form_for([:admin,@site_config]) do |f| %>
+  <% if @site_config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site_config.errors.count, "error") %> prohibited this site_config from being saved:</h2>
+
+      <ul>
+      <% @site_config.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :on %><br />
+    <%= f.check_box :on %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

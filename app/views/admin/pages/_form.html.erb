@@ -14,8 +14,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :slug %>
-    <%= f.text_field :slug %> <span class="note">(the 'slug' is what will show up in the URL)</span>
+    <%= f.label :slug, "Path" %>
+    <%= f.text_field :slug %> <span class="note">(the 'path' is what will show up in the URL)</span>
   </div>
   <div class="field">
     <%= f.label :content %>
@@ -31,3 +31,12 @@
 <% end %>
 
 <%= render :partial => "/admin/wysiwyg" %>
+
+<script type="text/javascript" charset="utf-8">
+  $("#page_name").on("keyup", function(){
+    $("#page_slug").val(URLify($(this).val()), 64);
+  });
+  $("#page_slug").focus(function(){
+    $("#page_name").off("keyup");
+  });
+</script>

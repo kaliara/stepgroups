@@ -1,0 +1,44 @@
+<style type="text/css" media="screen">
+  #path_preview{
+    font-weight: bold;
+  }
+</style>
+<%= form_for([:admin,@menu]) do |f| %>
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+      <ul>
+      <% @menu.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :label %><br />
+    <%= f.text_field :label %>
+  </div>
+  <div class="field">
+    <%= f.label :path %><br />
+    <%= f.select :path, @paths %>
+    View a preview of <a href="/" id="path_preview" target="_blank">/</a>
+  </div>
+  
+  <br><br>
+  <div class="field">
+    <%= f.check_box :published %>
+    <%= f.label :published %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $("#menu_path").change(function(){
+    $("#path_preview").html($(this).val()).attr("href", $(this).val());
+  });
+  $("#menu_path").trigger("change");
+</script>

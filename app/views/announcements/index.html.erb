@@ -1,0 +1,6 @@
+<h1>Listing Announcements</h1>
+<ul>
+<% @announcements.each do |announcement| %>
+    <li><%= link_to announcement.header, announcement_path(announcement) %></li>
+<% end %>
+</ul>

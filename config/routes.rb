@@ -1,8 +1,7 @@
 Coda::Application.routes.draw do
-  resources :transactions
 
   # special routes
-  match '/documents/:type'                => 'documents#index', :constraints => {:type => /\D+/}
+  match '/documents/:type'                => 'documents#index', :as => :typed_documents, :constraints => {:type => /\D+/}
   match '/info/:slug'                     => 'pages#show',      :as => :view_page
 
   # meetings
@@ -10,18 +9,23 @@ Coda::Application.routes.draw do
   match '/meetings/:district'             => 'meetings#index',  :as => :meetings_by_district, :constraints => {:district => /\D+/}
   
   # resources
+  resources :announcements, :only => [:show, :index]
   resources :documents, :only => [:show, :index]
   resources :motions, :only => [:show, :index]
   resources :intergroup_sessions, :only => [:show, :index]
   resources :meetings, :only => [:show, :index]
+  resources :transactions
+  resources :messages, :only => [:new, :create, :show]
 
 
   # admin special
+  # match '/admin',                                 
   match '/admin/documents/add_transaction'        => 'admin/documents#add_transaction',    :as => :add_admin_document_transaction
   match '/admin/documents/update_transaction/:id' => 'admin/documents#update_transaction', :as => :update_admin_document_transaction
 
   # admin resources
   namespace :admin do
+    resources :announcements
     resources :contents
     resources :pages
     resources :documents
@@ -31,7 +35,10 @@ Coda::Application.routes.draw do
     resources :districts
     resources :meetings
     resources :meeting_addresses
+    resources :menus
+    resources :messages
     resources :transactions
+    resources :site_configs
   end
   
   

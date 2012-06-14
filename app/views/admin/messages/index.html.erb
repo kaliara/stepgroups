@@ -1,0 +1,23 @@
+<h1>Listing messages</h1>
+
+<table>
+  <tr>
+    <th>From</th>
+    <th>Reply to</th>
+    <th>Subject</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.from %></td>
+    <td><%= message.reply_to %></td>
+    <td><%= message.subject %></td>
+    <td><%= message.body %></td>
+    <td><%= link_to 'Show', admin_message_path(message) %></td>
+    <td><%= link_to 'Destroy', admin_message_path(message), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

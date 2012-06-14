@@ -1,0 +1,27 @@
+<h1>Listing menus</h1>
+
+<table>
+  <tr>
+    <th>Label</th>
+    <th>Path</th>
+    <th>Published</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @menus.each do |menu| %>
+  <tr>
+    <td><%= menu.label %></td>
+    <td><%= menu.path %></td>
+    <td><%= menu.published %></td>
+    <td><%= link_to 'Show', admin_menu_path(menu) %></td>
+    <td><%= link_to 'Edit', edit_admin_menu_path(menu) %></td>
+    <td><%= link_to 'Destroy', admin_menu_path(menu), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Menu', new_admin_menu_path %>

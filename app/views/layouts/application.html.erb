@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>NYCODA.org :: Codependents Anonymous NYC</title>
-<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <%= stylesheet_link_tag "main", :media => "all" %>
 <%= javascript_include_tag "main" %>
 <%= csrf_meta_tags %>
@@ -11,9 +11,25 @@
     <div id="container" class="clearfix">
       <%= render :partial => 'layouts/navigation' %>
       <div id="content" class="clearfix">
-        <div id="announcement"></div>
+        <div id="announcements" class="loading clearfix"><h3>Announcements:</h3><ul></ul></div>
         <%= yield %>
       </div>
     </div>
+
+    <!-- temp -->
+    <script src="/assets/plugins.js?body=1" type="text/javascript"></script>
+    <!-- temp -->
+
+    <script type="text/javascript" charset="utf-8">
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '<%= announcements_path %>'
+      }).done(function(data) {
+        if (data.length > 0){
+          $('#announcements ul').kaliAnnounce({json_data: data}).parent().hide().removeClass('loading').fadeIn();
+        }
+      });
+    </script>
   </body>
 </html>

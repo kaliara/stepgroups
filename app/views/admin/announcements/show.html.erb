@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Header:</b>
+  <%= @announcement.header %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @announcement.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_announcement_path(@announcement) %> |
+<%= link_to 'Back', admin_announcements_path %>

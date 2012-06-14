@@ -1,0 +1,27 @@
+<h1>Listing site_configs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+    <th>On</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @site_configs.each do |site_config| %>
+  <tr>
+    <td><%= site_config.name %></td>
+    <td><%= site_config.value %></td>
+    <td><%= site_config.on %></td>
+    <td><%= link_to 'Show', admin_site_config_path(site_config) %></td>
+    <td><%= link_to 'Edit', edit_admin_site_config_path(site_config) %></td>
+    <td><%= link_to 'Destroy', admin_site_config_path(site_config), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site Config', new_admin_site_config_path %>

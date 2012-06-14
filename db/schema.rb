@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120404024131) do
+ActiveRecord::Schema.define(:version => 20120614002245) do
+
+  create_table "announcements", :force => true do |t|
+    t.string   "header"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "contents", :force => true do |t|
     t.string   "name"
@@ -71,6 +78,23 @@ ActiveRecord::Schema.define(:version => 20120404024131) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "menus", :force => true do |t|
+    t.string   "label"
+    t.string   "path",       :default => "/"
+    t.boolean  "published",  :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "from"
+    t.string   "reply_to"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "motions", :force => true do |t|
     t.integer  "document_id"
     t.string   "title"
@@ -98,6 +122,14 @@ ActiveRecord::Schema.define(:version => 20120404024131) do
     t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "site_configs", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.boolean  "on"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "transactions", :force => true do |t|

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @site_config.name %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @site_config.value %>
+</p>
+
+<p>
+  <b>On:</b>
+  <%= @site_config.on %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_site_config_path(@site_config) %> |
+<%= link_to 'Back', admin_site_configs_path %>
