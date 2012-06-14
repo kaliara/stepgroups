@@ -1,15 +1,17 @@
 <div id="nav">
   <a id="logo" href="/pages/what_is_coda"><%= image_tag "logo.png", :alt => "NYCODA" %></a>
-  <ul>
-    <li><a href="#">What is Coda</a></li>
-    <li>About Codependency</li>
-    <li>The 12 Steps</li>
-    <li><%= link_to "Meeting List", meetings_path %></li>
-  </ul>
-  <ul>
-    <li>Sponsorship</li>
-    <li>Intergroup</li>
-    <li><%= link_to "Meeting Minutes", documents_path(:type => 'minutes') %></li>
-    <li>Service Opportunities</li>
-  </ul>
+  <% unless Menu.get_items(0).empty? %>
+    <ul>
+      <% Menu.get_items(0).each do |item| %>
+        <li><%= link_to item.label, item.path %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% unless Menu.get_items(1).empty? %>
+    <ul>
+      <% Menu.get_items(1).each do |item| %>
+        <li><%= link_to item.label, item.path %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

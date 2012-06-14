@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614002245) do
+ActiveRecord::Schema.define(:version => 20120614014221) do
 
   create_table "announcements", :force => true do |t|
     t.string   "header"
@@ -81,9 +81,10 @@ ActiveRecord::Schema.define(:version => 20120614002245) do
   create_table "menus", :force => true do |t|
     t.string   "label"
     t.string   "path",       :default => "/"
-    t.boolean  "published",  :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "published",  :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "location",   :default => 0
   end
 
   create_table "messages", :force => true do |t|

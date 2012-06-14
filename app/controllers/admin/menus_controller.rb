@@ -25,17 +25,18 @@ class Admin::MenusController < ApplicationController
   # GET /menus/new.json
   def new
     @menu = Menu.new
-    @paths = [["Homepage", root_path], 
-              ["Meeting List", meetings_path],
-              ["New Message", new_message_path],
-              ["Intergroup Meetings", intergroup_sessions_path],
+    @districts = District.all.collect{|d| ["Meetings - #{d.name}", meetings_by_district_path(:district => d.slug)]}
+    @pages = Page.published.collect{|p| [p.name, view_page_path(p.slug)]} 
+    @paths = [["Homepage", root_path],
+              ["Contact Us", new_message_path],
+              ["Announcements", announcements_path],
+              ["Meeting List", meetings_path]] + 
+             @districts +
+             [["Intergroup Meetings", intergroup_sessions_path],
               ["Documents - All", documents_path],
               ["Documents - Minutes", typed_documents_path(:type => 'minutes')],
-              ["Documents - Normal", typed_documents_path(:type => 'normal')],
-              # ["Motions", motions_path],
-              # ["Transactions", transactions_path],
-              ["Announcements", announcements_path]]
-    @paths += Page.published.collect{|p| [p.name, view_page_path(p.slug)]}
+              ["Documents - Normal", typed_documents_path(:type => 'normal')]] +
+             @pages
     
     respond_to do |format|
       format.html # new.html.erb
@@ -46,6 +47,18 @@ class Admin::MenusController < ApplicationController
   # GET /menus/1/edit
   def edit
     @menu = Menu.find(params[:id])
+    @districts = District.all.collect{|d| ["Meetings - #{d.name}", meetings_by_district_path(:district => d.slug)]}
+    @pages = Page.published.collect{|p| [p.name, view_page_path(p.slug)]} 
+    @paths = [["Homepage", root_path],
+              ["Contact Us", new_message_path],
+              ["Announcements", announcements_path],
+              ["Meeting List", meetings_path]] + 
+             @districts +
+             [["Intergroup Meetings", intergroup_sessions_path],
+              ["Documents - All", documents_path],
+              ["Documents - Minutes", typed_documents_path(:type => 'minutes')],
+              ["Documents - Normal", typed_documents_path(:type => 'normal')]] +
+             @pages
   end
 
   # POST /menus

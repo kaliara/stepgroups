@@ -17,13 +17,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :label %><br />
-    <%= f.text_field :label %>
-  </div>
-  <div class="field">
     <%= f.label :path %><br />
     <%= f.select :path, @paths %>
     View a preview of <a href="/" id="path_preview" target="_blank">/</a>
+  </div>
+  <div class="field">
+    <%= f.label :label %><br />
+    <%= f.text_field :label %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.select :location, Menu::LOCATIONS %>
   </div>
   
   <br><br>
@@ -39,6 +44,7 @@
 <script type="text/javascript" charset="utf-8">
   $("#menu_path").change(function(){
     $("#path_preview").html($(this).val()).attr("href", $(this).val());
+    $("#menu_label").val($("#menu_path option:selected").text());
   });
   $("#menu_path").trigger("change");
 </script>
