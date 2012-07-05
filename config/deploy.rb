@@ -1,6 +1,7 @@
 default_run_options[:pty] = true
 
 set :ip, "stepgroups.com"
+set :port, 30000
 set :user, "kaliara"
 set :application, ip
 role :web, ip

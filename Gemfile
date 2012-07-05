@@ -4,14 +4,7 @@ gem 'rails', '3.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-group :development, :test do
-  gem 'mysql'
-end
-group :production do
-  gem 'pg'
-end
-
+gem 'mysql'
 gem 'thin'
 
 # Gems used only for assets and not required
