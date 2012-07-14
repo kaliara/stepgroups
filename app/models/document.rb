@@ -1,4 +1,4 @@
-class Document < ActiveRecord::Base
+class Document < ActiveRecordExtension
   belongs_to :intergroup_session
   has_many :sections
   has_many :motions

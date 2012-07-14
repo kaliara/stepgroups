@@ -1,4 +1,4 @@
-class Transaction < ActiveRecord::Base
+class Transaction < ActiveRecordExtension
   belongs_to :document
   
   METHODS = [['unknown',0], ['cash',1], ['check',2], ['debit',3], ['credit',4], ['electronic',5]]

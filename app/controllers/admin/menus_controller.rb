@@ -1,4 +1,6 @@
 class Admin::MenusController < ApplicationController
+  http_basic_authenticate_with :name => SITE_CONFIG['username'], :password => SITE_CONFIG['password'] if SITE_CONFIG['perform_authentication']
+
   # GET /menus
   # GET /menus.json
   def index

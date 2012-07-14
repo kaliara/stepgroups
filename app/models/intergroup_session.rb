@@ -1,4 +1,4 @@
-class IntergroupSession < ActiveRecord::Base
+class IntergroupSession < ActiveRecordExtension
   has_many :documents
   has_many :motions, :through => :documents
   

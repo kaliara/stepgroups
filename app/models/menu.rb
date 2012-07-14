@@ -1,4 +1,4 @@
-class Menu < ActiveRecord::Base
+class Menu < ActiveRecordExtension
   LOCATIONS = [["Side Top", 0], ["Side Bottom", 1], ["Footer", 2]]
   
   def self.get_items(location)

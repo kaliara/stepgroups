@@ -16,19 +16,17 @@
       </div>
     </div>
 
-    <!-- temp -->
-    <script src="/assets/plugins.js?body=1" type="text/javascript"></script>
-    <!-- temp -->
-
     <script type="text/javascript" charset="utf-8">
-      $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: '<%= announcements_path %>'
-      }).done(function(data) {
-        if (data.length > 0){
-          $('#announcements ul').kaliAnnounce({json_data: data}).parent().hide().removeClass('loading').fadeIn();
-        }
+      $(function() {
+        $.ajax({
+          type: 'GET',
+          dataType: 'json',
+          url: '<%= announcements_path %>'
+        }).done(function(data) {
+          if (data.length > 0){
+            $('#announcements ul').kaliAnnounce({json_data: data}).parent().hide().removeClass('loading').fadeIn();
+          }
+        });
       });
     </script>
   </body>

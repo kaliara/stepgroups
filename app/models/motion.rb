@@ -1,4 +1,4 @@
-class Motion < ActiveRecord::Base
+class Motion < ActiveRecordExtension
   belongs_to :document
   
   def pretty_passes
