@@ -1,17 +1,3 @@
-development:
-  database: development
-  perform_authentication: false
-  username: admin
-  password: wb-n3bw-n3
-
-default:
-  database: development
-  perform_authentication: false
-  username: admin
-  password: wb-n3bw-n3
-
-nycodaorg:
-  database: afplm
-  perform_authentication: true
-  username: admin
-  password: wb-n3wb-n3
+perform_authentication: false
+username: admin
+password: wb-n3bw-n3
