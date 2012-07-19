@@ -1,2 +1,2 @@
-class SiteConfig < ActiveRecordExtension
+class SiteConfig < ActiveRecord::Base
 end

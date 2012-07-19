@@ -1,2 +1,2 @@
-class Message < ActiveRecordExtension
+class Message < ActiveRecord::Base
 end

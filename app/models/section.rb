@@ -1,3 +1,3 @@
-class Section < ActiveRecordExtension
+class Section < ActiveRecord::Base
   belongs_to :document
 end

@@ -1,2 +1,2 @@
-class Announcement < ActiveRecordExtension
+class Announcement < ActiveRecord::Base
 end

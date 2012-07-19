@@ -1,4 +1,4 @@
-class MeetingAddress < ActiveRecordExtension
+class MeetingAddress < ActiveRecord::Base
   has_many :meetings
   belongs_to :district
 

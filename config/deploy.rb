@@ -16,7 +16,7 @@ set :scm, :git
 
 set :runner, user
 
-# Passenger
+# restart
 namespace :deploy do
   task :start do ; end
   task :stop do ; end

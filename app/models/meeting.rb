@@ -1,4 +1,4 @@
-class Meeting < ActiveRecordExtension
+class Meeting < ActiveRecord::Base
   belongs_to :meeting_address
   accepts_nested_attributes_for :meeting_address
   
