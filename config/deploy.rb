@@ -1,3 +1,5 @@
+load 'deploy/assets'
+
 default_run_options[:pty] = true
 
 set :ip, "stepgroups.com"
