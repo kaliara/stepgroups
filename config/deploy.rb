@@ -46,8 +46,9 @@ end
 #   end  
 # end
 
+after "deploy", "database:symlink" 
 after "deploy", "deploy:migrate" 
 after "deploy", "deploy:cleanup"
-after "deploy:symlink", "database:symlink"
+# after "deploy:symlink"
 # after "deploy:symlink", "assets:symlink"
 # after "deploy:symlink", "deploy:update_crontab"  
