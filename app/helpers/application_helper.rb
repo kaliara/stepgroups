@@ -1,4 +1,13 @@
 module ApplicationHelper
+  
+  def render_content(name)
+    Content.find_by_name(name).try(:value)
+  end
+  
+  def content_exists?(name)
+    Content.find_by_name(name).try(:value).blank?
+  end
+  
   def nice_boolean(exp)
     exp == false ? "No" : "Yes"
   end

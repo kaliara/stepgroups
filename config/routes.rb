@@ -1,12 +1,13 @@
 Coda::Application.routes.draw do
 
   # special routes
-  match '/documents/:type'                => 'documents#index', :as => :typed_documents, :constraints => {:type => /\D+/}
-  match '/info/:slug'                     => 'pages#show',      :as => :view_page
+  match '/documents/:type'                => 'documents#index',  :as => :typed_documents, :constraints => {:type => /\D+/}
+  match '/info/:slug'                     => 'pages#show',       :as => :view_page
+  match '/intergroup'                     => 'pages#intergroup', :as => :intergroup
 
   # meetings
-  match '/meetings/address/:address_id'   => 'meetings#index',  :as => :meetings_by_address
-  match '/meetings/:district'             => 'meetings#index',  :as => :meetings_by_district, :constraints => {:district => /\D+/}
+  match '/meetings/address/:address_id'   => 'meetings#index',   :as => :meetings_by_address
+  match '/meetings/:district'             => 'meetings#index',   :as => :meetings_by_district, :constraints => {:district => /\D+/}
   
   # resources
   resources :announcements, :only => [:show, :index]

@@ -24,7 +24,7 @@
           url: '<%= announcements_path %>'
         }).done(function(data) {
           if (data.length > 0){
-            $('#announcements ul').kaliAnnounce({json_data: data}).parent().hide().removeClass('loading').fadeIn();
+            $('#announcements ul').kaliAnnounce({json_data: data}).parent().hide().removeClass('loading').fadeIn('slow');
           }
         });
       });

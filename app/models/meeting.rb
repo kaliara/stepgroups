@@ -9,4 +9,14 @@ class Meeting < ActiveRecord::Base
   def time
     Time.new(2000, 1, 1, hour, minute).strftime("%l:%M%p")
   end
+  
+  def next_meeting_date
+    today = Date.today
+    cwday = wday == 0 ? 7 : wday
+    today.cwday > cwday ? DateTime.commercial(today.year, today.cweek + 1, cwday, hour, minute) : DateTime.commercial(today.year, today.cweek, cwday, hour, minute)
+  end
+  
+  def self.upcoming(limit = 2)
+    Meeting.all.sort { |a,b| a.next_meeting_date <=> b.next_meeting_date }[0..limit]
+  end
 end

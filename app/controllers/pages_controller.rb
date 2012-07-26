@@ -1,6 +1,26 @@
 class PagesController < ApplicationController
   # caches_page :show, :home
   
+  def home
+    @announcement = Announcement.last
+    @meetings = Meeting.upcoming
+    
+    respond_to do |format|
+      format.html # home.html.erb
+      format.json { render :json => @page }
+    end
+  end
+  
+  def intergroup
+    @past_meeting = IntergroupSession.past_meeting
+    
+    respond_to do |format|
+      format.html # intergroup.html.erb
+      format.json { render :json => @page }
+    end
+  end
+  
+  
   # GET /pages/1
   # GET /pages/1.json
   def show

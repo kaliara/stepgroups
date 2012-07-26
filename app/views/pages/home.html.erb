@@ -1,1 +1,30 @@
-<p>Welcome to NYCoDA</p>
+<h2>Welcome to NAME</h2>
+<%= render_content('home_header') %>
+
+<div id="aside">
+<h3>Is CoDA for me?</h3>
+Newcomers may find it helpful to read a list of <a href="/info/whatiscoda">patterns and characteristics</a> of codependents.
+
+<h3>How do i find a meeting?</h3>
+<p>View the <%= link_to "Meeting List", meetings_path %></p>
+
+<% unless @meetings.empty? %>
+  <h4>Upcoming meetings</h4>
+  <ul class="meetings">
+  <% @meetings.each do |meeting| %>
+    <li><%= link_to "#{meeting.day} in #{meeting.meeting_address.district.name}", meeting %> <span class="">(<%= meeting.next_meeting_date.strftime("%b %e") %> at <%= meeting.time %>)</span></li>
+  <% end %>
+  </ul>
+  <p>see <%= link_to "all meetings", meetings_path %></p>
+<% end %>
+
+<% unless @announcement.blank? %>
+  <h3>What's new with NAME</h3>
+  <p><%= link_to @announcement.header, @announcement %> - <%= @announcement.body.truncate(100) %></p>
+  <p>see <%= link_to "all announcements", announcements_path %></p>
+<% end %>
+
+
+<h3>Is CoDA for me?</h3>
+Newcomers may find it helpful to read a list of <a href="/info/whatiscoda">patterns and characteristics</a> of codependents.
+</div>
