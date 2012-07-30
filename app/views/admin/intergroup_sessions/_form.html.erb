@@ -1,7 +1,7 @@
 <%= form_for([:admin,@intergroup_session]) do |f| %>
   <% if @intergroup_session.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@intergroup_session.errors.count, "error") %> prohibited this intergroup_session from being saved:</h2>
+      <h1><%= pluralize(@intergroup_session.errors.count, "error") %> prohibited this intergroup_session from being saved:</h1>
 
       <ul>
       <% @intergroup_session.errors.full_messages.each do |msg| %>

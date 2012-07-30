@@ -4,6 +4,7 @@ Coda::Application.routes.draw do
   match '/documents/:type'                => 'documents#index',  :as => :typed_documents, :constraints => {:type => /\D+/}
   match '/info/:slug'                     => 'pages#show',       :as => :view_page
   match '/intergroup'                     => 'pages#intergroup', :as => :intergroup
+  match '/contact'                        => 'messages#new',     :as => :contact
 
   # meetings
   match '/meetings/address/:address_id'   => 'meetings#index',   :as => :meetings_by_address

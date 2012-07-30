@@ -1,4 +1,4 @@
-<h2>Meeting List</h2>
+<h1>Meeting List</h1>
 
 <% District.all.each do |district| %>
 <table class="meeting_list" cellpadding="0" cellspacing="0">
@@ -34,3 +34,5 @@
   </tbody>
 </table>
 <% end %>
+
+<%= link_to 'Add a Meeting', new_admin_meeting_path %>

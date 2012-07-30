@@ -3,6 +3,6 @@ class MeetingAddress < ActiveRecord::Base
   belongs_to :district
 
   def short_address
-    return [building, street1, street2].delete_if{|x| x.blank?}.join(", ")
+    return [building, street1].delete_if{|x| x.blank?}.join(", ")
   end
 end

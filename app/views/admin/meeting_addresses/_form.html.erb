@@ -1,7 +1,7 @@
 <%= form_for([:admin,@meeting_address]) do |f| %>
   <% if @meeting_address.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@meeting_address.errors.count, "error") %> prohibited this address from being saved:</h2>
+      <h1><%= pluralize(@meeting_address.errors.count, "error") %> prohibited this address from being saved:</h1>
 
       <ul>
       <% @meeting_address.errors.full_messages.each do |msg| %>

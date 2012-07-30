@@ -1,9 +1,8 @@
-<h2>Intergroup</h2>
-
-<p>Intergroup is the service wing of the fellowship of CoDependents Anonymous (CoDA) operating at the direction of, and for the benefit of, its members and member groups under the guidelines outlined in the Twelve Traditions and the Fellowship Service Manual of Co-Dependents Anonymous.  Its primary purpose is to carry the message of recovery to those who still suffer.</p>
+<h1>Intergroup</h1>
+<p><%= render_content('intergroup_home_header') %></p>
 
 <% unless @past_meeting.nil? %>
-<h3>Past Meeting</h3>
+<h2>Past Meeting</h2>
 <dl>
   <dt>Date:</dt> <dd><%= nice_date @past_meeting.session_date %></dd>
   <dt>Attendance:</dt> <dd><%= @past_meeting.attendance %></dd>
@@ -19,5 +18,5 @@
 </dl>
 <% end %>
 
-<h3>Upcoming Meeting</h3>
+<h2>Upcoming Meeting</h2>
 <p>Monthly business meetings are generally held at 7:00PM on the third Thursday of every month.</p>

@@ -1,8 +1,8 @@
-<h2>Announcement</h2>
-<h3><%= @announcement.header %></h3>
+<h1>Announcement</h1>
+<h2><%= @announcement.header %></h2>
 
 <p>
-  <%= @announcement.body %>
+  <%= raw @announcement.body %>
 </p>
 
 <%= link_to 'Back to Announcements', announcements_path %>

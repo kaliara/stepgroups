@@ -2,7 +2,7 @@
   <%= form_for([:admin,section], :remote => true) do |f| %>
     <% if section.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h2>
+        <h1><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h1>
 
         <ul>
         <% section.errors.full_messages.each do |msg| %>

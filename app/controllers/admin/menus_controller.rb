@@ -4,7 +4,7 @@ class Admin::MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
-    @menus = Menu.all
+    @menus = Menu.order('location asc')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -34,7 +34,8 @@ class Admin::MenusController < ApplicationController
               ["Announcements", announcements_path],
               ["Meeting List", meetings_path]] + 
              @districts +
-             [["Intergroup Meetings", intergroup_sessions_path],
+             [["Intergroup", intergroup_path],
+              ["Intergroup Meetings", intergroup_sessions_path],
               ["Documents - All", documents_path],
               ["Documents - Minutes", typed_documents_path(:type => 'minutes')],
               ["Documents - Normal", typed_documents_path(:type => 'normal')]] +
@@ -56,7 +57,8 @@ class Admin::MenusController < ApplicationController
               ["Announcements", announcements_path],
               ["Meeting List", meetings_path]] + 
              @districts +
-             [["Intergroup Meetings", intergroup_sessions_path],
+             [["Intergroup", intergroup_path],
+              ["Intergroup Meetings", intergroup_sessions_path],
               ["Documents - All", documents_path],
               ["Documents - Minutes", typed_documents_path(:type => 'minutes')],
               ["Documents - Normal", typed_documents_path(:type => 'normal')]] +

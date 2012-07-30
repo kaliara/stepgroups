@@ -6,7 +6,7 @@
 <%= form_for([:admin,@menu]) do |f| %>
   <% if @menu.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+      <h1><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h1>
 
       <ul>
       <% @menu.errors.full_messages.each do |msg| %>

@@ -29,7 +29,7 @@
 
       link = document.createElement('a');
       link.href = '/announcements/' + announcement.id;
-      link.title = announcement.body;
+      link.title = announcement.body.replace(/(<([^>]+)>)/ig,"");
       link.innerHTML = announcement.header;
 
       tag = document.createElement(global.options.element_tag);

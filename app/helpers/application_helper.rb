@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def render_content(name)
-    Content.find_by_name(name).try(:value)
+    raw Content.find_by_name(name).try(:value)
   end
   
   def content_exists?(name)

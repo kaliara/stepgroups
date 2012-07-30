@@ -2,7 +2,7 @@
   <%= form_for([:admin,motion], :remote => true) do |f| %>
     <% if motion.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(motion.errors.count, "error") %> prohibited this motion from being saved:</h2>
+        <h1><%= pluralize(motion.errors.count, "error") %> prohibited this motion from being saved:</h1>
 
         <ul>
         <% motion.errors.full_messages.each do |msg| %>

@@ -1,6 +1,10 @@
-<h1>Listing Announcements</h1>
+<h1>Announcements</h1>
+<% unless @announcements.empty? %>
 <ul>
 <% @announcements.each do |announcement| %>
     <li><%= link_to announcement.header, announcement_path(announcement) %></li>
 <% end %>
 </ul>
+<% else %>
+<p>No current announcements. If you have any news, events or other announcements to add, please <%= link_to "contact us", contact_path %>. </p>
+<% end %>
