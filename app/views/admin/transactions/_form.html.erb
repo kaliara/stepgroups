@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :expense, "Type" %><br />
-    <%= f.select :expense, [["Income",0], ["Expense", 1]] %>
+    <%= f.select :expense, [["Income",0], ["Expense", 1]], :selected => @transaction.expense  ? 1 : 0 %>
   </div>
   <div class="field">
     <%= f.label :timestamp %><br />
