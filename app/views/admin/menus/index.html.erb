@@ -18,7 +18,7 @@
     <td><%= Menu::LOCATIONS[menu.location].first %></td>
     <td><%= nice_boolean menu.published %></td>
     <td><%= link_to 'Edit', edit_admin_menu_path(menu) %></td>
-    <td><%= link_to 'Remove', admin_menu_path(menu), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Remove', admin_menu_path(menu), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>NYCODA.org :: Codependents Anonymous NYC</title>
+<title><%= SiteConfig.get('organization_name') %></title>
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <%= stylesheet_link_tag "main", :media => "all" %>
 <%= javascript_include_tag "main" %>
 <%= csrf_meta_tags %>
 </head>
   <body>
-    <div id="container" class="clearfix">
-      <%= render :partial => 'layouts/navigation' %>
-      <div id="content" class="clearfix">
-        <div id="announcements" class="loading clearfix"><h3>Announcements:</h3><ul></ul></div>
-        <%= yield %>
-      </div>
-      <div id="footer">
-        <p class='copyright'>Content re-published with the permission of Co-Dependents Anonymous, Incorporated.</p>
+    <div class="header">
+      <div class="site_width">
+        <%= render :partial => 'layouts/header' %>
       </div>
     </div>
-  
+
+    <div class="site_width" class="clearfix">
+      <div class="nav side_nav">
+        <%= render :partial => 'layouts/navigation' %>
+      </div>
+      <div id="announcements" class="announcements loading clearfix"><h3>Announcements:</h3><ul></ul></div>
+      <div class="content" role="main">
+        <%= yield %>
+        <p class="copyright">Content re-published with the permission of Co-Dependents Anonymous, Incorporated.</p>
+      </div>
+    </div>
+      
+    <div class="footer">
+      <div class="site_width">
+        <%= render :partial => 'layouts/footer' %>
+      </div>
+    </div>
+    
     <script type="text/javascript" charset="utf-8">
       $(function() {
         $.ajax({

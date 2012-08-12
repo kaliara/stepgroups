@@ -1,0 +1,26 @@
+a:visited{
+  color: #006DDC;
+}
+
+.admin .site_width{
+  width: 95%;
+}
+.admin .side_nav{
+  width: 18%;
+}
+.admin .content{
+  width: 75%;
+  float: right;
+}
+
+#notice{
+  background: #d3eab8;
+  color: #3f7500;
+  padding: 15px;
+}
+
+#error{
+  background: #eab8b8;
+  color: #840404;
+  padding: 15px;
+}

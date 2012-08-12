@@ -1,0 +1,8 @@
+<a class="logo" href="<%= root_path %>" title="<%= SiteConfig.get('organization_name') %> homepage">
+  <%= image_tag "logo.png", :alt => "Logo" %>
+  <p class="org_name"><%= SiteConfig.get('organization_name') %></p>
+</a>
+
+<div class="footer_nav clearfix">
+  <%= render :partial => "layouts/navigation" %>
+</div>

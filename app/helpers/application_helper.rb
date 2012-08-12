@@ -5,7 +5,7 @@ module ApplicationHelper
   end
   
   def content_exists?(name)
-    Content.find_by_name(name).try(:value).blank?
+    !Content.find_by_name(name).try(:value).blank?
   end
   
   def nice_boolean(exp)
@@ -18,6 +18,10 @@ module ApplicationHelper
   
   def nice_date(date)
     date.strftime("%b %e, %Y")
+  end
+
+  def nice_datetime(date)
+    date.strftime("%b %e, %Y at %l:%M%P")
   end
   
   def nice_phone(num)

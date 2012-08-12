@@ -5,7 +5,7 @@
     <th>District</th>
     <th>Building</th>
     <th>Street1</th>
-    <th>Street1</th>
+    <th>Street2</th>
     <th>City</th>
     <th>State</th>
     <th>Zip code</th>
@@ -21,11 +21,11 @@
     <td><%= meeting_address.street1 %></td>
     <td><%= meeting_address.street2 %></td>
     <td><%= meeting_address.city %></td>
-    <td><%= meeting_address.state %></td>
+    <td><%= meeting_address.state.upcase %></td>
     <td><%= meeting_address.zip_code %></td>
     <td><%= meeting_address.notes %></td>
     <td><%= link_to 'Edit', edit_admin_meeting_address_path(meeting_address) %></td>
-    <td><%= link_to 'Destroy', admin_meeting_address_path(meeting_address), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Remove', admin_meeting_address_path(meeting_address), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -17,11 +17,11 @@
     <td><%= link_to transaction.document.title, admin_document_path(transaction.document) unless transaction.document.nil? %></td>
     <td class="<%= 'expense' if transaction.expense? %>"><%= number_to_currency transaction.pretty_amount %></td>
     <td><%= transaction.pretty_method %></td>
-    <td><%= transaction.pretty_timestamp %></td>
+    <td><%= nice_date transaction.timestamp %></td>
     <td><%= transaction.description %></td>
     <td><%= link_to 'Show', admin_transaction_path(transaction) %></td>
     <td><%= link_to 'Edit', edit_admin_transaction_path(transaction) %></td>
-    <td><%= link_to 'Destroy', admin_transaction_path(transaction), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Remove', admin_transaction_path(transaction), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

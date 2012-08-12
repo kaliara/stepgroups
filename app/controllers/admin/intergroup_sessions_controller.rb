@@ -1,5 +1,6 @@
 class Admin::IntergroupSessionsController < ApplicationController
   http_basic_authenticate_with :name => SITE_CONFIG['username'], :password => SITE_CONFIG['password'] if SITE_CONFIG['perform_authentication']
+  layout 'admin'
 
   # GET /intergroup_sessions
   # GET /intergroup_sessions.json

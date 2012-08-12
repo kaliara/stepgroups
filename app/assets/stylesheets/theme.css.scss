@@ -1,7 +1,54 @@
 body{
-  background: #c6def0 image-url("bg.jpg") no-repeat 0 0%;
+  background: #f9f9f9 image-url("bg_content.png") repeat 0 0;
 }
 
+a, a:link, a:active{
+  color: #dc7700;
+}
+a:hover, .content a:visited{
+  color: #9f5600;
+}
+
+
+.header,
+.footer{
+  background: #008baf image-url("bg_headers.png") repeat 0 0;
+}
+
+.header .header_nav,
+.panels th{
+  background: #086b8d image-url("bg_headers.png") repeat 0 0;
+}
+
+.panels td{
+  background: #f9f3ec;
+}
+
+.header .header_nav .current_page,
+.header .header_nav a:hover,
+.header .header_nav a:active,
+.panels .panel_action,
+.panels .panel_action:hover,
+.panels .panel_action:visited,
+.panels .panel_action:active{
+  background: #e97e00;
+}
+
+.panels .panel_action:hover{
+  background: #b46100;
+}
+
+
 .signup_form .submit {
-    background: none repeat scroll 0 0 #F9A400;
+  background: none repeat scroll 0 0 #F9A400;
+}
+
+.footer {
+
+  a:link, a:visited, a:active{
+    color: #9ec0ca;
+  }
+  a:hover{
+    color: #c3e4ed;
+  }
 }

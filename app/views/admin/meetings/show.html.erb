@@ -20,7 +20,8 @@
 <div id="google_map"></div>
 
 <br>
-<%= link_to 'Back to Meetings', admin_meetings_path %>
+<%= link_to 'Back to Meetings', admin_meetings_path %> | 
+<%= link_to 'Remove this Meeting', admin_meeting_path(@meeting), :method => :delete, :confirm => "Are you sure?" %>
 
 
 <script type="text/javascript" charset="utf-8">

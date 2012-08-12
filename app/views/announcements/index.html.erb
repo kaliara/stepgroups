@@ -2,7 +2,7 @@
 <% unless @announcements.empty? %>
 <ul>
 <% @announcements.each do |announcement| %>
-    <li><%= link_to announcement.header, announcement_path(announcement) %></li>
+    <li><%= nice_date announcement.created_at %> - <%= link_to announcement.header, announcement_path(announcement) %></li>
 <% end %>
 </ul>
 <% else %>

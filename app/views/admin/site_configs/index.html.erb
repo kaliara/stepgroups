@@ -17,7 +17,7 @@
     <td><%= site_config.on %></td>
     <td><%= link_to 'Show', admin_site_config_path(site_config) %></td>
     <td><%= link_to 'Edit', edit_admin_site_config_path(site_config) %></td>
-    <td><%= link_to 'Destroy', admin_site_config_path(site_config), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Remove', admin_site_config_path(site_config), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -1,6 +1,7 @@
 // ============ TAGS =========== //
 
 body{
+  background: #f9f9f9;
   color: #434343;
   font: normal 1em/1em 'Myriad Pro', Myriad, Helvetica, sans-serif;
   padding: 0;
@@ -8,12 +9,10 @@ body{
 }
 
 h1{
-  background: #f09e00;
-  color: #fff;
+  color: #555;
   font-size: 200%;
   line-height: 1em;
-  padding: 15px 0 8px 15px;
-  margin: 35px 0 50px;
+  margin: 0 0 20px;
   text-transform: uppercase;
 }
 
@@ -34,7 +33,7 @@ h3{
   margin: 0 0 5px;
 }
 
-a:link, a:visited, a:active{
+a:link, .content a:visited, a:active{
   color: #006ddc;
   text-decoration: none;
 }
@@ -93,53 +92,126 @@ ol{
 }
 
 
-
 // ============ GRID =========== //
-#container{
+.site_width{
+  width: 850px;
+  margin: 0 auto;
+}
+.header{
+  background: #555;
+  border-bottom: 3px solid #fff;
   overflow: hidden;
-  padding: 30px 0 50px 30px;
+  padding: 20px 0;
 }
 
-#content{
+.content{
+  background: #fff;
   float: left;
-  width: 650px;
-  margin-bottom: 100px;
+  width: 630px;
+  min-height: 550px;
+  padding: 20px 20px 100px;
+  margin-bottom: 50px;
+  position: relative;
 }
 
-#footer{
-  margin-left: 230px;
+.footer{
+  background: #555;
+  border-top: 3px solid #fff;
   clear: both;
 }
 
+
+// ============ HEADER =========== //
+.header {
+  .logo{
+    width: 225px;
+  }
+  
+  .header_nav{
+    background: #333;
+    float: right;
+    margin-top: 15px;
+    padding: 15px;
+    
+    li{
+      float: left;
+      list-style-type: none;
+      margin-left: 3px;
+    }
+    a{
+      color: #fff;
+      display: block;
+      float: left;
+      padding: 10px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover, a:active, .current_page{
+      text-decoration: none;
+      background: #666;
+    }
+  }
+}
+
+
+// ============ FOOTER =========== //
+.footer {
+  padding: 15px 0;
+  
+  ul{
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .logo{
+    width: 150px;
+    margin-right: 50px;
+    opacity: 0.35;
+    
+    img{
+      width: 75px;
+    }
+    
+    .org_name{
+      font-size: 0.9em;
+    }
+  }
+}
+
+
 // ======= ANNOUNCEMENT ======== //
-#announcements{
-  background: #fff0d2;
-  padding: 10px 15px;
-  margin-bottom: 35px;
+.announcements{
+  padding: 15px;
   opacity: 0.5;
   height: 15px;
+  float: left;
   overflow: hidden;
-}
-#announcements h3{
-  float: left;
-  font-size: 110%;
-  line-height: 1em;
-  margin: 0;
-}
-#announcements ul{
-  float: left;
-  width: 450px;
-  padding-left: 20px;
-  margin: 0;
-}
-#announcements li{
-  list-style: none;
-  font-size: 110%;
-  line-height: 1em;
-  white-space: nowrap;
-	width: 100%;
-	overflow: hidden;
-	text-overflow: ellipsis;
+
+  h3{
+    float: left;
+    font-size: 110%;
+    line-height: 1em;
+    margin: 0;
+  }
+  ul{
+    float: left;
+    width: 450px;
+    padding-left: 20px;
+    margin: 0;
+  }
+  li{
+    list-style: none;
+    font-size: 110%;
+    line-height: 1em;
+    white-space: nowrap;
+  	width: 100%;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  }
+  a{
+    display: block;
+  }
 }
 #announcements:hover{
   opacity: 1;
@@ -149,35 +221,65 @@ ol{
 }
 
 
-// ============ MENU =========== //
-#nav{
-  width: 230px;
-  float: left;
-  margin-bottom: 70px;
-
+// ============ NAV =========== //
+.nav{
   ul{
-    margin: 0 0 30px 15px;
+    margin-bottom: 30px;
     padding: 0;
   }
   li{
-    padding: 3px 0;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     list-style: none;
     line-height: 1em;
+  }
+  a{
+    display: block;
+    padding: 3px 0;
+  }
+  .title{
+    text-transform: uppercase;
+    color: #444;
+    font-size: 1.2em;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
   }
   .current_page a{
     color: #333;
     font-weight: bold;
     cursor: default;
   }
-  #logo{
-    margin-bottom: 35px;
+}
+
+.side_nav{
+  width: 160px;
+  float: left;
+  margin: 50px 20px 50px 0;
+  
+  .current_page{
+    color: #666;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: default;
+  }
+}
+
+.footer_nav{
+  .title{
+    color: #f7f7f7;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .menu{
+    float: left;
+    margin-right: 100px;
+  }
+  a:link, a:visited, a:active{
+    padding: 3px 0;
     display: block;
-    
-    img{
-      width: 175px;
-      height: 175px;
-    }
+    color: #999;
+  }
+  a:hover{
+    color: #aaa;
   }
 }
 
@@ -215,42 +317,129 @@ ol{
   height: 300px;
 }
 
-#content{
+.logo{
+  float: left;
+  display: table;
+  text-decoration: none;
+  
+  img{
+    float: left;
+    padding: 0 10px 0 0;
+    display: table-cell;
+  }
+  
+  .org_name{
+    text-transform: uppercase;
+    font-size: 1.5em;
+    line-height: 0.95em;
+    color: #f7f7f7;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+.logo:hover{
+  text-decoration: none;
+  opacity: 1;
+}
+
+.content{
   p, ul, ol, div, span, td, strong{
     line-height: 1.2em;
   }
 
   ul, ol{
   margin-bottom: 10px;
+  
+    li{
+      margin-bottom: 5px;
+    }
   }
-}
-
-#footer{
+  
   .copyright{
     font-size: 0.9em;
-    color: #90abbf;
+    color: #999;
+    margin-bottom: 20px;
+    position: absolute;
+    bottom: 0;
   }
 }
 
-.home_content{
-  float: left;
-  width: 310px;
-  margin-right: 30px;
+.home_photo{
+  width: 100%;
+  margin: 15px 0;
 }
-.aside{
-  float: left;
-  width: 310px;
+
+.panels{
+  margin-bottom: 20px;
   
-  ul{
+  th{
+    background: #555;
+    width: 33%;
+    padding: 15px 5px 12px;
+    border-right: 3px solid #fff;
+    text-align: center;
+    vertical-align: middle;
+  }
+  td{
+    color: #666;
+    background: #f7f7f7;
+    border-right: 3px solid #fff;
+    padding: 10px 15px;
+    width: 33%;
+  }
+  h2{
+    color: #f7f7f7;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+  }
+  .panel_action,
+  .panel_action:hover,
+  .panel_action:visited,
+  .panel_action:active{
+    background: #555;
+    color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+    font-size: 0.9em;
+    line-height: 1em;
+    padding: 10px 10px 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: right;
+  }
+  .panel_action:hover{
+    background: #333;
+  }
+  
+  .panel_wide{
+    width: auto;
+    min-width: 33%;
+  }
+  .panel_last{
+    border-right: none;
+  }
+  .meetings{
     list-style-type: none;
-    padding-left: 0;
+    margin: 0 0 10px;
+    padding: 0;
+    
+    .location{
+      color: #999;
+      white-space: nowrap;
+    }
   }
 }
-
 
 // ============ MEETINGS =========== //
 .meeting_list{
   margin-bottom: 20px;
+  
+  tr:hover{
+    background: #f7f7f7;
+  }
 
   .district{
     padding: 10px 10px 7px;

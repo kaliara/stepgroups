@@ -16,7 +16,7 @@
 
 <% @motions.each do |motion| %>
   <tr>
-    <td><%= motion.document.title %></td>
+    <td><%= link_to motion.document.title, admin_document_path(motion.document) %></td>
     <td><%= motion.title %></td>
     <td><%= motion.body %></td>
     <td><%= motion.vote_yes %></td>
@@ -25,7 +25,7 @@
     <td><%= motion.passes %></td>
     <td><%= link_to 'Show', admin_motion_path(motion) %></td>
     <td><%= link_to 'Edit', edit_admin_motion_path(motion) %></td>
-    <td><%= link_to 'Destroy', admin_motion_path(motion), confirm: 'Are you sure?', method: :delete %></td>
+    <!-- <td><%= link_to 'Remove', admin_motion_path(motion), :confirm => 'Are you sure?', :method => :delete %></td> -->
   </tr>
 <% end %>
 </table>

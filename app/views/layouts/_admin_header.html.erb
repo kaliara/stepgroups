@@ -1,0 +1,12 @@
+<a class="logo" href="<%= admin_path %>" title="<%= SiteConfig.get('organization_name') %> admin home">
+  <%= image_tag "logo.png", :alt => "Logo" %>
+  <p class="org_name"><%= SiteConfig.get('organization_name') %></p>
+</a>
+
+<ul class="header_nav clearfix">
+  <li><%= link_to 'Admin Home', admin_path %></li>
+  <li><%= link_to 'Announcements', admin_announcements_path %></li>
+  <li><%= link_to 'Meetings', admin_meetings_path %></li>
+  <li><%= link_to 'Messages', admin_messages_path %></li>
+  <li><%= link_to 'Intergroup', admin_intergroup_sessions_path %></li>
+</ul>

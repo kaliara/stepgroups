@@ -12,12 +12,12 @@
 
 <% @sections.each do |section| %>
   <tr>
-    <td><%= section.document_id %></td>
+    <td><%= link_to section.document.title, admin_document_path(section.document) %></td>
     <td><%= section.heading %></td>
     <td><%= section.body %></td>
     <td><%= link_to 'Show', admin_section_path(section) %></td>
     <td><%= link_to 'Edit', edit_admin_section_path(section) %></td>
-    <td><%= link_to 'Destroy', admin_section_path(section), confirm: 'Are you sure?', method: :delete %></td>
+    <!-- <td><%= link_to 'Remove', admin_section_path(section), :confirm => 'Are you sure?', :method => :delete %></td> -->
   </tr>
 <% end %>
 </table>

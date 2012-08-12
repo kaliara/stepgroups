@@ -1,5 +1,5 @@
 class Menu < ActiveRecord::Base
-  LOCATIONS = [["Side Top", 0], ["Side Bottom", 1], ["Footer", 2]]
+  LOCATIONS = [["Top - MAIN", 0], ["Side - GET STARTED", 1], ["Side - WORK THE PROGRAM", 2], ["Side - RESOURCES", 3]]
   
   def self.get_items(location)
     Menu.where("published = ? AND location = ?", true, location)

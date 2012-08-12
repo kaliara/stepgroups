@@ -1,5 +1,6 @@
 class Admin::MeetingAddressesController < ApplicationController
   http_basic_authenticate_with :name => SITE_CONFIG['username'], :password => SITE_CONFIG['password'] if SITE_CONFIG['perform_authentication']
+  layout 'admin'
 
   # GET /meetings
   # GET /meetings.json
@@ -80,7 +81,7 @@ class Admin::MeetingAddressesController < ApplicationController
     @meeting_address.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_meeting_addresss_path }
+      format.html { redirect_to admin_meeting_addresses_path }
       format.json { head :no_content }
     end
   end

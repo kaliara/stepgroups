@@ -95,4 +95,5 @@
   $('#link_new_address a').click(function(){$('.new_address').show(); $('.existing_address').remove(); return false; });
 </script>
 
-<%= link_to 'Back', admin_meetings_path %>
+<%= link_to 'Back', admin_meetings_path %> | 
+<%= link_to 'Remove this Meeting', admin_meeting_path(@meeting), :method => :delete, :confirm => "Are you sure?" %>

@@ -13,7 +13,7 @@
     <td><%= district.name %></td>
     <td><%= link_to 'Show', admin_district_path(district) %></td>
     <td><%= link_to 'Edit', edit_admin_district_path(district) %></td>
-    <td><%= link_to 'Destroy', admin_district_path(district), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Remove', admin_district_path(district), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

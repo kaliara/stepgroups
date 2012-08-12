@@ -1,17 +1,32 @@
-<div id="nav">
-  <%= link_to image_tag("logo.png", :alt => "NYCODA"), root_path, :id => "logo" %>
-  <% unless Menu.get_items(0).empty? %>
-    <ul>
-      <% Menu.get_items(0).each do |item| %>
-        <li><%= link_to item.label, item.path %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  <% unless Menu.get_items(1).empty? %>
-    <ul>
-      <% Menu.get_items(1).each do |item| %>
-        <li><%= link_to item.label, item.path %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<% unless Menu.get_items(1).empty? %>
+<div class="menu">
+  <div class="title">Get Started</div>
+  <ul>
+    <% Menu.get_items(1).each do |item| %>
+      <li><%= link_to item.label, item.path, :class => ('current_page' if current_page?(item.path)) %></li>
+    <% end %>
+  </ul>
 </div>
+<% end %>
+
+<% unless Menu.get_items(2).empty? %>
+<div class="menu">
+  <div class="title">Work The Program</div>
+  <ul>
+    <% Menu.get_items(2).each do |item| %>
+      <li><%= link_to item.label, item.path, :class => ('current_page' if current_page?(item.path)) %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<% unless Menu.get_items(3).empty? %>
+<div class="menu">
+  <div class="title">Resources</div>
+  <ul>
+    <% Menu.get_items(3).each do |item| %>
+      <li><%= link_to item.label, item.path, :class => ('current_page' if current_page?(item.path)) %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

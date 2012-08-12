@@ -7,10 +7,6 @@ class Transaction < ActiveRecord::Base
     METHODS[method].first
   end
   
-  def pretty_timestamp
-    timestamp.strftime "%b %d, %Y"
-  end
-  
   def pretty_amount
     expense? ? (-1 * amount) : amount
   end

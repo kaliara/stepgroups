@@ -1,0 +1,38 @@
+<div class="menu">
+  <div class="title">Messages</div>
+  <ul>
+    <!-- <li><%= link_to 'Unread Messages', admin_messages_path %></li> -->
+    <!-- <li><%= link_to 'Unanswered Messages', admin_messages_path %></li> -->
+    <li><%= link_to 'All Messages', admin_messages_path %></li>
+  </ul>
+  
+  <div class="title">Meetings</div>
+  <ul>
+    <li><%= link_to 'Add Meeting', new_admin_meeting_path %></li>
+    <li><%= link_to 'All Meetings', admin_meetings_path %></li>
+    <li><%= link_to 'Districts', admin_districts_path %></li>
+    <li><%= link_to 'Addresses', admin_meeting_addresses_path %></li>
+  </ul>
+
+  <div class="title">Intergroup</div>
+  <ul>
+    <li><%= link_to 'Intergroup Sessions', admin_intergroup_sessions_path %></li>
+    <li><%= link_to 'Documents', admin_documents_path %></li>
+    <li><%= link_to 'Sections', admin_sections_path %></li>
+    <li><%= link_to 'Motions', admin_motions_path %></li>
+    <li><%= link_to 'Transactions', admin_transactions_path %></li>
+  </ul>
+
+  <div class="title">Content</div>
+  <ul>
+    <li><%= link_to 'Announcements', admin_announcements_path %></li>
+    <li><%= link_to 'Pages', admin_pages_path %></li>
+    <li><%= link_to 'Contents', admin_contents_path %></li>
+  </ul>
+  
+  <div class="title">Navigation and Config</div>
+  <ul>
+    <li><%= link_to 'Menus', admin_menus_path %></li>
+    <li><%= link_to 'Site Configs', admin_site_configs_path %></li>
+  </ul>
+</div>

@@ -1,29 +1,43 @@
 <h1>Welcome to <%= SiteConfig.get('organization_name') %></h1>
 <div class="clearfix">
-  <div class="home_content"><%= render_content('home_header') %></div>
+  <%= render_content('home_intro') %>
+  <%= image_tag "photo_home.jpg", :class => "home_photo", :alt => "People holding hands" %>
 
-  <div class="aside">
-    <%= render_content('home_sidebar_top') %>
-
-    <h2>How do I find a meeting?</h2>
-    <p>View the <%= link_to "Meeting List", meetings_path %></p>
-
-    <% unless @meetings.empty? %>
-      <h3>Upcoming meetings</h3>
-      <ul class="meetings">
-      <% @meetings.each do |meeting| %>
-        <li><%= link_to "#{meeting.next_meeting_date.strftime("%b %e")} in #{meeting.meeting_address.district.name}", meeting %> <span class="">(<%= meeting.next_meeting_date.strftime("%a") %> at <%= meeting.time %>)</span></li>
+  <table class="panels">
+    <tr class="panel">
+      <% if content_exists?('home_custom_panel_body') %><th><h2><%= render_content('home_custom_panel_title') %></h2></th><% end %>
+      <th class="panel_wide"><h2>Upcoming meetings</h3></th>
+      <th class="panel_last"><h2>News &amp; Events</h3></th>
+    </tr>
+    
+    <tr>
+      <% if content_exists?('home_custom_panel_body') %>
+        <td>
+          <%= render_content('home_custom_panel_body') %>
+        </td>
       <% end %>
-      </ul>
-      <p>see <%= link_to "all meetings", meetings_path %></p>
-    <% end %>
-
-    <% unless @announcement.blank? %>
-      <h2>What's new with <%= SiteConfig.get('organization_name') %></h2>
-      <p><%= link_to @announcement.header, @announcement %> - <%= strip_tags(@announcement.body).truncate(100) %></p>
-      <p>see <%= link_to "all announcements", announcements_path %></p>
-    <% end %>
-
-    <%= render_content('home_sidebar_bottom') %>
-  </div>
+      <td class="panel_wide">
+        <% unless @meetings.empty? %>
+          <ul class="meetings">
+          <% @meetings.each do |meeting| %>
+            <li><%= link_to "#{meeting.next_meeting_date.strftime("%b %e")} in #{meeting.meeting_address.district.name}", meeting %> <span class="location">(<%= meeting.next_meeting_date.strftime("%a") %> at <%= meeting.time %>)</span></li>
+          <% end %>
+          </ul>
+          <%= link_to "All Meetings", meetings_path, :class => "panel_action" %>
+        <% else %>
+          <p>No meetings have been added yet. Know of a meeting we should add? <%= link_to "Contact us", contact_path %>.</p>
+        <% end %>
+      </td>
+      <td class="panel_last">
+        <% unless @announcement.blank? %>
+          <p><%= link_to @announcement.header, @announcement %> - <%= strip_tags(raw @announcement.body).truncate(100) %></p>
+          <%= link_to "Read More", announcements_path, :class => "panel_action" %>
+        <% else %>
+          <p>No current announcements. Have news to share, please <%= link_to "contact us", contact_path %>.</p>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  
+  <%= render_content('home_body') %>
 </div>

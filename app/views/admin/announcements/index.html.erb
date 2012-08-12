@@ -15,7 +15,7 @@
     <td><%= announcement.body %></td>
     <td><%= link_to 'Show', admin_announcement_path(announcement) %></td>
     <td><%= link_to 'Edit', edit_admin_announcement_path(announcement) %></td>
-    <td><%= link_to 'Destroy', admin_announcement_path(announcement), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Remove', admin_announcement_path(announcement), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

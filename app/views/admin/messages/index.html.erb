@@ -17,7 +17,7 @@
     <td><%= message.subject %></td>
     <td><%= message.body %></td>
     <td><%= link_to 'Show', admin_message_path(message) %></td>
-    <td><%= link_to 'Destroy', admin_message_path(message), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Remove', admin_message_path(message), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

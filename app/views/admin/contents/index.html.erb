@@ -17,7 +17,7 @@
     <td><%= nice_boolean content.published %></td>
     <td><%= link_to 'Show', admin_content_path(content) %></td>
     <td><%= link_to 'Edit', edit_admin_content_path(content) %></td>
-    <td><%= link_to 'Destroy', admin_content_path(content), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Remove', admin_content_path(content), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

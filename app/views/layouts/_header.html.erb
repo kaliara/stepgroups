@@ -1,0 +1,12 @@
+<a class="logo" href="<%= root_path %>" title="<%= SiteConfig.get('organization_name') %> homepage">
+  <%= image_tag "logo.png", :alt => "Logo" %>
+  <p class="org_name"><%= SiteConfig.get('organization_name') %></p>
+</a>
+
+<% unless Menu.get_items(0).empty? %>
+  <ul class="header_nav clearfix">
+    <% Menu.get_items(0).each do |item| %>
+      <li><%= link_to item.label, item.path, :class => ('current_page' if current_page?(item.path)) %></li>
+    <% end %>
+  </ul>
+<% end %>
