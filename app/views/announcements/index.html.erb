@@ -1,5 +1,8 @@
 <h1>Announcements</h1>
 <% unless @announcements.empty? %>
+
+<%= render_content('announcements_intro') %>
+
 <ul>
 <% @announcements.each do |announcement| %>
     <li><%= nice_date announcement.created_at %> - <%= link_to announcement.header, announcement_path(announcement) %></li>
