@@ -33,6 +33,12 @@ namespace :database do
   end
 end
 
+namespace :config do
+  task :symlink, :roles => :app do
+    run "ln -nfs #{shared_path}/config/site_config.yml #{release_path}/config/site_config.yml"
+  end
+end
+
 # namespace :assets do
 #   task :symlink, :roles => :app do
 #     run "ln -nfs #{shared_path}/images #{release_path}/public/images"
@@ -49,4 +55,5 @@ end
 after "deploy", "deploy:migrate" 
 after "deploy", "deploy:cleanup"
 before "deploy:assets:precompile", "database:symlink" 
+before "deploy:assets:precompile", "config:symlink" 
 # after "deploy:symlink", "deploy:update_crontab"  
