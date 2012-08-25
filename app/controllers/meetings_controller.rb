@@ -17,6 +17,19 @@ class MeetingsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: Meeting.all }
+      format.pdf do
+        render :pdf => "index",
+               :layout => "pdf.html",
+               :no_background => false,
+               :show_as_html => params[:debug].present?,
+               :page_size => "A3",
+               :margin => {
+                 :top                => 0,
+                 :bottom             => 0,
+                 :left               => 0,
+                 :right              => 0
+               }
+      end
     end
   end
 

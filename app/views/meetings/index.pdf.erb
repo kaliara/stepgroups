@@ -1,0 +1,44 @@
+<h1><%= SiteConfig.get('organization_name') %> Meeting List</h1>
+
+<div class="header"><%= render_content('meetings_intro') %></div>
+
+<% @districts.each do |district| %>
+<table class="meeting_list" cellpadding="0" cellspacing="0">
+  <thead>
+    <tr>
+      <th class="district"><h3><%= district.name %></h3></th>
+      <% Date::DAYNAMES.each do |day| %>
+        <th><%= day[0..2].upcase %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+  <% district.meeting_addresses.delete_if{|d| (@address_id > 0) and (d.id != @address_id)}.each do |meeting_address| %>
+    <tr class="<%= cycle("", "even") %>">
+      <td class="building">
+        <%= meeting_address.building %><br>
+        <span class="note">
+          <%= meeting_address.street1 %>
+          <%= ", " + meeting_address.street2 unless meeting_address.street2.blank? %><br />
+          <%= meeting_address.city %><%= ", " + meeting_address.state.upcase unless meeting_address.state.blank? %>
+          <%= meeting_address.zip_code %>
+        </span>
+      </td>
+      <% 7.times do |wday| %>
+        <td class="time">
+          <% meeting_address.meetings.each do |meeting| %>
+            <% if wday == meeting.wday %>
+              <%= link_to meeting.time, meeting_path(meeting) %>
+            <% end %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+  <% reset_cycle %>
+  </tbody>
+</table>
+<% end %>
+
+
+<div class="footer"><%= render_content('meetings_pdf_footer') %></div>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Meeting List - PDF</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <%# inline_stylesheet_link_tag "pdf" %>
+    <%# wicked_pdf_javascript_include_tag "number_pages" %>
+    <style type="text/css" media="screen">
+      body, p, div, ul, li{
+        font: normal 12pt/1.2em sans-serif;
+      }
+      body{
+        margin: 0;
+        padding: 0.5in 0.25in 0.5in 0.25in;
+        color: #2E1C14;
+      }
+      h2{
+        margin-bottom: 50px;
+      }
+      h3{
+        margin: 0;
+        padding: 0;
+        position: relative;
+        top: -3px;
+        font-size: 22px;
+      }
+      h4{
+        margin: 0 40px 0 0;
+        float: left;
+      }
+      p{
+        margin: 0 20px 0 0;
+        font-size: 80%;
+      }
+      table{
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td, th{
+        padding: 5px;
+        vertical-align: top;
+      }
+      th{
+        background: #666;
+        color: #ddd;
+        font-weight: normal;
+        text-align: left;
+        vertical-align: middle;
+      }
+      
+      a, a:visited {
+        color: #000;
+        text-decoration: none;
+      }
+      
+      /* MEETINGS */
+      .even td{
+/*        background: #f7f7f7;*/
+      }
+      .meeting_list{
+        margin-bottom: 20px;
+      }
+
+      .meeting_list .district{
+        padding: 10px 10px 7px;
+      }
+
+      .meeting_list h3{
+        color: #fff;
+      }
+
+      .meeting_list .alternate{
+        background-color: #fff;
+      }
+
+      .meeting_list .building{
+        width: 35%;
+      }
+
+      .meeting_list .time{
+        width: 85px;
+        font-size: 85%;
+        font-weight: bold;
+        vertical-align: top;
+      }
+  
+      .note{
+        font-size: 85%;
+        color: #888;
+        line-height: 1.2em;
+      }
+      .uppercase{
+        text-transform: uppercase;
+      }
+      
+    </style>
+  </head>
+  <body onload='number_pages'>
+    <div id="header">
+      <%# wicked_pdf_image_tag 'mysite.jpg' %>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>
