@@ -4,8 +4,8 @@ gem 'rails', '3.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'mysql'
-gem 'thin'
+gem 'mysql', '2.8.1'
+gem 'thin', '1.3.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -16,10 +16,10 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '1.2.6'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.0.2'
 
 # pdf generation
 gem 'wicked_pdf', '0.7.9'
