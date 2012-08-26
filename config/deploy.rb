@@ -1,3 +1,4 @@
+require "bundler/capistrano"
 load 'deploy/assets'
 
 default_run_options[:pty] = true
