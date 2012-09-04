@@ -36,20 +36,20 @@ class TwilioController < ApplicationController
   
   def meeting_list
     @digit = params[:Digits]
+    @district = District.find(params[:district_id])
     
     if @digit == "*"
       redirect_to :action => :district_list
     elsif @digit.to_i > 0
-      if params[:district_id].to_i > 0
-        @meeting_addresses = MeetingAddress.where("district_id in (?)", params[:district_id])
+      if @district
+        @meeting_addresses = MeetingAddress.where("district_id in (?)", @district.id)
         @meetings = @meeting_addresses.collect{|ma| ma.meetings}.flatten
-        redirect_to :action => :meeting_detail, :district_id => params[:district_id], :meeting_id => @meetings[@digit.to_i - 1].id
+        redirect_to :action => :meeting_detail, :district_id => @district.id, :meeting_id => @meetings[@digit.to_i - 1].id
       else
         redirect_to :action => :district_list
       end
     else
-      @district_id = District.find(params[:district_id])
-      @meeting_addresses = MeetingAddress.where("district_id in (?)", @district_id)
+      @meeting_addresses = MeetingAddress.where("district_id in (?)", @district.id)
       @meetings = @meeting_addresses.collect{|ma| ma.meetings}.flatten
       render :action => :meeting_list
     end
