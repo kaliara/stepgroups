@@ -21,10 +21,9 @@
     <Pause />
     <Say voice="woman">This meeting has a <%= @meeting.topic %> focus.</Say>
   <% end %>
-  </Say>
   <Gather method="GET" timeout="10" numDigits="1">
     <Say voice="woman">To repeat this information, press 1.</Say>
     <Pause />
-    <Say voice="woman">To go back to the meeting list, press star.</Say>
+    <Say voice="woman">To go back to the meeting list, press the star key.</Say>
   </Gather>
 </Response>
