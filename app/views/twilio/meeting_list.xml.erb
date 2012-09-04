@@ -6,12 +6,12 @@
       <Pause />
       When you hear the meeting you want, press the number at any time.
       <Pause length="2" />
-    <% @meetings.each_with_index do |meeting, i| %>
-      Number <%= i + 1 %>. The <%= meeting.meeting_address.building %> meeting held on <%= meeting.day%> at <%= meeting.time %>. It is located at <%= meeting.meeting_address.street1 %>.
-      <Pause />
-    <% end %>
-    </Say>
+      <% @meetings.each_with_index do |meeting, i| %>
+        Number <%= i + 1 %>. The <%= meeting.meeting_address.building %> meeting held on <%= meeting.day%> at <%= meeting.time %>. It is located at <%= meeting.meeting_address.street1 %>.
+        <Pause />
+      <% end %>
     <Pause length="3" />
     To repeat these meetings, press 0. To go back to the previous list, press star.
+    </Say>
   </Gather>
 </Response>
