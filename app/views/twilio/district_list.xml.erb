@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Gather method="GET" timeout="10" numDigits="1">
-    <Say voice="woman">
-      <% @districts[0..7].each_with_index do |district, i| %>
-        For meetings in <%= district.name %>, press <%= i + 1 %>.
-        <Pause />
-      <% end %>
+    <% @districts[0..7].each_with_index do |district, i| %>
+      <Say voice="woman">For meetings in <%= district.name %>, press <%= i + 1 %>.</Say>
       <Pause />
-      To go back to the the main menu, press star.
-    </Say>
+    <% end %>
+    <Pause />
+    <Say voice="woman">To go back to the the main menu, press star.</Say>
   </Gather>
   <Say voice="woman">Please call back and try your selection again.</Say>
 </Response>

@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
+  <Say voice="woman">The <%= @meeting.meeting_address.building %> meeting is held on <%= @meeting.day%> at <%= @meeting.time %>.</Say>
+  <Pause />
+  <Say voice="woman">Here is the exact address.</Say>
+  <Pause length="2" />
+  <Say voice="woman"><%= @meeting.meeting_address.street1 %>.</Say>
+  <Pause />
+  <Say voice="woman"><%= @meeting.meeting_address.street2 %>.</Say>
+  <Pause />
   <Say voice="woman">
-    The <%= @meeting.meeting_address.building %> meeting is held on <%= @meeting.day%> at <%= @meeting.time %>.
-    <Pause />
-    Here is the exact address.
-    <Pause length="2" />
-    <%= @meeting.meeting_address.street1 %>.
-    <Pause />
-    <%= @meeting.meeting_address.street2 %>.
-    <Pause />
     <%= @meeting.meeting_address.city %>,
     <%= @meeting.meeting_address.state %>,
     <%= @meeting.meeting_address.zip_code %>.
-    <Pause length="2" />
-    <% unless @meeting.meeting_address.notes.blank? %>The note for this meeting says, <%= @meeting.meeting_address.notes %>.<% end %>
+  </Say>
+  <Pause length="2" />
+  <% unless @meeting.meeting_address.notes.blank? %><Say voice="woman">The note for this meeting says, <%= @meeting.meeting_address.notes %>.</Say><% end %>
+  <Pause />
+  <% unless @meeting.topic.blank? %>
+    <Say voice="woman">Some meetings have a particular focus.</Say>
     <Pause />
-    <% unless @meeting.topic.blank? %>
-      Some meetings have a particular focus.
-      <Pause />
-      This meeting has a <%= @meeting.topic %> focus.
-    <% end %>
+    <Say voice="woman">This meeting has a <%= @meeting.topic %> focus.</Say>
+  <% end %>
   </Say>
   <Gather method="GET" timeout="10" numDigits="1">
-    <Say voice="woman">
-      To repeat this information, press 1.
-      <Pause />
-      To go back to the meeting list, press star.
-    </Say>
+    <Say voice="woman">To repeat this information, press 1.</Say>
+    <Pause />
+    <Say voice="woman">To go back to the meeting list, press star.</Say>
   </Gather>
 </Response>
