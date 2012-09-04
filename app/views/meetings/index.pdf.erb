@@ -28,7 +28,7 @@
         <td class="time">
           <% meeting_address.meetings.each do |meeting| %>
             <% if wday == meeting.wday %>
-              <%= link_to meeting.time, meeting_path(meeting) %>
+              <%= link_to meeting.time, meeting_url(meeting) %>
             <% end %>
           <% end %>
         </td>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Gather method="GET" timeout="10" numDigits="1">
+    <Say>
+      When you hear the meeting you want, press its number to get more details.<br />
+    <% @meetings.each_with_index do |meeting, i| %>
+      Meeting <%= i + 1 %>, the <%= meeting.meeting_address.building %> meeting on <%= meeting.day%> at <%= meeting.time %> located at <%= meeting.meeting_address.street1 %>.<br />
+    <% end %>
+    </Say>
+    .. To repeat these meetings, press 0. To go back to the previous list, press pound.
+  </Gather>
+</Response>

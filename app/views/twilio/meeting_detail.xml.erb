@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  The <%= @meeting.meeting_address.building %> meeting is held on <%= @meeting.day%> at <%= @meeting.time %>.
+  
+  The exact address is
+  <%= @meeting.meeting_address.street1 %>,
+  <%= @meeting.meeting_address.street2 %>,
+  <%= @meeting.meeting_address.city %>,
+  <%= @meeting.meeting_address.state %>
+  <%= @meeting.meeting_address.zip_code %>.
+  
+  <% unless @meeting.meeting_address.notes.blank? %>The note for this meeting says, <%= @meeting.meeting_address.notes %>.<% end %>
+  
+  <% unless @meeting.topic.blank? %>Some meetings have a particular focus. This meeting has a <%= @meeting.topic %> focus.<% end %>
+
+  <Gather method="GET" timeout="10" numDigits="1">
+    <Say>
+      To repeat this information, press 1.
+      To go back to the meeting list, press pound.
+    </Say>
+  </Gather>
+</Response>

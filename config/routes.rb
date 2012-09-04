@@ -42,7 +42,14 @@ Coda::Application.routes.draw do
     resources :transactions
     resources :site_configs
   end
-  
+
+  # twilio routes
+  match '/twilio/start'                                                  => 'twilio#start', :defaults => { :format => 'xml' }
+  match '/twilio/district_list'                                          => 'twilio#district_list', :defaults => { :format => 'xml' }
+  match '/twilio/meeting_list/:district_id'                              => 'twilio#meeting_list', :defaults => { :format => 'xml' }
+  match '/twilio/meeting_list/:district_id/meeting_detail/:meeting_id'   => 'twilio#meeting_detail', :defaults => { :format => 'xml' }
+  match '/twilio/info/:key'                                              => 'twilio#info', :defaults => { :format => 'xml' }
+  match '/twilio/voicemail'                                              => 'twilio#voicemail', :defaults => { :format => 'xml' }
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
