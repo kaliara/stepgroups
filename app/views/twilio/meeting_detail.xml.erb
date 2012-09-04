@@ -11,7 +11,7 @@
   <Say voice="woman">
     <%= @meeting.meeting_address.city %>,
     <%= @meeting.meeting_address.state %>,
-    <%= @meeting.meeting_address.zip_code %>.
+    <%= @meeting.meeting_address.zip_code.split("").join(" ") %>.
   </Say>
   <Pause length="2" />
   <% unless @meeting.meeting_address.notes.blank? %><Say voice="woman">The note for this meeting says, <%= @meeting.meeting_address.notes %>.</Say><% end %>
