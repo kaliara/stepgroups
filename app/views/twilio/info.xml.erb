@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <test><%= params[:Digits] %></test>
-  <Say>
+  <Say voice="woman">>
     <% if @key == "coda" %>
     Co-Dependents Anonymous is a program of recovery from codependence. The only requirement for membership is a desire for healthy and loving relationships. We have all learned to survive life, but in CoDA we are learning to live life. 
     <% elsif @key == "codependency" %>
     At CoDA, we offer no definition or diagnostic criterion for codependence. What we do offer is a list of patterns and characteristics as a tool to aid in self evaluation. You can find this list on our website at www dot nyc coda dot org.
     <% end %>
   </Say>
+  <Pause length="2" />
   <Gather method="GET" timeout="10" numDigits="1">
-    <Say>
-      To repeat this information, press 1. To return to the main menu, press pound.
+    <Say voice="woman">
+      To repeat this information, press 1. To return to the main menu, press star.
     </Say>
   </Gather>
 </Response>

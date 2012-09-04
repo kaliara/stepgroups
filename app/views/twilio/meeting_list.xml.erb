@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Gather method="GET" timeout="10" numDigits="1">
-    <Say>
-      When you hear the meeting you want, press its number to get more details.
+    <Say voice="woman">
+      Meetings in <%= @district.name %>.
+      <Pause />
+      When you hear the meeting you want, press the number at any time.
+      <Pause length="2" />
     <% @meetings.each_with_index do |meeting, i| %>
-      Meeting <%= i + 1 %>, the <%= meeting.meeting_address.building %> meeting on <%= meeting.day%> at <%= meeting.time %> located at <%= meeting.meeting_address.street1 %>.
+      Number <%= i + 1 %>. The <%= meeting.meeting_address.building %> meeting held on <%= meeting.day%> at <%= meeting.time %>. It is located at <%= meeting.meeting_address.street1 %>.
+      <Pause />
     <% end %>
     </Say>
-    .. To repeat these meetings, press 0. To go back to the previous list, press pound.
+    <Pause length="3" />
+    To repeat these meetings, press 0. To go back to the previous list, press star.
   </Gather>
 </Response>

@@ -22,7 +22,7 @@ class TwilioController < ApplicationController
     @digit = params[:Digits]
     @districts = District.all
     
-    if @digit == "#"
+    if @digit == "*"
       redirect_to :action => :start
     elsif @digit.to_i > 0
       @district_id = @districts[@digit.to_i - 1].id
@@ -37,7 +37,7 @@ class TwilioController < ApplicationController
   def meeting_list
     @digit = params[:Digits]
     
-    if @digit == "#"
+    if @digit == "*"
       redirect_to :action => :district_list
     elsif @digit.to_i > 0
       if params[:district_id].to_i > 0
@@ -57,7 +57,7 @@ class TwilioController < ApplicationController
   
   def meeting_detail
     @digit = params[:Digits]
-    if @digit == "#"
+    if @digit == "*"
       redirect_to :action => :meeting_list, :district_id => params[:district_id]
     elsif
       @meeting = Meeting.find(params[:meeting_id])
@@ -68,7 +68,7 @@ class TwilioController < ApplicationController
   def info
     @digit = params[:Digits]
     
-    if @digit == "#"
+    if @digit == "*"
       redirect_to :action => :start
     elsif !params[:key].blank?
       @key = params[:key]
