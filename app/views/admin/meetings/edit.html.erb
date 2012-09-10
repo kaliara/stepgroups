@@ -73,8 +73,8 @@
   </div>
   <div class="field">
     <%= f.label :hour, 'Time' %><br />
-    <%= select_hour 12, {:ampm => true}, {:name => 'meeting[hour]', :id => 'meeting_hour'} %> : 
-    <%= select_minute 0, {:minute_step => 5}, {:name => 'meeting[minute]', :id => 'meeting_minute'} %>
+    <%= select_hour @meeting.hour || 12, {:ampm => true}, {:name => 'meeting[hour]', :id => 'meeting_hour'} %> : 
+    <%= select_minute @meeting.minute || 0, {:minute_step => 5}, {:name => 'meeting[minute]', :id => 'meeting_minute'} %>
   </div>
   <div class="field">
     <%= f.label :topic %><br />
