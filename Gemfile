@@ -24,6 +24,10 @@ gem 'jquery-rails', '2.0.2'
 # pdf generation
 gem 'wicked_pdf', '0.7.9'
 
+# sinatra and mailer
+gem 'sinatra'
+gem 'pony'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
