@@ -2,21 +2,21 @@
 
 require ::File.expand_path('../config/environment',  __FILE__)
 
-# For Sinatra
-require 'signup.rb'
+# Include Sinatra App
+sinatra_path = '../signup/signup.rb'
+File.exists?(File.expand_path(sinatra_path))
+require sinatra_path
 
-# - Make sinatra play nice
+# Make sinatra play nice
 use Rack::MethodOverride
 disable :run, :reload
 
-# Mapping
-
-# Rest with Rails
+# Mapping - Normal urls go to rails
 map "/" do
   run Coda::Application
 end
 
-# Anything urls starting with /slim will go to Sinatra
+# Mapping - urls starting with /apply will go to Sinatra
 map "/apply" do
   run SignupApp
 end
