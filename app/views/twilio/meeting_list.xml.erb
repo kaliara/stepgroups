@@ -2,17 +2,15 @@
 <Response>
   <Gather method="GET" timeout="10" numDigits="1">
     <Pause />
-    <Say voice="woman">
-      Meetings in <%= @district.name %>.
+    <Say voice="woman">Meetings in <%= @district.name %>.</Say>
+    <Pause />
+    <Say voice="woman">When you hear the meeting you want, press the number at any time.</Say>
+    <Pause />
+    <% @meetings.each_with_index do |meeting, i| %>
+      <Say voice="woman">Number <%= i + 1 %>. The <%= meeting.meeting_address.building %> meeting held on <%= meeting.day %> at <%= meeting.time %>. It is located at <%= meeting.meeting_address.street1 %>.</Say>
       <Pause />
-      When you hear the meeting you want, press the number at any time.
-      <Pause length="2" />
-      <% @meetings.each_with_index do |meeting, i| %>
-        Number <%= i + 1 %>. The <%= meeting.meeting_address.building %> meeting held on <%= meeting.day %> at <%= meeting.time %>. It is located at <%= meeting.meeting_address.street1 %>.
-        <Pause />
-      <% end %>
-      <Pause length="2" />
-      To repeat these meetings, press 0. To go back to the previous list, press the star key.
-    </Say>
+    <% end %>
+    <Pause length="2" />
+    <Say voice="woman">To repeat these meetings, press 0. To go back to the previous list, press the star key.</Say>
   </Gather>
 </Response>

@@ -3,9 +3,10 @@
 require ::File.expand_path('../config/environment',  __FILE__)
 
 # Include Sinatra App
-sinatra_path = '../signup/signup.rb'
-File.exists?(File.expand_path(sinatra_path))
-require sinatra_path
+sinatra_path = '../../signup/signup.rb'
+if File.exists?(File.expand_path(sinatra_path))
+  require sinatra_path
+end
 
 # Make sinatra play nice
 use Rack::MethodOverride
