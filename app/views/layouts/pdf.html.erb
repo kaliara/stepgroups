@@ -55,11 +55,28 @@
       }
       
       /* MEETINGS */
+      .header{
+        margin-bottom: 20px;
+      }
+      .header td{
+        vertical-align: middle;
+      }
+      .logo{
+        padding-right: 30px;
+      }
+      
       .even td{
 /*        background: #f7f7f7;*/
       }
       .meeting_list{
-        margin-bottom: 20px;
+        margin-bottom: 30px;
+      }
+      
+      .meeting_list td{
+        border-bottom: 1px solid #aaa;
+      }
+      .meeting_list tr:last-child td{
+        border-bottom: 0;
       }
 
       .meeting_list .district{
@@ -98,7 +115,6 @@
   </head>
   <body onload='number_pages'>
     <div id="header">
-      <%# wicked_pdf_image_tag 'mysite.jpg' %>
     </div>
     <div id="content">
       <%= yield %>
