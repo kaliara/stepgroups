@@ -5,7 +5,8 @@ class Admin::MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @website_messages = Message.where("kind = ?", 'website').order("created_at DESC")
+    @voicemail_messages = Message.where("kind = ?", 'voicemail').order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -74,13 +75,13 @@ class Admin::MessagesController < ApplicationController
 
   # DELETE /messages/1
   # DELETE /messages/1.json
-  def destroy
-    @message = Message.find(params[:id])
-    @message.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_messages_path }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @message = Message.find(params[:id])
+  #   @message.destroy
+  # 
+  #   respond_to do |format|
+  #     format.html { redirect_to admin_messages_path }
+  #     format.json { head :no_content }
+  #   end
+  # end
 end

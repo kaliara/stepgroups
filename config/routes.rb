@@ -5,6 +5,9 @@ Coda::Application.routes.draw do
   match '/info/:slug'                     => 'pages#show',       :as => :view_page
   match '/intergroup'                     => 'pages#intergroup', :as => :intergroup
   match '/contact'                        => 'messages#new',     :as => :contact
+  
+  match '/messages'                       => 'messages#new',              :via => :get
+  match '/messages/voicemail'             => 'messages#create_voicemail', :via => :post
 
   # meetings
   match '/meetings/address/:address_id'   => 'meetings#index',   :as => :meetings_by_address

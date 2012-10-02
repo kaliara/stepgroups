@@ -17,6 +17,3 @@
   <dt>Documents: </dt> <dd><%= raw @past_meeting.documents.collect{ |d| link_to(d.title, document_path(d)) }.join(", ") %></dd>
 </dl>
 <% end %>
-
-<h2>Upcoming Meeting</h2>
-<p>Monthly business meetings are generally held at 6:30PM on the third Thursday of every month.</p>

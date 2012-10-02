@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614014221) do
+ActiveRecord::Schema.define(:version => 20121002041205) do
 
   create_table "announcements", :force => true do |t|
     t.string   "header"
@@ -88,12 +88,19 @@ ActiveRecord::Schema.define(:version => 20120614014221) do
   end
 
   create_table "messages", :force => true do |t|
-    t.string   "from"
-    t.string   "reply_to"
+    t.string   "contact_name"
+    t.string   "contact_details"
     t.string   "subject"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.boolean  "viewed",          :default => false
+    t.boolean  "responded_to",    :default => false
+    t.boolean  "resolved",        :default => false
+    t.string   "kind",            :default => "website"
+    t.string   "contact_id"
+    t.string   "audio_url"
+    t.integer  "audio_duration",  :default => 0
   end
 
   create_table "motions", :force => true do |t|

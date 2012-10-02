@@ -1,23 +1,48 @@
-<h1>Listing messages</h1>
+<h1>Website Messages</h1>
 
 <table>
   <tr>
-    <th>From</th>
-    <th>Reply to</th>
+    <!-- <th>Status</th> -->
+    <th>Name</th>
+    <th>Email</th>
     <th>Subject</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
+    <th>Preview</th>
+    <th>Date</th>
   </tr>
 
-<% @messages.each do |message| %>
+<% @website_messages.each do |message| %>
+  <tr class="<%= 'new' unless message.responded_to? %>">
+    <!-- <td><%= message.responded_to? ? 'answered' : 'new' %></td> -->
+    <td><%= message.contact_name %></td>
+    <td><%= message.contact_details %></td>
+    <td><%= link_to message.subject, admin_message_path(message) %></td>
+    <td><%= message.body.to_s.truncate(50) %></td>
+    <td><%= nice_datetime message.created_at %></td>
+  </tr>
+<% end %>
+</table>
+
+<br><br><br><br>
+
+
+<h1>Voicemail Messages</h1>
+
+<table>
   <tr>
-    <td><%= message.from %></td>
-    <td><%= message.reply_to %></td>
-    <td><%= message.subject %></td>
-    <td><%= message.body %></td>
-    <td><%= link_to 'Show', admin_message_path(message) %></td>
-    <td><%= link_to 'Remove', admin_message_path(message), :confirm => 'Are you sure?', :method => :delete %></td>
+    <!-- <th>Status</th> -->
+    <th>Phone Number</th>
+    <th>Recording</th>
+    <th>Duration</th>
+    <th>Date</th>
+  </tr>
+
+<% @voicemail_messages.each do |message| %>
+  <tr>
+    <!-- <td><%= message.responded_to? ? 'answered' : 'new' %></td> -->
+    <td><%= nice_phone message.contact_details %></td>
+    <td><%= link_to "Listen", message.audio_url, :target => "_blank" %></td>
+    <td><%= nice_seconds message.audio_duration %></td>
+    <td><%= nice_datetime message.created_at %></td>
   </tr>
 <% end %>
 </table>

@@ -31,4 +31,12 @@ module ApplicationHelper
   def nice_money(amount)
     number_to_currency amount, :precision => 10, :significant => true, :strip_insignificant_zeros => true, :unit => ""
   end
+  
+  def nice_seconds(seconds)
+    if seconds > 59
+      return (seconds / 60).to_s + "min " + (seconds % 60).to_s + " sec"
+    else
+      seconds.to_s + " sec" 
+    end
+  end
 end

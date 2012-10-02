@@ -1,14 +1,9 @@
 class MessagesController < ApplicationController
-
-  # GET /messages/1
-  # GET /messages/1.json
+  protect_from_forgery :except => :create_voicemail
+  
+  # GET /messages/temp
+  # GET /messages/temp.json
   def show
-    @message = Message.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @message }
-    end
   end
 
   # GET /messages/new
@@ -22,6 +17,22 @@ class MessagesController < ApplicationController
     end
   end
 
+  # POST /messages/voicemail
+  def create_voicemail
+    if params[:RecordingUrl] and params[:From]
+      @message = Message.new({
+        kind: 'voicemail',
+        contact_id: params[:CallSid],
+        contact_details: params[:From],
+        contact_name: [params[:FromCity], params[:FromState]].join(" "),
+        audio_url: params[:RecordingUrl], 
+        audio_duration: params[:RecordingDuration]
+      })
+      @message.save
+      render text: "success"
+    end
+  end
+  
   # POST /messages
   # POST /messages.json
   def create
@@ -29,7 +40,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { render action: "show" }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }

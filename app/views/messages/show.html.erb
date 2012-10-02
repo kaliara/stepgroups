@@ -1,13 +1,13 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">"Thanks for contacting <%= SiteConfig.get('organization_name') %>. We will try respond within 24-48 hours.</p>
 
 <p>
   <b>From:</b>
-  <%= @message.from %>
+  <%= @message.contact_name %>
 </p>
 
 <p>
-  <b>Reply to:</b>
-  <%= @message.reply_to %>
+  <b>Will Reply to:</b>
+  <%= @message.contact_details %>
 </p>
 
 <p>
@@ -16,6 +16,6 @@
 </p>
 
 <p>
-  <b>Body:</b>
+  <b>Message:</b>
   <%= @message.body %>
 </p>
