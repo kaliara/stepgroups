@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002041205) do
+ActiveRecord::Schema.define(:version => 20121027083100) do
 
   create_table "announcements", :force => true do |t|
     t.string   "header"
@@ -41,6 +41,34 @@ ActiveRecord::Schema.define(:version => 20121002041205) do
     t.integer  "document_type",         :default => 0
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+  end
+
+  create_table "forum_posts", :force => true do |t|
+    t.string   "author",     :default => "Anonymous"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "forum_id"
+    t.integer  "views",      :default => 0
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  create_table "forum_replies", :force => true do |t|
+    t.string   "author",        :default => "Anonymous"
+    t.text     "body"
+    t.integer  "forum_post_id"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  create_table "forums", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "allow_new_posts", :default => true
+    t.boolean  "visible",         :default => true
+    t.string   "instructions"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "intergroup_sessions", :force => true do |t|

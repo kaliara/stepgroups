@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say voice="woman">The best way to contact a member of the coda fellowship is through our website or through email.</Say>
+  <Say voice="woman">The best way to contact a member of the coda fellowship is through our website.</Say>
   <Pause />
-  <Say voice="woman">You can email us at info, at, N Y C coda, dot, org.</Say>
-  <Pause length="2" />
-  <Say voice="woman">If you still like to leave a voicemail, please speak after the message and simply hang up when you are finished.</Say>
+  <Say voice="woman">If you still like to leave a voicemail, please speak after the beep and simply hang up when you are finished.</Say>
   <Pause />
   <Say voice="woman">If this is an emergency, please hang up and dial nine one one.</Say>
   <Pause />
   <Say voice="woman">Thank you for calling N Y C coda.</Say>
-  <Record action="/" method="GET" maxLength="180" finishOnKey="#" />
+  <Record action="/messages/voicemail" method="POST" maxLength="180" finishOnKey="#" />
   <Say voice="woman">I'm sorry, but I didn't hear a recording.</Say>
 </Response>

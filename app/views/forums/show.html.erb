@@ -1,0 +1,28 @@
+<div class="forums">
+  <h1><span>Forums:</span> <%= @forum.name %></h1>
+
+  <table class="forum_posts">
+    <% @forum.forum_posts.each do |forum_post| %>
+    <tr>
+      <td class="link"><%= link_to content_tag(:span, forum_post.title.titleize.truncate(50)), forum_post, :class => "forum_link" %></td>
+      <td class="details">by <strong><%= forum_post.author %></strong> <%= distance_of_time_in_words(Time.now - forum_post.created_at) %> ago.</td>
+      <td class="post_num"><%= forum_post.views %> <%= "view".pluralize(forum_post.views) %></td>
+    </tr>
+    <tr class="excerpt">
+      <td colspan="2"><%= forum_post.body.truncate(90) %></td>
+      <td class="replies_num"><%= forum_post.total_replies %> <%= "reply".pluralize(forum_post.total_replies) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<% if @forum.allow_new_posts %>
+  <%= link_to "Create a Post", new_post_in_forum_path(:id => @forum.id) %> or 
+<% end %>
+<%= link_to "Back to Forums", forums_path %>
+
+<% content_for :scripts do %>
+  <script>
+    $(".forum_link").hover(function(){ ($(this).parents("tr").addClass("hover").next().addClass("hover")); },function(){ ($(this).parents("tr").removeClass("hover").next().removeClass("hover")); })
+  </script>
+<% end %>

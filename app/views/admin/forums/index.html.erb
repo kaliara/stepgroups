@@ -1,0 +1,31 @@
+<h1>Listing Forum Categories</h1>
+
+<table>
+  <tr>
+    <th>Category Name</th>
+    <th>Description</th>
+    <th>Allow new posts</th>
+    <th>Visible</th>
+    <th>Instructions</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forums.each do |forum| %>
+  <tr>
+    <td><%= forum.name %></td>
+    <td><%= forum.description %></td>
+    <td><%= forum.allow_new_posts %></td>
+    <td><%= forum.visible %></td>
+    <td><%= forum.instructions %></td>
+    <td><%= link_to 'Show', admin_forum_path(forum) %></td>
+    <td><%= link_to 'Edit', edit_admin_forum_path(forum) %></td>
+    <td><%= link_to 'Remove', admin_forum_path(forum), confirm: 'Removing a forum will also remove all the posts under that forum. Are you sure you want to remove?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Forum', new_admin_forum_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@forum_post) do |f| %>
+  <% if @forum_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@forum_post.errors.count, "error") %> prohibited this forum_post from being saved:</h2>
+
+      <ul>
+      <% @forum_post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :author, "First Name" %><br />
+    <%= f.text_field :author, :value => "" %>
+  </div>
+  <div class="field">
+    <%= f.label :forum_id, "Category" %><br>
+    <%= f.select :forum_id, Forum.visible.active.collect{|f| [f.name, f.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

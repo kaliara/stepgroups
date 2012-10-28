@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  # caches_page :show, :home
   
   def home
     @announcement = Announcement.last

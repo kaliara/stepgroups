@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  allow_new_posts: false
+  visible: false
+  instructions: MyString
+
+two:
+  name: MyString
+  description: MyText
+  allow_new_posts: false
+  visible: false
+  instructions: MyString

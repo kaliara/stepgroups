@@ -1,0 +1,57 @@
+<h1><span>Forums:</span> <%= @forum_post.title %></h1>
+
+<div class="forum_post">
+  <p class="details">Posted by <strong><%= @forum_post.author %></strong> on <%= nice_date @forum_post.created_at %> in <strong><%= link_to @forum_post.forum.name, @forum_post.forum %></strong></p>
+
+  <p class="body"><%= @forum_post.body %></p>
+</div>
+
+<div class="forums forum_replies">
+  <h2>Replies to this post</h2>
+    <table>
+      <% @forum_post.forum_replies.each do |forum_reply| %>
+      <tr>
+        <td>
+          <p class="details"><strong><%= forum_reply.author %></strong> on <%= nice_date forum_reply.created_at %></p>
+          <p><%= forum_reply.body %></p>
+        </td>
+      </tr>
+      <% end %>
+  </table>
+
+  <div class="reply_form">
+    <% if @forum_post.forum_replies.empty? %>
+      <p>There are no replies to this post. Be the first to reply by filling out the form below.</p>
+    <% end %>
+    
+    <%= form_for(@forum_reply) do |f| %>
+      <% if @forum_reply.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@forum_reply.errors.count, "error") %> prohibited this forum_reply from being saved:</h2>
+
+          <ul>
+          <% @forum_reply.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.hidden_field :forum_post_id %>
+      <div class="field">
+        <%= f.label :author, "First Name" %><br />
+        <%= f.text_field :author, :value => "" %>
+      </div>
+      <div class="field">
+        <%= f.label :body %><br />
+        <%= f.text_area :body %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
+
+<%= link_to "Back to #{@forum_post.forum.name} Forum", forum_path(@forum_post.forum) %>

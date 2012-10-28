@@ -1,0 +1,31 @@
+<h1>Discussion Forums</h1>
+
+<h2>Categories</h2>
+<table class="forums">
+  <% @forums.each do |forum| %>
+  <tr>
+    <td class="link"><%= link_to content_tag(:span, forum.name), forum, :class => "forum_link" %></td>
+    <td><p class="description"><%= forum.description %></p></td>
+    <td class="post_num"><%= forum.total_posts %> <%= "post".pluralize(forum.total_posts) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h2>Recent Posts</h2>
+<table class="forums">
+  <% @forum_posts.each do |forum_post| %>
+  <tr>
+    <td class="link"><%= link_to content_tag(:span, forum_post.title.titleize.truncate(50)), forum_post, :class => "forum_link" %></td>
+    <td><span class="description"> by <strong><%= forum_post.author %></strong> <%= distance_of_time_in_words(Time.now - forum_post.created_at) %> ago.</span></td>
+    <td class="post_num"><%= forum_post.views %> <%= "view".pluralize(forum_post.views) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to "Create a Post", new_forum_post_path %>
+
+<% content_for :scripts do %>
+  <script>
+    $(".forum_link").hover(function(){ ($(this).parents("tr").addClass("hover")); },function(){ ($(this).parents("tr").removeClass("hover")); })
+  </script>
+<% end %>

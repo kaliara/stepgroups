@@ -1,17 +1,20 @@
 Coda::Application.routes.draw do
 
-  # special routes
-  match '/documents/:type'                => 'documents#index',  :as => :typed_documents, :constraints => {:type => /\D+/}
-  match '/info/:slug'                     => 'pages#show',       :as => :view_page
-  match '/intergroup'                     => 'pages#intergroup', :as => :intergroup
-  match '/contact'                        => 'messages#new',     :as => :contact
+
+  # custom routes
+  match '/documents/:type'                => 'documents#index',   :as => :typed_documents, :constraints => {:type => /\D+/}
+  match '/info/:slug'                     => 'pages#show',        :as => :view_page
+  match '/intergroup'                     => 'pages#intergroup',  :as => :intergroup
+  match '/contact'                        => 'messages#new',      :as => :contact
   
   match '/messages'                       => 'messages#new',              :via => :get
   match '/messages/voicemail'             => 'messages#create_voicemail', :via => :post
 
-  # meetings
-  match '/meetings/address/:address_id'   => 'meetings#index',   :as => :meetings_by_address
-  match '/meetings/:district'             => 'meetings#index',   :as => :meetings_by_district, :constraints => {:district => /\D+/}
+  match '/meetings/address/:address_id'   => 'meetings#index',    :as => :meetings_by_address
+  match '/meetings/:district'             => 'meetings#index',    :as => :meetings_by_district, :constraints => {:district => /\D+/}
+  
+  match '/forums/:id/posts/new'           => 'forum_posts#new',   :as => :new_post_in_forum, :constraints => {:id => /\d+/}
+  match '/forum_posts/:id/replies/new'    => 'forum_replies#new', :as => :new_reply_to_post, :constraints => {:id => /\d+/}
   
   # resources
   resources :announcements, :only => [:show, :index]
@@ -21,12 +24,16 @@ Coda::Application.routes.draw do
   resources :meetings, :only => [:show, :index]
   resources :transactions
   resources :messages, :only => [:new, :create, :show]
+  resources :forums, :only => [:index, :show]
+  resources :forum_posts
+  resources :forum_replies
 
 
-  # admin special
+  # admin custom routes
   match '/admin'                                  => 'admin/admin#admin',                  :as => :admin                                 
   match '/admin/documents/add_transaction'        => 'admin/documents#add_transaction',    :as => :add_admin_document_transaction
   match '/admin/documents/update_transaction/:id' => 'admin/documents#update_transaction', :as => :update_admin_document_transaction
+
 
   # admin resources
   namespace :admin do
@@ -44,7 +51,9 @@ Coda::Application.routes.draw do
     resources :messages
     resources :transactions
     resources :site_configs
+    resources :forums
   end
+  
 
   # twilio routes
   match '/twilio/start'                                                  => 'twilio#start', :defaults => { :format => 'xml' }
