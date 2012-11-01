@@ -53,7 +53,7 @@ end
 #   end  
 # end
 
-after "deploy", "deploy:migrate" 
+after "deploy", "RAILS_ENV=production deploy:migrate" 
 after "deploy", "deploy:cleanup"
 before "deploy:assets:precompile", "database:symlink" 
 before "deploy:assets:precompile", "config:symlink" 
