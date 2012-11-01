@@ -11,7 +11,7 @@
 
 <% unless Menu.get_items(2).empty? %>
 <div class="menu">
-  <div class="title">Work The Program</div>
+  <div class="title">Recovery in <%= SiteConfig.get("program") %></div>
   <ul>
     <% Menu.get_items(2).each do |item| %>
       <li><%= link_to item.label, item.path, :class => ('current_page' if current_page?(item.path)) %></li>
@@ -22,7 +22,7 @@
 
 <% unless Menu.get_items(3).empty? %>
 <div class="menu">
-  <div class="title">Resources</div>
+  <div class="title">Get Involved</div>
   <ul>
     <% Menu.get_items(3).each do |item| %>
       <li><%= link_to item.label, item.path, :class => ('current_page' if current_page?(item.path)) %></li>

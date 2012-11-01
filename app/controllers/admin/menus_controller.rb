@@ -33,6 +33,7 @@ class Admin::MenusController < ApplicationController
     @paths = [["Homepage", root_path],
               ["Contact Us", new_message_path],
               ["Announcements", announcements_path],
+              ["Dicussion Forums", forums_path],
               ["Meeting List", meetings_path]] + 
              @districts +
              [["Intergroup", intergroup_path],
@@ -56,6 +57,7 @@ class Admin::MenusController < ApplicationController
     @paths = [["Homepage", root_path],
               ["Contact Us", new_message_path],
               ["Announcements", announcements_path],
+              ["Dicussion Forums", forums_path],
               ["Meeting List", meetings_path]] + 
              @districts +
              [["Intergroup", intergroup_path],

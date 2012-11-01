@@ -5,7 +5,7 @@
   <% @forums.each do |forum| %>
   <tr>
     <td class="link"><%= link_to content_tag(:span, forum.name), forum, :class => "forum_link" %></td>
-    <td><p class="description"><%= forum.description %></p></td>
+    <td><p class="description"><%= raw forum.description %></p></td>
     <td class="post_num"><%= forum.total_posts %> <%= "post".pluralize(forum.total_posts) %></td>
   </tr>
   <% end %>

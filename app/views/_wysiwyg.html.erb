@@ -5,7 +5,7 @@
 <%= javascript_include_tag "ckeditor/adapters/jquery.js" %>
 <script type="text/javascript" charset="utf-8">
 $( 'textarea').ckeditor( function() { /* callback code */ }, {
-  toolbar : 'Admin',
-  <%= 'enterMode: 2' if defined?(no_wrap_tags) and no_wrap_tags %>
+  toolbar : 'Custom',
+  enterMode: 2
 });
 </script>

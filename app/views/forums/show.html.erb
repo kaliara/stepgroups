@@ -9,7 +9,7 @@
       <td class="post_num"><%= forum_post.views %> <%= "view".pluralize(forum_post.views) %></td>
     </tr>
     <tr class="excerpt">
-      <td colspan="2"><%= forum_post.body.truncate(90) %></td>
+      <td colspan="2"><%= raw forum_post.body.truncate(90) %></td>
       <td class="replies_num"><%= forum_post.total_replies %> <%= "reply".pluralize(forum_post.total_replies) %></td>
     </tr>
     <% end %>

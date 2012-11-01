@@ -3,27 +3,29 @@
 <div class="forum_post">
   <p class="details">Posted by <strong><%= @forum_post.author %></strong> on <%= nice_date @forum_post.created_at %> in <strong><%= link_to @forum_post.forum.name, @forum_post.forum %></strong></p>
 
-  <p class="body"><%= @forum_post.body %></p>
+  <div class="body"><%= raw @forum_post.body %></div>
 </div>
 
-<div class="forums forum_replies">
+<div class="forum_reply">
   <h2>Replies to this post</h2>
-    <table>
-      <% @forum_post.forum_replies.each do |forum_reply| %>
-      <tr>
-        <td>
-          <p class="details"><strong><%= forum_reply.author %></strong> on <%= nice_date forum_reply.created_at %></p>
-          <p><%= forum_reply.body %></p>
-        </td>
-      </tr>
-      <% end %>
-  </table>
-
-  <div class="reply_form">
-    <% if @forum_post.forum_replies.empty? %>
-      <p>There are no replies to this post. Be the first to reply by filling out the form below.</p>
+  <% unless @forum_post.forum_replies.empty? %>
+  <table class="forum_replies forums">
+    <% @forum_post.forum_replies.each do |forum_reply| %>
+    <tr>
+      <td>
+        <p class="details"><strong><%= forum_reply.author %></strong> on <%= nice_date forum_reply.created_at %></p>
+        <p><%= raw forum_reply.body %></p>
+      </td>
+    </tr>
     <% end %>
-    
+  </table>
+  <% else %>
+    <p>There are no replies to this post. Be the first to reply by filling out the form below.</p>
+  <% end %>
+  
+  <%= link_to "Add a reply to this post", "#", :id => "reply_form_link" %>
+  
+  <div class="reply_form" id="reply_form">
     <%= form_for(@forum_reply) do |f| %>
       <% if @forum_reply.errors.any? %>
         <div id="error_explanation">
@@ -39,19 +41,25 @@
 
       <%= f.hidden_field :forum_post_id %>
       <div class="field">
-        <%= f.label :author, "First Name" %><br />
+        <%= f.label :author, "Your First Name" %><br />
         <%= f.text_field :author, :value => "" %>
       </div>
-      <div class="field">
-        <%= f.label :body %><br />
+      <div class="field textarea">
         <%= f.text_area :body %>
       </div>
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Add Reply" %>
       </div>
     <% end %>
     
   </div>
 </div>
 
+<% content_for :scripts do %>
+  <%= render :partial => "/wysiwyg" %>
+  
+  <script type="text/javascript" charset="utf-8">
+    $("#reply_form_link").click(function(e){ e.preventDefault(); $("#reply_form").show(); $(this).hide(); });
+  </script>
+<% end %>
 <%= link_to "Back to #{@forum_post.forum.name} Forum", forum_path(@forum_post.forum) %>

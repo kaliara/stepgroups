@@ -12,22 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :author, "First Name" %><br />
+    <%= f.label :author, "Your First Name" %><br />
     <%= f.text_field :author, :value => "" %>
   </div>
   <div class="field">
-    <%= f.label :forum_id, "Category" %><br>
+    <%= f.label :forum_id, "Forum Category" %><br>
     <%= f.select :forum_id, Forum.visible.active.collect{|f| [f.name, f.id]} %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
+  <div class="field textarea">
     <%= f.text_area :body %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create" %>
   </div>
 <% end %>
