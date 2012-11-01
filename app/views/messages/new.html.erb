@@ -1,7 +1,6 @@
 <h1>Contact Us</h1>
 <p><%= render_content('contact_header') %></p>
 
-
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
@@ -32,7 +31,8 @@
     <%= f.text_area :body %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Send Message" %>
   </div>
 <% end %>
 
+<p><%= render_content('contact_footer') %></p>

@@ -33,7 +33,7 @@ Coda::Application.routes.draw do
   match '/admin'                                  => 'admin/admin#admin',                  :as => :admin                                 
   match '/admin/documents/add_transaction'        => 'admin/documents#add_transaction',    :as => :add_admin_document_transaction
   match '/admin/documents/update_transaction/:id' => 'admin/documents#update_transaction', :as => :update_admin_document_transaction
-
+  match '/admin/messages/:id/status/:status'      => 'admin/messages#status',              :as => :update_admin_message_status
 
   # admin resources
   namespace :admin do

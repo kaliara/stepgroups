@@ -26,3 +26,12 @@ a:visited{
   line-height: 3em;
   text-indent: 1em;
 }
+
+.messages{
+  .responded td{
+    color: #ccc;
+  }
+  .responded a{
+    color: #B4CEE8;
+  }
+}

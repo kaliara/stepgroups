@@ -72,6 +72,14 @@ class Admin::MessagesController < ApplicationController
       end
     end
   end
+  
+  def status
+    @message = Message.find(params[:id])
+    @message.responded_to = true if params[:status] == "responded"
+    @message.save
+    
+    redirect_to admin_messages_path
+  end
 
   # DELETE /messages/1
   # DELETE /messages/1.json
