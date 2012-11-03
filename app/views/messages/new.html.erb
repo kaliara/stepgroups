@@ -30,6 +30,10 @@
     <%= f.label :body, 'Message' %><br />
     <%= f.text_area :body %>
   </div>
+  <div class="field">
+    <%= f.label :antispam_value, raw("What is <strong>#{antispam_arg1} plus #{antispam_arg2}</strong> (Help us prevent spam)") %><br />
+    <%= f.text_field :antispam_value %>
+  </div>
   <div class="actions">
     <%= f.submit "Send Message" %>
   </div>

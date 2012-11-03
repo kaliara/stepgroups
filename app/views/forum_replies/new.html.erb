@@ -1,0 +1,37 @@
+<div id="reply_form">
+  <%= form_for(@forum_reply) do |f| %>
+    <% if @forum_reply.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@forum_reply.errors.count, "error") %> prohibited this forum_reply from being saved:</h2>
+
+        <ul>
+        <% @forum_reply.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :forum_post_id %>
+    <div class="field">
+      <%= f.label :author, "Your First Name" %><br />
+      <%= f.text_field :author %>
+    </div>
+    <div class="field textarea">
+      <%= f.text_area :body %>
+    </div>
+    <% if @forum_reply.new_record? %>
+    <div class="field">
+      <%= f.label :antispam_value, raw("What is <strong>#{antispam_arg1} plus #{antispam_arg2}</strong> (Help us prevent spam)") %><br />
+      <%= f.text_field :antispam_value %>
+    </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit "Add Reply" %>
+    </div>
+  <% end %>
+</div>
+
+<% content_for :scripts do %>
+  <%= render :partial => "/wysiwyg" %>
+<% end %>

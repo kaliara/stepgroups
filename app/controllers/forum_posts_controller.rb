@@ -14,7 +14,7 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/1.json
   def show
     @forum_post = ForumPost.find(params[:id])
-    @forum_reply = ForumReply.new(:forum_post_id => @forum_post.id)
+    @forum_reply = ForumReply.new(:forum_post_id => @forum_post.id, :author => "")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +28,7 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/new
   # GET /forum_posts/new.json
   def new
-    @forum_post = ForumPost.new
+    @forum_post = ForumPost.new(:author => "")
     @forum_post.forum_id = params[:id]
 
     respond_to do |format|

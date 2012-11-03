@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :author, "Your First Name" %><br />
-    <%= f.text_field :author, :value => "" %>
+    <%= f.text_field :author %>
   </div>
   <div class="field">
     <%= f.label :forum_id, "Forum Category" %><br>
@@ -26,6 +26,12 @@
   <div class="field textarea">
     <%= f.text_area :body %>
   </div>
+  <% if @forum_post.new_record? %>
+  <div class="field">
+    <%= f.label :antispam_value, raw("What is <strong>#{antispam_arg1} plus #{antispam_arg2}</strong> (Help us prevent spam)") %><br />
+    <%= f.text_field :antispam_value %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit "Create" %>
   </div>

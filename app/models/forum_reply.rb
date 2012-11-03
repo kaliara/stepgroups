@@ -1,5 +1,8 @@
 class ForumReply < ActiveRecord::Base
   belongs_to :forum_post
   
-  validates_with Forum::ForumValidator
+  attr_accessor :antispam_value
+  
+  # validates_with Forum::ForumValidator
+  validates_with AntispamValidator, :on => :create
 end

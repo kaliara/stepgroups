@@ -26,7 +26,7 @@ Coda::Application.routes.draw do
   resources :messages, :only => [:new, :create, :show]
   resources :forums, :only => [:index, :show]
   resources :forum_posts
-  resources :forum_replies
+  resources :forum_replies, :only => [:create]
 
 
   # admin custom routes

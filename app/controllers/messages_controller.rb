@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
         audio_url: params[:RecordingUrl], 
         audio_duration: params[:RecordingDuration]
       })
-      @message.save
+      @message.save(:validate => false)
       render text: "success"
     end
   end

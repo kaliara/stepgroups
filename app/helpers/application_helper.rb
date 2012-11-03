@@ -1,5 +1,6 @@
 module ApplicationHelper
   
+  # content
   def render_content(name)
     raw Content.find_by_name(name).try(:value)
   end
@@ -8,6 +9,18 @@ module ApplicationHelper
     !Content.find_by_name(name).try(:value).blank?
   end
   
+  
+  # antispam logic
+  def antispam_arg1
+    return %W[zero one two three four][Date.today.day / 10 + 1]
+  end
+  
+  def antispam_arg2
+    Date.today.wday + 1
+  end
+  
+  
+  # formatters
   def nice_boolean(exp)
     exp == false ? "No" : "Yes"
   end
