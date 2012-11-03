@@ -40,14 +40,6 @@ namespace :config do
   end
 end
 
-namespace :deploy do
-  namespace :assets do
-    task :precompile, :roles => :web, :except => { :no_release => true } do
-      run 'echo "skipping assets:precompile"'
-    end
-  end
-end
-
 # namespace :assets do
 #   task :symlink, :roles => :app do
 #     run "ln -nfs #{shared_path}/images #{release_path}/public/images"
