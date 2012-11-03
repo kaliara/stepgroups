@@ -54,7 +54,7 @@ end
 # end
 
 after "deploy", "deploy:cleanup"
-before "deploy:assets:precompile", "deploy:migrate" 
 before "deploy:assets:precompile", "database:symlink" 
 before "deploy:assets:precompile", "config:symlink" 
+before "deploy:assets:precompile", "deploy:migrate" 
 # after "deploy:symlink", "deploy:update_crontab"  
