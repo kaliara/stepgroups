@@ -1,4 +1,6 @@
 class ForumPost < ActiveRecord::Base
+  include ActiveModel::Validations
+  
   belongs_to :forum
   has_many :forum_replies
   
