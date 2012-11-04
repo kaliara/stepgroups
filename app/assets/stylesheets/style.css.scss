@@ -277,6 +277,10 @@ ol{
   .menu{
     float: left;
     margin-right: 100px;
+    max-width: 150px;
+  }
+  .last_menu{
+    margin-right: 0;
   }
   a:link, a:visited, a:active{
     padding: 3px 0;
