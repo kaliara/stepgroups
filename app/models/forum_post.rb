@@ -1,6 +1,4 @@
 class ForumPost < ActiveRecord::Base
-  include ActiveModel::Validations
-  
   belongs_to :forum
   has_many :forum_replies
   
@@ -9,7 +7,7 @@ class ForumPost < ActiveRecord::Base
   attr_accessor :antispam_value
   
   # validates_with Forum::ForumValidator
-  validates_with AntispamValidator, :on => :create
+  validates_captcha_with :antispam_value, :on => :create, :message => "must be answered correctly"
   validates :forum_id, :inclusion => { :in => Forum.active.collect{|f| f.id}, :message => "is either not allowing new posts or is hidden", :on => :create }
   
   def total_replies
