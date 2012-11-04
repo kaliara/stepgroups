@@ -31,7 +31,7 @@ class Admin::MenusController < ApplicationController
     @districts = District.all.collect{|d| ["Meetings - #{d.name}", meetings_by_district_path(:district => d.slug)]}
     @pages = Page.published.collect{|p| [p.name, view_page_path(p.slug)]} 
     @paths = [["Homepage", root_path],
-              ["Contact Us", new_message_path],
+              ["Contact Us", contact_path],
               ["Announcements", announcements_path],
               ["Dicussion Forums", forums_path],
               ["Meeting List", meetings_path]] + 
@@ -55,7 +55,7 @@ class Admin::MenusController < ApplicationController
     @districts = District.all.collect{|d| ["Meetings - #{d.name}", meetings_by_district_path(:district => d.slug)]}
     @pages = Page.published.collect{|p| [p.name, view_page_path(p.slug)]} 
     @paths = [["Homepage", root_path],
-              ["Contact Us", new_message_path],
+              ["Contact Us", contact_path],
               ["Announcements", announcements_path],
               ["Dicussion Forums", forums_path],
               ["Meeting List", meetings_path]] + 
