@@ -12,7 +12,7 @@ module ApplicationHelper
   
   # antispam logic
   def antispam_arg1
-    return %W[one two three four five six seven eight nine][[Message.count.to_s][-1].to_i - 1]
+    return %W[zero one two three four five six seven eight nine][[Message.count.to_s][-1].to_i]
   end
   
   def antispam_arg2
