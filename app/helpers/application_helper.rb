@@ -12,11 +12,11 @@ module ApplicationHelper
   
   # antispam logic
   def antispam_arg1
-    return %W[zero one two three four][Date.today.day / 10 + 1]
+    return %W[one two three four five six seven eight nine][[Message.count.to_s][-1].to_i - 1]
   end
   
   def antispam_arg2
-    Date.today.wday + 1
+    Message.count.odd? ? 2 : 3
   end
   
   
