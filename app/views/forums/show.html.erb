@@ -1,5 +1,8 @@
 <div class="forums">
   <h1><span>Forums:</span> <%= @forum.name %></h1>
+  <p>
+    <%= @forum.description %>
+  </p>
 
   <table class="forum_posts">
     <% @forum.forum_posts.each do |forum_post| %>

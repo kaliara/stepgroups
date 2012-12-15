@@ -24,7 +24,7 @@
       <div id="announcements" class="announcements loading clearfix"><h3>Announcements:</h3><ul></ul></div>
       <div class="content" role="main">
         <%= yield %>
-        <p class="copyright">Content re-published with the permission of Co-Dependents Anonymous, Incorporated.</p>
+        <p class="copyright"><%= render_content 'copyright' %></p>
       </div>
     </div>
       
