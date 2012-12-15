@@ -1,6 +1,8 @@
 <h1>New forum post</h1>
 
-<%= @forum_post.instructions %>
+<% unless @forum_post.forum.instructions.blank? %>
+  <p class="instructions"><strong>Instructions for posting:</strong> <%= @forum_post.forum.instructions %></p>
+<% end %>
 
 <%= render 'form' %>
 <%= render :partial => "/wysiwyg" %>
