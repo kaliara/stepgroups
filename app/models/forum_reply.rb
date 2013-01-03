@@ -5,4 +5,5 @@ class ForumReply < ActiveRecord::Base
   
   # validates_with Forum::ForumValidator
   validates_captcha_with :antispam_value, :on => :create, :message => "must be answered correctly"
+  validates :body, :presence => true
 end
