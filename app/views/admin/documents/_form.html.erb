@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :intergroup_session_id %> <span class="note">(optional)</span><br />
-    <%= f.select :intergroup_session_id, [['-- None --', '']] + IntergroupSession.all.collect{|i| [i.name, i.id]} %>
+    <%= f.select :intergroup_session_id, [['-- None --', '']] + IntergroupSession.all.collect{|i| [i.name, i.id]}, :selected => (@document.intergroup_session_id || params[:intergroup_session_id]) %>
   </div>
   <div class="field">
     <%= f.label :title %><br />

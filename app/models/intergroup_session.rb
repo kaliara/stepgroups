@@ -6,7 +6,7 @@ class IntergroupSession < ActiveRecord::Base
   default_scope order('session_date desc')
   
   def name
-    session_date.strftime("%B %Y") + " Intergroup Session"
+    session_date.strftime("%b %d %Y") + " Intergroup Session"
   end
   
   def self.past_meeting

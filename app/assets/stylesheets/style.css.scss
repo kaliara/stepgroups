@@ -63,7 +63,7 @@ dl{
     font-weight: bold;
   }
   dd{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   address{
@@ -511,7 +511,10 @@ ol{
     
     h3{
       margin-bottom: 0;
-      color: #fff;
+      
+      a{
+        color: #fff;
+      }
     }
   }
   

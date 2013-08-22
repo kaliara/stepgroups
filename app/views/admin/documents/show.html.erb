@@ -12,6 +12,7 @@
 
 <p><%= raw @document.body %></p>
 
+<br><br><br>
 
 <% unless @document.motions.empty? %>
   <h3>Motions</h3>
@@ -31,14 +32,14 @@
   <% end %>
 <% end %>
 
-<% unless @document.transactions.empty? %>
+<!-- <% unless @document.transactions.empty? %>
   <h3>Transactions</h3>
   <ul>
     <% @document.transactions.each do |transaction| %>
       <li>(<%= transaction.pretty_timestamp %>) <%= number_to_currency transaction.amount %> - <%= transaction.description %></li>
     <% end %>
   </ul>
-<% end %>
+<% end %> -->
 
 <br><br><br>
 

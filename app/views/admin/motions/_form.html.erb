@@ -43,6 +43,8 @@
       <%= f.submit %>
     </div>
   <% end %>
+  
+  <br><br>
 
   <% if motion.new_record? %>
     <%= button_to "Cancel", edit_admin_document_path(motion.document), :method => :get, :id => "remove_new_motion_button" %>

@@ -28,6 +28,7 @@ class Admin::DocumentsController < ApplicationController
   # GET /documents/new.json
   def new
     @document = Document.new
+    @document.document_type = 1
 
     respond_to do |format|
       format.html # new.html.erb
