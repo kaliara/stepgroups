@@ -37,6 +37,9 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.contact_name = 'Anonymous' if @message.contact_name.blank?
+    @message.contact_details = 'Anonymous' if @message.contact_details.blank?
+    @message.subject = "Details" if @message.subject.blank?
 
     respond_to do |format|
       if @message.save

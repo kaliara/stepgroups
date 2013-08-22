@@ -1,13 +1,12 @@
-<h1>Website Messages</h1>
+<h1>Website Messages <span class="note">(<% if params[:show_all]%><%= link_to "show recent messages", admin_messages_path() %><% else %><%= link_to "show all messages", admin_all_messages_path() %><% end %>)</span></h1>
 <div class="messages">
   <table>
     <tr>
       <!-- <th>Status</th> -->
-      <th>Name</th>
+      <th class="contact_details">Name</th>
       <th>Subject</th>
-      <th>Preview</th>
-      <th>Date</th>
-      <th>Status</th>
+      <th class="date">Date</th>
+      <th class="status">Status</th>
     </tr>
 
   <% @website_messages.each do |message| %>
@@ -15,26 +14,25 @@
       <!-- <td><%= message.responded_to? ? 'answered' : 'new' %></td> -->
       <td><%= message.contact_name %></td>
       <td><%= link_to message.subject, admin_message_path(message) %></td>
-      <td><%= message.body.to_s.truncate(50) %></td>
       <td><%= nice_datetime message.created_at %></td>
-      <td><%= link_to "mark as read", update_admin_message_status_path(:id => message.id, :status => 'responded') unless message.responded_to? %></td>
+      <td><%= link_to "mark as answered", update_admin_message_status_path(:id => message.id, :status => 'responded') unless message.responded_to? %></td>
     </tr>
   <% end %>
   </table>
 
   <br><br><br><br>
 
-
-  <h1>Voicemail Messages</h1>
+  <a name="voicemails"></a>
+  <h1>Voicemail Messages <span class="note">(<% if params[:show_all]%><%= link_to "show recent messages", admin_messages_path(:anchor => 'voicemails') %><% else %><%= link_to "show all messages", admin_all_messages_path(:anchor => 'voicemails') %><% end %>)</span></h1>
 
   <table>
     <tr>
       <!-- <th>Status</th> -->
-      <th>Phone Number</th>
+      <th class="contact_details">Phone Number</th>
       <th>Recording</th>
       <th>Duration</th>
-      <th>Date</th>
-      <th>Status</th>
+      <th class="date">Date</th>
+      <th class="status">Status</th>
     </tr>
 
   <% @voicemail_messages.each do |message| %>
@@ -44,7 +42,7 @@
       <td><%= link_to "Listen", message.audio_url, :target => "_blank" %></td>
       <td><%= nice_seconds message.audio_duration %></td>
       <td><%= nice_datetime message.created_at %></td>
-      <td><%= link_to "mark as read", update_admin_message_status_path(:id => message.id, :status => 'responded') unless message.responded_to? %></td>
+      <td><%= link_to "mark as answered", update_admin_message_status_path(:id => message.id, :status => 'responded') unless message.responded_to? %></td>
     </tr>
   <% end %>
   </table>

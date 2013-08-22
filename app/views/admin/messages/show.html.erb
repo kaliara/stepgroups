@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<% if @message.contact_details.downcase == 'anonymous' %>
+<h3>This was sent as an anonymous message.<br><br>You can simple read and take note of the message and then click, "mark as answered".</h3><br>
+<% else %>
 <p>
   <b>From:</b>
   <%= @message.contact_name %>
@@ -9,6 +12,7 @@
   <b>Reply to:</b>
   <%= @message.contact_details %>
 </p>
+<% end %>
 
 <p>
   <b>Subject:</b>
@@ -20,4 +24,7 @@
   <%= @message.body %>
 </p>
 
-<%= link_to 'Back', admin_messages_path %>
+<br>
+<h3><%= link_to "mark as answered", update_admin_message_status_path(:id => @message.id, :status => 'responded') unless @message.responded_to? %></h3>
+<br><br><br><br>
+<%= link_to 'Back to messages', :back %>

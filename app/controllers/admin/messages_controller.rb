@@ -5,8 +5,9 @@ class Admin::MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @website_messages = Message.where("kind = ?", 'website').order("created_at DESC")
-    @voicemail_messages = Message.where("kind = ?", 'voicemail').order("created_at DESC")
+    count = params[:show_all] ? nil : 10
+    @website_messages = Message.where("kind = ?", 'website').order("created_at DESC").limit(count)
+    @voicemail_messages = Message.where("kind = ?", 'voicemail').order("created_at DESC").limit(count)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -34,7 +34,8 @@ Coda::Application.routes.draw do
   match '/admin/documents/add_transaction'        => 'admin/documents#add_transaction',    :as => :add_admin_document_transaction
   match '/admin/documents/update_transaction/:id' => 'admin/documents#update_transaction', :as => :update_admin_document_transaction
   match '/admin/messages/:id/status/:status'      => 'admin/messages#status',              :as => :update_admin_message_status
-
+  match '/admin/messages/all'                     => 'admin/messages#index',               :as => :admin_all_messages, :defaults => { :show_all => 'true' }
+  
   # admin resources
   namespace :admin do
     resources :announcements

@@ -3,7 +3,8 @@
   <ul>
     <!-- <li><%= link_to 'Unread Messages', admin_messages_path %></li> -->
     <!-- <li><%= link_to 'Unanswered Messages', admin_messages_path %></li> -->
-    <li><%= link_to 'All Messages', admin_messages_path %></li>
+    <li><%= link_to 'Website Messages', admin_messages_path %></li>
+    <li><%= link_to 'Voicemail Messages', admin_messages_path(:anchor => 'voicemails') %></li>
   </ul>
   
   <div class="title">Meetings</div>
@@ -19,7 +20,7 @@
     <li><%= link_to 'Intergroup Sessions', admin_intergroup_sessions_path %></li>
     <li><%= link_to 'Documents', admin_documents_path %></li>
     <li><%= link_to 'Motions', admin_motions_path %></li>
-    <li><%= link_to 'Transactions', admin_transactions_path %></li>
+    <!-- <li><%= link_to 'Transactions', admin_transactions_path %></li> -->
   </ul>
   
   <div class="title">Forums</div>
