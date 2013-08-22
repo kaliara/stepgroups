@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121215022023) do
+ActiveRecord::Schema.define(:version => 20130822192138) do
 
   create_table "announcements", :force => true do |t|
     t.string   "header"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20121215022023) do
     t.integer  "document_type",         :default => 0
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.text     "body"
   end
 
   create_table "forum_posts", :force => true do |t|

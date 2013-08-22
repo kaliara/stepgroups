@@ -10,13 +10,8 @@
 </dl>
 
 
-<% unless @document.sections.empty? %>
-  <h3>Sections</h3>
-  <% @document.sections.each do |section| %>
-    <h4><%= section.heading %></h4>
-    <p><%= raw section.body %></p>
-  <% end %>
-<% end %>
+<p><%= raw @document.body %></p>
+
 
 <% unless @document.motions.empty? %>
   <h3>Motions</h3>
@@ -44,6 +39,8 @@
     <% end %>
   </ul>
 <% end %>
+
+<br><br><br>
 
 <%= link_to 'Edit', edit_admin_document_path(@document) %> |
 <%= link_to 'Back', admin_documents_path %>

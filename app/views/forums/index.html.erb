@@ -13,12 +13,16 @@
   <% end %>
 </table>
 
-<h2>Recent Posts</h2>
+<h2>Recent Updates</h2>
 <table class="forums">
   <% @forum_posts.each do |forum_post| %>
   <tr>
     <td class="link"><%= link_to content_tag(:span, forum_post.title.titleize.truncate(50)), forum_post, :class => "forum_link" %></td>
-    <td><span class="description"> by <strong><%= forum_post.author %></strong> <%= distance_of_time_in_words(Time.now - forum_post.created_at) %> ago.</span></td>
+    <% if forum_post.forum_replies.empty? %>
+    <td><span class="description"> by <strong><%= forum_post.author %></strong> <%= distance_of_time_in_words(Time.now - forum_post.created_at) %> ago</span></td>
+    <% else %>
+    <td><span class="description"> <strong>new reply</strong> posted <%= distance_of_time_in_words(Time.now - forum_post.forum_replies.last.created_at) %> ago</span></td>
+    <% end %>
     <td class="post_num"><%= forum_post.views %> <%= "view".pluralize(forum_post.views) %></td>
   </tr>
   <% end %>

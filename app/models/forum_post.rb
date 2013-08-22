@@ -2,7 +2,8 @@ class ForumPost < ActiveRecord::Base
   belongs_to :forum
   has_many :forum_replies
   
-  scope :recent, order("created_at desc").limit(5)
+  default_scope order('updated_at desc')
+  scope :recent, limit(5)
   
   attr_accessor :antispam_value
   

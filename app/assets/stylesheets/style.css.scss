@@ -473,6 +473,31 @@ ol{
 }
 
 
+// ============ DOCUMENTS =========== //
+.document{
+
+  h4{
+    margin-bottom: 3px;
+  }
+  h5{
+    margin: 5px 10px;
+  }
+  .motion{
+    margin-bottom: 30px;
+
+    dl{
+      margin: 0 10px;
+    }
+    dd{
+      margin-bottom: 5px;
+    }
+    .body{
+      margin: 0 10px;
+    }
+  }
+}
+
+
 // ============ MEETINGS =========== //
 .meeting_list{
   margin-bottom: 20px;
@@ -653,6 +678,12 @@ ol{
 }
 .uppercase{
   text-transform: uppercase;
+}
+.success{
+  color: #0a0;
+}
+.warning, .error{
+  color: #c00;
 }
 .clearfix:after{
   content:".";

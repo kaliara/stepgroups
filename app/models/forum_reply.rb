@@ -6,4 +6,10 @@ class ForumReply < ActiveRecord::Base
   # validates_with Forum::ForumValidator
   validates_captcha_with :antispam_value, :on => :create, :message => "must be answered correctly"
   validates :body, :presence => true
+  
+  after_create :update_parent_post
+  
+  def update_parent_post
+    self.forum_post.touch
+  end
 end

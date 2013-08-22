@@ -7,7 +7,7 @@
   <dt>Date:</dt> <dd><%= nice_date @past_meeting.session_date %></dd>
   <dt>Attendance:</dt> <dd><%= @past_meeting.attendance %></dd>
   <dt>Quorum:</dt> <dd><%= nice_boolean @past_meeting.quorum? %></dd>
-  <dt>Motions Voted on:</dt> 
+  <dt>Motions:</dt> 
   <dd>
     <%= @past_meeting.motions.size %>
     <% if @past_meeting.motions.size > 0 %>

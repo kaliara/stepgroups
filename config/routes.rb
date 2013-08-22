@@ -42,7 +42,6 @@ Coda::Application.routes.draw do
     resources :pages
     resources :documents
     resources :motions
-    resources :sections
     resources :intergroup_sessions
     resources :districts
     resources :meetings

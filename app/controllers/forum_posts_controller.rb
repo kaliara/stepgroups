@@ -21,8 +21,8 @@ class ForumPostsController < ApplicationController
       format.json { render json: @forum_post }
     end
     
-    @forum_post.views += 1
-    @forum_post.save
+    @forum_post.update_column(:views, @forum_post.views + 1)
+    # @forum_post.save
   end
 
   # GET /forum_posts/new

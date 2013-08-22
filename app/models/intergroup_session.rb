@@ -10,6 +10,6 @@ class IntergroupSession < ActiveRecord::Base
   end
   
   def self.past_meeting
-    IntergroupSession.where("session_date < ?", Date.today).last
+    IntergroupSession.where("session_date < ?", Date.today).first
   end
 end
