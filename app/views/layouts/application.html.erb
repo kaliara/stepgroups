@@ -41,7 +41,7 @@
         $.ajax({
           type: 'GET',
           dataType: 'json',
-          url: '<%= announcements_path %>'
+          url: '<%= announcements_ticker_path %>'
         }).done(function(data) {
           if (data.length > 0){
             $('#announcements ul').kaliAnnounce({json_data: data}).parent().hide().removeClass('loading').fadeIn('slow');

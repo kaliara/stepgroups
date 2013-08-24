@@ -2,22 +2,25 @@ Coda::Application.routes.draw do
 
 
   # custom routes
-  match '/documents/:type'                => 'documents#index',   :as => :typed_documents, :constraints => {:type => /\D+/}
-  match '/info/:slug'                     => 'pages#show',        :as => :view_page
-  match '/intergroup'                     => 'pages#intergroup',  :as => :intergroup
-  match '/contact'                        => 'messages#new',      :as => :contact
+  match '/documents/:type'                => 'documents#index',     :as => :typed_documents, :constraints => {:type => /\D+/}
+  match '/info/:slug'                     => 'pages#show',          :as => :view_page
+  match '/intergroup'                     => 'pages#intergroup',    :as => :intergroup
+  match '/contact'                        => 'messages#new',        :as => :contact
   
   match '/messages'                       => 'messages#new',              :via => :get
   match '/messages/voicemail'             => 'messages#create_voicemail', :via => :post
 
-  match '/meetings/address/:address_id'   => 'meetings#index',    :as => :meetings_by_address
-  match '/meetings/:district'             => 'meetings#index',    :as => :meetings_by_district, :constraints => {:district => /\D+/}
+  match '/meetings/address/:address_id'   => 'meetings#index',      :as => :meetings_by_address
+  match '/meetings/:district'             => 'meetings#index',      :as => :meetings_by_district, :constraints => {:district => /\D+/}
   
-  match '/forums/:id/posts/new'           => 'forum_posts#new',   :as => :new_post_in_forum, :constraints => {:id => /\d+/}
-  match '/forum_posts/:id/replies/new'    => 'forum_replies#new', :as => :new_reply_to_post, :constraints => {:id => /\d+/}
+  match '/forums/:id/posts/new'           => 'forum_posts#new',     :as => :new_post_in_forum, :constraints => {:id => /\d+/}
+  match '/forum_posts/:id/replies/new'    => 'forum_replies#new',   :as => :new_reply_to_post, :constraints => {:id => /\d+/}
+  
+  match 'announcements_ticker'            => 'announcements#index', :as => :announcements_ticker, :defaults => {:limit => 5, :format => 'json'}
+  
   
   # resources
-  resources :announcements, :only => [:show, :index]
+  resources :announcements, :only => [:show, :index], :default => {:format => 'html'}
   resources :documents, :only => [:show, :index]
   resources :motions, :only => [:show, :index]
   resources :intergroup_sessions, :only => [:show, :index]

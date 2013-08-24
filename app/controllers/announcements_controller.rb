@@ -2,8 +2,9 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.all.reverse
-
+    limit = params[:limit] || nil
+    @announcements = Announcement.order('created_at desc').limit(limit)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @announcements }
