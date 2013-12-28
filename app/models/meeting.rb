@@ -13,10 +13,11 @@ class Meeting < ActiveRecord::Base
   def next_meeting_date
     today = Date.today
     cwday = wday == 0 ? 7 : wday
-    today.cwday > cwday ? DateTime.commercial(today.year, today.cweek + 1, cwday, hour, minute) : DateTime.commercial(today.year, today.cweek, cwday, hour, minute)
+    next_cweek = (today.cweek == 52 ? 0 : today.cweek) + 1 
+    today.cwday > cwday ? DateTime.commercial((today + 7).year, next_cweek, cwday, hour, minute) : DateTime.commercial(today.year, today.cweek, cwday, hour, minute)
   end
   
-  def self.upcoming(limit = 2)
-    Meeting.all.sort { |a,b| a.next_meeting_date <=> b.next_meeting_date }[0..limit]
+  def self.upcoming(limit = 3)
+    Meeting.all.sort { |a,b| a.next_meeting_date <=> b.next_meeting_date }[0..(limit - 1)]
   end
 end
