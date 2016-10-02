@@ -19,7 +19,7 @@
   <tr>
     <td class="link"><%= link_to content_tag(:span, forum_post.title.titleize.truncate(50)), forum_post, :class => "forum_link" %></td>
     <% if forum_post.forum_replies.empty? %>
-    <td><span class="description"> by <strong><%= forum_post.author %></strong> <%= distance_of_time_in_words(Time.now - forum_post.created_at) %> ago</span></td>
+    <td><span class="description"> by <strong><%= forum_post.author %></strong> <%= nice_datetime forum_post.created_at %></span></td>
     <% else %>
     <td><span class="description"> <strong>new reply</strong> posted <%= distance_of_time_in_words(Time.now - forum_post.forum_replies.last.created_at) %> ago</span></td>
     <% end %>
