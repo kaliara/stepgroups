@@ -7,7 +7,7 @@ function loadGoogleMap(lat, lng, callback) {
   var callback = (callback == undefined) ? 'showMap' : callback;
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCIclYn1lbzbhhnVomb4evBNAQKCfPv6Ic&sensor=false&callback=" + callback;
+  script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyBGHysY1xS3V8oUhsHAzeV0KhG4ZGRkl_U&sensor=false&callback=" + callback;
   document.body.appendChild(script);
 }
 
@@ -23,7 +23,7 @@ function showMap() {
   };
   var map = new google.maps.Map(document.getElementById("google_map"), myOptions)
   var marker = new google.maps.Marker({
-    position: latlng, 
+    position: latlng,
     map: map
   });
 }
@@ -45,10 +45,10 @@ function updateMap(address) {
   };
   var map = new google.maps.Map(document.getElementById("google_map"), myOptions)
   var marker = new google.maps.Marker({
-    position: latlng, 
+    position: latlng,
     map: map
   });
-  
+
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       $('#google_maps_address_lat').val(results[0].geometry.location.lat());
